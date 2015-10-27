@@ -26,12 +26,7 @@
                                             <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="password">
                                         </div>
                                         <button type="submit" class="signIn-btn">Sign in!</button>
-                                    </form>
-                                
-
-
-
-                                    
+                                    </form>                                                                    
                                   </div>
                                 </div>
                             </div>

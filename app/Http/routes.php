@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('home', function () {
-    echo 'welcome home';
-});
+// Route::get('home', function () {
+//     echo 'welcome home';
+// });
+
+
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -28,4 +30,6 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-
+//HomePage Routs...
+Route::get('home', 'HomeController@index');
+Route::post('home/index', 'HomeController@postNewsFeed');
