@@ -1,3 +1,7 @@
+
+$highlight-color: #ee534f;
+
+
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
@@ -124,11 +128,11 @@ background-image: url(../img/bg.jpg);
 				color:#fff;
 
     			&:hover{
-    				color:#ee534f;
+    				color:$highlight-color;
     			}
 
     			&:focus{
-    				color:#ee534f;
+    				color:$highlight-color;
     			}
 
     		}
@@ -153,13 +157,13 @@ background-image: url(../img/bg.jpg);
             &:hover {
             border-width: 0;
             border: none;
-            color: #4285F4 !important; 
+            color: $highlight-color !important; 
             background: transparent;
             }
 
             &::after{
                 content: ""; 
-                background: #4285F4; 
+                background: $highlight-color; 
                 height: 2px; position: 
                 absolute; width: 100%; 
                 left: 0px; bottom: -1px; 
@@ -180,7 +184,7 @@ background-image: url(../img/bg.jpg);
     > li.active > a {
 
         border: none;
-        color: #4285F4 !important; 
+        color: $highlight-color !important; 
         background: transparent;
 
         &:focus {
@@ -204,6 +208,47 @@ background-image: url(../img/bg.jpg);
         }
     }
 
+}
+
+.navbar {
+    
+    border: none;
+    border-radius: 0px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0px;
+    margin: 2px 0px 0px;
+    font-size: 14px;
+    text-align: left;
+    list-style: outside none none;
+    background-color: #273238;
+    background-clip: padding-box;
+    // border: 1px solid rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
+}
+
+.dropdown-menu > li > a:hover,
+ .dropdown-menu > li > a:focus {
+    color: #262626;
+    text-decoration: none;
+    background-color: #273238;
+}
+
+.navbar-default .navbar-nav > .open > a,
+ .navbar-default .navbar-nav > .open > a:hover,
+  .navbar-default .navbar-nav > .open > a:focus {
+    color: $highlight-color;
+    background-color: #273238;
 }
 
 //nav tab style
@@ -270,6 +315,28 @@ a:hover, a:focus {
     background-color: #FFF;
     padding: 9px 19px;
 }
+
+// .btn .btn-primary{
+//     background-color:$highlight-color;
+// }
+
+.btn-primary {
+    color: #fff;
+    background-color: $highlight-color;
+    border-color: $highlight-color;
+}
+
+.btn-primary:hover {
+    color: #FFF;
+    background-color: $highlight-color;
+    border-color: $highlight-color;
+}
+
+// .btn-primary:active {
+//     color: #FFF;
+//     background-color: $highlight-color;
+//     border-color: $highlight-color;
+// }
 
 //profile setup
 
@@ -344,6 +411,15 @@ a:hover, a:focus {
     .img-rounded {
         border-radius: 6px;
     }
+
+    .post-user-name{
+        font-size: 16px;
+        color: #333;
+    }
+
+    .time{
+        color: $highlight-color;
+    }
 }
 
 .post-image {
@@ -351,11 +427,18 @@ a:hover, a:focus {
         width: 100%;
         height: auto;
         cursor: pointer;
+        padding: 0px 15px;
     }
 }
 
 .post-description {
     padding: 15px;
+
+    .stats{
+        a{
+            color: $highlight-color;
+        }
+    }
 }
 
 .post-footer {
@@ -403,11 +486,15 @@ a:hover, a:focus {
             display: inline;
             margin-top: 0px;
             margin-right: 10px;
+
+            a{
+                color: #333;
+            }
         }
 
         .time {
             font-size: 12px;
-            color: #AAA;
+            color: $highlight-color;
             margin-top: 0px;
             display: inline;
         }
@@ -435,6 +522,13 @@ a:hover, a:focus {
             height: 80px;
             display: block;
             margin-right: 15px;
+        }
+
+        .title{
+            a{
+                color: #333;
+                font-size: 16px;
+            }
         }
 
         .event-img-rounded {

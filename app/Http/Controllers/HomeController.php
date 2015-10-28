@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Posts;
+use App\User;
 
 class HomeController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +22,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
-          return view('home.index');
+          // $allPost = \DB::table('posts')->get();
+         $allPost = Posts::all();
+          return view('home.index', compact('allPost'));
     }
 
     public function postNewsFeed(Request $request){
@@ -32,18 +39,17 @@ class HomeController extends Controller
 
         $fileName = uniqid().'.'.$request->file('photo')->getClientOriginalExtension();
 
+        // \Image::make($request->file('photo') )
+        //     ->resize(750, null, function($constraint){
+        //         $constraint->aspectRatio();
+        //     })->save('img/Post/'.$fileName);
+
         \Image::make($request->file('photo') )
-            ->resize(320, null, function($constraint){
-                $constraint->aspectRatio();
-            })->save('img/Post/'.$fileName);
+            ->save('img/Post/'.$fileName);
 
         $post->photo = $fileName;
 
-
-
-
-        // $capture->user_id = \Auth::user()->id;
-        // $capture->pokemon_id = $request->pokemon;
+        $post->user_id = \Auth::user()->id;
 
         $post->save();
 

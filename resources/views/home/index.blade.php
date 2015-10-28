@@ -45,7 +45,7 @@
 
 
            <!--  Post 1 -->
-
+           @foreach($allPost as $post)
               <div class="panel panel-white post panel-shadow">
                   <div class="post-heading">
                       <div class="pull-left image">
@@ -53,17 +53,17 @@
                       </div>
                       <div class="pull-left meta">
                           <div class="title h5">
-                              <a href="#" class="post-user-name">Nickson Bejarano</a>
-                              uploaded a photo.
+                              <a href="#" class="post-user-name">{{$post->user->username}} </a>
+                              {{-- uploaded a photo.{{$post->user->username}} --}}
                           </div>
-                          <h6 class="text-muted time">5 seconds ago</h6>
+                          <h6 class="text-muted time">{{ $post->created_at->format('M d,Y \a\t h:i a') }}</h6>
                       </div>
                   </div>
                   <div class="post-image">
-                      <img src="img/Post/place1-full.jpg" alt="image post">
+                      <img src="img/Post/{{$post->photo}}" alt="image post">
                   </div>
                   <div class="post-description">
-                      <p>This is a short description</p>
+                      <p>{{$post->status}}</p>
                       <div class="stats">
                           <a href="#">
                               <i class="fa fa-commenting-o"></i>
@@ -71,7 +71,11 @@
                           </a>
                       </div>
                   </div>
-                  <div class="post-footer">
+
+                  
+        
+    
+                  {{-- <div class="post-footer">
                       <div class="input-group"> 
                           <input class="form-control" placeholder="Add a comment" type="text">
                           <span class="input-group-addon">
@@ -116,13 +120,13 @@
                               </div>
                           </li>
                       </ul>
-                  </div>
+                  </div> --}}
               </div>
-            
+            @endforeach
               <!-- post 2 -->
 
 
-              <div class="panel panel-white post panel-shadow">
+              {{-- <div class="panel panel-white post panel-shadow">
                   <div class="post-heading">
                       <div class="pull-left image">
                           <img src="img/Profile/profile.jpg" class="img-rounded avatar" alt="user profile image">
@@ -130,14 +134,12 @@
                       <div class="pull-left meta">
                           <div class="title h5">
                               <a href="#" class="post-user-name">Nickson Bejarano</a>
-                              uploaded a photo.
+                              
                           </div>
                           <h6 class="text-muted time">5 seconds ago</h6>
                       </div>
                   </div>
-                  <!-- <div class="post-image">
-                      <img src="img/Post/place1-full.jpg" alt="image post">
-                  </div> -->
+                  
                   <div class="post-description">
                       <p>This is a short description</p>
                       <div class="stats">
@@ -193,7 +195,7 @@
                           </li>
                       </ul>
                   </div>
-              </div>
+              </div> --}}
 
 
         </div> <!-- end of col 8 -->
@@ -229,7 +231,7 @@
                         <img src="img/Profile/profile.jpg" class="event-img-rounded avatar" alt="user profile image">
                     </div>
                     <div class="meta">
-                        <div class="title h5">
+                        <div class="title">
                             <a href="#">Event Name</a>
                         </div>
                         <h5 class="text-muted time">22 October 2015</h5>
@@ -246,7 +248,7 @@
                         <img src="img/Profile/profile.jpg" class="event-img-rounded avatar" alt="user profile image">
                     </div>
                     <div class="meta">
-                        <div class="title h5">
+                        <div class="title">
                             <a href="#">Event Name</a>
                         </div>
                         <h5 class="text-muted time">22 October 2015</h5>
