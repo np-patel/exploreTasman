@@ -42,7 +42,7 @@
 								<li class="dropdown langs nav-border">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-globe"></i> <span>Welcome Nehal</span> <i class="fa fa-caret-down"></i></a>
 										<ul class="dropdown-menu">
-												<li><a href="#">My Profile</a></li>
+												<li><a href="/profilePage">My Profile</a></li>
 												<li><a href="/auth/logout">Logout</a></li>
 										</ul>
 								</li>
@@ -53,7 +53,7 @@
 						</ul>
 
 						<ul id="nav-pad" class="nav navbar-nav">
-								<li><a href="#">Home</a></li>
+								<li><a href="/home">Home</a></li>
 								<li><a href="#">PhotoMap</a></li>
 								<li><a href="#">Events</a></li>
 								<li><a href="#">Contact Us</a></li>

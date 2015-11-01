@@ -384,4 +384,54 @@ a:hover, a:focus {
       .panel .panel-body .photos li a img {
         width: 100%; }
 
+.cover-container {
+  background-image: url(../img/Profile/cover/game.jpg);
+  height: 350px;
+  margin-top: -21px;
+  background-size: cover;
+  position: relative;
+  background-position: center center;
+  margin-bottom: 20px; }
+
+.social-cover {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.social-avatar {
+  left: 0px;
+  right: 300px;
+  bottom: 0px;
+  top: 0px;
+  position: absolute;
+  width: 450px; }
+
+.img-avatar {
+  margin: 150px auto auto;
+  padding-left: 50px; }
+
+.img-avatar img {
+  display: block;
+  border-radius: 4px; }
+
+.profile-text {
+  margin: 150px auto auto;
+  padding: 1px 0px 0px 185px; }
+
+.profileName {
+  color: #fff; }
+
+.profileBio {
+  color: #fff; }
+
+.btn-profile {
+  color: #FFF;
+  border-color: #FFF;
+  border: none;
+  background: transparent none repeat scroll 0px 0px;
+  padding: 5px 0px; }
+
 /*# sourceMappingURL=main.css.map */
