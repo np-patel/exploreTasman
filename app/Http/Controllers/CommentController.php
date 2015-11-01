@@ -5,17 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 use App\Posts;
-use App\User;
 use App\Comments;
 
-class HomeController extends Controller
+class CommentController extends Controller
 {
-
-    public function __construct() {
-        $this->middleware('auth');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -23,54 +18,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-         
-         $allPost = Posts::all(); //getting all the post from post database table
-
-         $allComments = Comments::orderBy('created_at')->get(); //getting all the comments from comment table
-
-          return view('home.index', compact('allPost', 'allComments'));
+        //
     }
-
-    public function postNewsFeed(Request $request){
-
-        $this->validate($request,[
-                'status'=> 'required|max:255',
-                // 'photo' => 'required|image'
-            ]);
-
-        $post = new Posts();
-        $post->status = $request->get('status');
-
-        $fileName = uniqid().'.'.$request->file('photo')->getClientOriginalExtension();
-
-        // \Image::make($request->file('photo') )
-        //     ->resize(750, null, function($constraint){
-        //         $constraint->aspectRatio();
-        //     })->save('img/Post/'.$fileName);
-
-        \Image::make($request->file('photo') )
-            ->save('img/Post/'.$fileName);
-
-        $post->photo = $fileName;
-
-        $post->user_id = \Auth::user()->id;
-
-        $post->save();
-
-        return redirect('home');
-
-
-    
-    }
-
-    //*************************** this code is for getting all comments from comments table*********************//
-
-    // public function showComments(){
-
-    //     $allComments = Comments::all();
-    //     return view('home.index', compact('allComments'));
-
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -90,7 +39,17 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        $comments = new Comments();
+        
+        $comments->from_user = \Auth::user()->id;
+        $comments->on_post =  $request->input('on_post');
+        $comments->body = $request->get('body');
+
+        $comments->save();
+ 
+        return redirect('home');
     }
 
     /**

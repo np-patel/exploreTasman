@@ -33,3 +33,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 //HomePage Routs...
 Route::get('home', 'HomeController@index');
 Route::post('home/index', 'HomeController@postNewsFeed');
+
+// add comment
+Route::post('comment/add','CommentController@store');
+// Route::get('home/index', 'HomeController@showComments');
+// Route::get('/home/index',['as' => 'post', 'uses' => 'HomeController@showComments']);
+
+

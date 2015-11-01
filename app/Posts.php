@@ -14,5 +14,9 @@ class Posts extends Model
     	return $this->belongsTo('App\User', 'user_id');
     }
 
+	public function comments(){
+		return $this->hasMany('App\Comments','on_post');
+	}
+
     
 }

@@ -19,8 +19,6 @@
                 <!-- Tab panes -->
                 <div class="tab-content clearfix">
                     <div role="tabpanel" class="tab-pane active" id="home">
-                    	 {{-- @yield('news_content') --}}
-                         {{-- @include('views/home.newsFeed') --}}
                         <form action="/home/index" method="post" enctype="multipart/form-data"     class="form-horizontal" role="form" novalidate>
                               
                             {{ csrf_field() }}
@@ -75,127 +73,42 @@
                   
         
     
-                  {{-- <div class="post-footer">
+                  <div class="post-footer">
+                      
+                  <form action="/comment/add" method="post" class="form-horizontal" role="form" novalidate>
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="on_post" value="{{ $post->id }}">
+
                       <div class="input-group"> 
-                          <input class="form-control" placeholder="Add a comment" type="text">
+                          <input class="form-control" name="body" placeholder="Add a comment" type="text">
                           <span class="input-group-addon">
-                              <a href="#"><i class="fa fa-edit"></i></a>  
+                          <input type="submit" name='post_comment' value="post">
+                              {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
                           </span>
                       </div>
+                  </form>
                       <ul class="comments-list">
+                        @foreach($allComments as $comment)
                           <li class="comment">
                               <a class="pull-left" href="#">
                                   <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
                               </a>
                               <div class="comment-body">
                                   <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Antony andrew lobghi</a></h4>
-                                      <h5 class="time">7 minutes ago</h5>
+                                      <h4 class="comment-user-name"><a href="#">{{$comment->user->username}}</a></h4>
+                                      <h5 class="time">{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</h5>
                                   </div>
-                                  <p>This is a comment bla bla bla</p>
+                                  <p>{{ $comment->body }}</p>
                               </div>
                           </li>
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Jeferh Smith</a></h4>
-                                      <h5 class="time">3 minutes ago</h5>
-                                  </div>
-                                  <p>This is another comment bla bla bla</p>
-                              </div>
-                          </li>
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Maria fernanda coronel</a></h4>
-                                      <h5 class="time">10 seconds ago</h5>
-                                  </div>
-                                  <p>Wow! so cool my friend</p>
-                              </div>
-                          </li>
+                        @endforeach
+                          
                       </ul>
-                  </div> --}}
+                  </div>
               </div>
             @endforeach
-              <!-- post 2 -->
 
-
-              {{-- <div class="panel panel-white post panel-shadow">
-                  <div class="post-heading">
-                      <div class="pull-left image">
-                          <img src="img/Profile/profile.jpg" class="img-rounded avatar" alt="user profile image">
-                      </div>
-                      <div class="pull-left meta">
-                          <div class="title h5">
-                              <a href="#" class="post-user-name">Nickson Bejarano</a>
-                              
-                          </div>
-                          <h6 class="text-muted time">5 seconds ago</h6>
-                      </div>
-                  </div>
-                  
-                  <div class="post-description">
-                      <p>This is a short description</p>
-                      <div class="stats">
-                          <a href="#">
-                              <i class="fa fa-commenting-o"></i>
-                              23 Comments
-                          </a>
-                      </div>
-                  </div>
-                  <div class="post-footer">
-                      <div class="input-group"> 
-                          <input class="form-control" placeholder="Add a comment" type="text">
-                          <span class="input-group-addon">
-                              <a href="#"><i class="fa fa-edit"></i></a>  
-                          </span>
-                      </div>
-                      <ul class="comments-list">
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Antony andrew lobghi</a></h4>
-                                      <h5 class="time">7 minutes ago</h5>
-                                  </div>
-                                  <p>This is a comment bla bla bla</p>
-                              </div>
-                          </li>
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Jeferh Smith</a></h4>
-                                      <h5 class="time">3 minutes ago</h5>
-                                  </div>
-                                  <p>This is another comment bla bla bla</p>
-                              </div>
-                          </li>
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Maria fernanda coronel</a></h4>
-                                      <h5 class="time">10 seconds ago</h5>
-                                  </div>
-                                  <p>Wow! so cool my friend</p>
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
-              </div> --}}
 
 
         </div> <!-- end of col 8 -->
