@@ -51,15 +51,29 @@
                       </div>
                       <div class="pull-left meta">
                           <div class="title h5">
-                              <a href="#" class="post-user-name">{{$post->user->username}} </a>
-                              {{-- uploaded a photo.{{$post->user->username}} --}}
+                              <a href="#" class="post-user-name">
+                              @if($post->user->additionalInfo) 
+                                {{ $post->user->additionalInfo->firstName }} {{ $post->user->additionalInfo->lastName }}
+                              
+                              @else 
+                                {{ $post->user->username }}
+                              @endif
+
+                               </a>
+                    
                           </div>
                           <h6 class="text-muted time">{{ $post->created_at->format('M d,Y \a\t h:i a') }}</h6>
                       </div>
                   </div>
-                  <div class="post-image">
-                      <img src="img/Post/{{$post->photo}}" alt="image post">
-                  </div>
+
+                    @if($post->photo == 'noImage.jpg')
+
+                        @else
+                          <div class="post-image">
+                              <img src="img/Post/{{$post->photo}}" alt="image post">
+                          </div>
+                    @endif
+
                   <div class="post-description">
                       <p>{{$post->status}}</p>
                       <div class="stats">
@@ -89,14 +103,25 @@
                       </div>
                   </form>
                       <ul class="comments-list">
-                        @foreach($allComments as $comment)
+
+                        @foreach($post->comments as $comment)
+
                           <li class="comment">
                               <a class="pull-left" href="#">
                                   <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
                               </a>
                               <div class="comment-body">
                                   <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">{{$comment->user->username}}</a></h4>
+                                      <h4 class="comment-user-name"><a href="#">
+                                      {{-- {{$comment->user->username}} --}}
+                                      @if($comment->user->additionalInfo) 
+                                        {{ $comment->user->additionalInfo->firstName }} {{ $comment->user->additionalInfo->lastName }}
+                                      
+                                      @else 
+                                        {{ $comment->user->username }}
+                                      @endif
+
+                                      </a></h4>
                                       <h5 class="time">{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</h5>
                                   </div>
                                   <p>{{ $comment->body }}</p>

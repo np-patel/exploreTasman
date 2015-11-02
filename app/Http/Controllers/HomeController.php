@@ -23,12 +23,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // if(User::find(1)->additionalInfo) {
+        //     return User::find(1)->additionalInfo->firstName;
+        // } else {
+        //     return 'username';
+        // }
+
+
+
+
+         $allPost = Posts::orderBy('created_at', 'DESC')->get(); //getting all the post from post database table
          
-         $allPost = Posts::all(); //getting all the post from post database table
+         //$allComments = Comments::orderBy('created_at')->get(); //getting all the comments from comment table
 
-         $allComments = Comments::orderBy('created_at')->get(); //getting all the comments from comment table
-
-          return view('home.index', compact('allPost', 'allComments'));
+          return view('home.index', compact('allPost'));
     }
 
     public function postNewsFeed(Request $request){
@@ -41,6 +49,11 @@ class HomeController extends Controller
         $post = new Posts();
         $post->status = $request->get('status');
 
+    if($request->file('photo') == ''){
+
+        $post->photo = 'noImage.jpg';
+    }
+    else{
         $fileName = uniqid().'.'.$request->file('photo')->getClientOriginalExtension();
 
         // \Image::make($request->file('photo') )
@@ -52,6 +65,7 @@ class HomeController extends Controller
             ->save('img/Post/'.$fileName);
 
         $post->photo = $fileName;
+    }
 
         $post->user_id = \Auth::user()->id;
 
