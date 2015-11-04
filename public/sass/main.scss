@@ -653,5 +653,26 @@ position: absolute;
     padding:5px 0px; 
 }
 
+/************************ map ****************************/
+
+#display_map {
+width:100%;
+height:100%;
+position: absolute;
+z-index : -200;
+top: 0px;
+left: 0px;
+}
+
+.picButton {
+  position: absolute;
+  bottom: 150px;
+  right: 250px;
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  background-color: #e74c3c;
+  /*color: #000;*/
+}
 
 

@@ -42,4 +42,9 @@ Route::post('comment/add','CommentController@store');
 // profile page
 Route::get('profilePage', 'ProfilePageController@index');
 
+//photoMap
+// profile page
+Route::get('photoMap', 'PhotoMapController@index');
+
+
 

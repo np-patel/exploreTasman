@@ -54,7 +54,7 @@
 
 						<ul id="nav-pad" class="nav navbar-nav">
 								<li><a href="/home">Home</a></li>
-								<li><a href="#">PhotoMap</a></li>
+								<li><a href="/photoMap">PhotoMap</a></li>
 								<li><a href="#">Events</a></li>
 								<li><a href="#">Contact Us</a></li>
 						</ul>
@@ -69,7 +69,9 @@
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/map.js"></script>
 	</body>
 </html>
