@@ -43,8 +43,9 @@ Route::post('comment/add','CommentController@store');
 Route::get('profilePage', 'ProfilePageController@index');
 
 //photoMap
-// profile page
 Route::get('photoMap', 'PhotoMapController@index');
+Route::get('getMarkers', 'PhotoMapController@getMarkers');
+
 
 
 

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Marker_location;
+use Response;
 class PhotoMapController extends Controller
 {
     /**
@@ -16,6 +17,16 @@ class PhotoMapController extends Controller
     public function index()
     {
         return view('photoMap.index');
+    }
+
+    public function getMarkers(){
+         $MarkerLocation = Marker_location::orderBy('id')->get();
+         // return json_encode($MarkerLocation);
+            return  Response::json($MarkerLocation);
+         // return Response::json(array(
+         //            'success' => true,
+         //            'data'   => $MarkerLocation
+         //        )); 
     }
 
     /**
