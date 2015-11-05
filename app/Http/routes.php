@@ -48,4 +48,3 @@ Route::get('getMarkers', 'PhotoMapController@getMarkers');
 
 
 
-

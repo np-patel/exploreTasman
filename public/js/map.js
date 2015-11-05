@@ -11,7 +11,9 @@ $(document).ready(function(){
         var myOptions = {
             zoom: 12,
             center: {lat: -40.884089, lng: 173.091207},
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeId: google.maps.MapTypeId.SATELLITE, // chang type of map
+            mapTypeControl: false, // get rid off extra option for map type
+            streetViewControl: false, // hide street view
             zoomControlOptions: true,
             zoomControlOptions: {
                 style: google.maps.ZoomControlStyle.LARGE
@@ -27,7 +29,7 @@ $(document).ready(function(){
            map.setCenter(center); 
         });
 
-    
+   
         $.ajax({
 
            // type: 'post',
@@ -38,40 +40,53 @@ $(document).ready(function(){
 
                 console.log(dataFromServer);
 
-                for( var i = 0; i < dataFromServer.length; i++ ) {
+                // for( var i = 0; i < dataFromServer.length; i++ ) {
 
-                    var data = dataFromServer[i];
+                //     var data = dataFromServer[i];
 
-                //       var islands = [
-                //         [ data.locationName, data.latitude, data.longitude]
+                // //       var islands = [
+                // //         [ data.locationName, data.latitude, data.longitude]
         
-                //     ];
-                    console.log(data.locationName, data.latitude, data.longitude);
-                }
+                // //     ];
+                //     console.log(data.locationName, data.latitude, data.longitude);
+                // }
 
                 // console.log(dataFromServer[0].locationName);
 
-        var islands = [
-        [ dataFromServer[0].locationName,  dataFromServer[0].latitude, dataFromServer[0].longitude]
-        ]; //loop inside the island array to get all the location
+        // var islands = [
+        // [ dataFromServer[0].locationName,  dataFromServer[0].latitude, dataFromServer[0].longitude]
+        // ]; //loop inside the island array to get all the location
         
 
+        var arrayLength = dataFromServer.length;
+            for( var i = 0; i < arrayLength; i++ ) {
+
+        //         var islands = [
+        // [ dataFromServer[i].locationName,  dataFromServer[i].latitude, dataFromServer[i].longitude]
+        // ];
+                // var islands = [dataFromServer[i].latitude, dataFromServer[i].longitude];
+                // console.log(islands);
+            // }
+
+
+
+
         // loop through each island in the colaction and display a marker
-    for (var i = 0; i <islands.length; i++) {
-        //grab the array containing info abt island
-        var island = islands[i];
+            // for (var i = 0; i <islands.length; i++) {
+                //grab the array containing info abt island
+                // var island = islands[i];
 
-        //ganerate letlng for the position of this marker using google api
-        var position = new google.maps.LatLng( island[1], island[2] );
+                //ganerate letlng for the position of this marker using google api
+                var position = new google.maps.LatLng( dataFromServer[i].latitude, dataFromServer[i].longitude );
 
-        // place the marker
-        var marker = new google.maps.Marker({
-            position: position,
-            map: map,
-            icon: 'img/map-red.png',
-            animation: google.maps.Animation.DROP
-        });
-    }
+                // place the marker
+                var marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    icon: 'img/map-red.png',
+                    animation: google.maps.Animation.DROP
+                });
+            }
 
             },
             error: function(){
