@@ -50,4 +50,8 @@ class User extends Model implements AuthenticatableContract,
     public function additionalInfo() {
         return $this->hasOne('App\UserAdditionalInfo');
     }
+
+     public function PhotoMapImageUploader() {
+        return $this->hasMany('App\PhotoMapImageUploader', 'userId');
+    }
 }

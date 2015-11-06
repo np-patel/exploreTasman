@@ -40,16 +40,7 @@ $(document).ready(function(){
 
                 console.log(dataFromServer);
 
-                // for( var i = 0; i < dataFromServer.length; i++ ) {
 
-                //     var data = dataFromServer[i];
-
-                // //       var islands = [
-                // //         [ data.locationName, data.latitude, data.longitude]
-        
-                // //     ];
-                //     console.log(data.locationName, data.latitude, data.longitude);
-                // }
 
                 // console.log(dataFromServer[0].locationName);
 
@@ -59,6 +50,7 @@ $(document).ready(function(){
         
 
         var arrayLength = dataFromServer.length;
+       // var islands[]; saving islands values in this variables array
             for( var i = 0; i < arrayLength; i++ ) {
 
         //         var islands = [
@@ -86,6 +78,10 @@ $(document).ready(function(){
                     icon: 'img/map-red.png',
                     animation: google.maps.Animation.DROP
                 });
+
+                google.maps.event.addListener(marker, 'click', function(){
+                    $('#markerModal').modal('show');
+                });
             }
 
             },
@@ -95,35 +91,6 @@ $(document).ready(function(){
 
 
         });
-
-
-
-
-
-    // var islands = [
-    //     [ 'somes Island',       -41.258274, 174.865429],
-    //     [ 'Taputeranga Island', -41.349634, 174.773346],
-    //     [ 'Mana Island',        -41.088960, 174.780231]
-    // ];
-
-    // var image = 'flag.png';// adding costome icon image
-
-    // loop through each island in the colaction and display a marker
-    // for (var i = 0; i <islands.length; i++) {
-    //     //grab the array containing info abt island
-    //     var island = islands[i];
-
-    //     //ganerate letlng for the position of this marker using google api
-    //     var position = new google.maps.LatLng( island[1], island[2] );
-
-    //     // place the marker
-    //     var marker = new google.maps.Marker({
-    //         position: position,
-    //         map: map,
-    //         icon: 'img/map-red.png',
-    //         animation: google.maps.Animation.DROP
-    //     });
-    // }
 
 
 });

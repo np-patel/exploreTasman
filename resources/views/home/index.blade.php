@@ -207,17 +207,17 @@
                 </div>
                 <div class="panel-body text-center"> 
                     <ul class="photos"> 
-                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 1" class="img-responsive show-in-modal"> </a> 
+                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 1" width="100%" class="img-responsive show-in-modal"> </a> 
                         </li>
-                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 2" class="img-responsive show-in-modal"> </a> 
+                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 2" width="100%" class="img-responsive show-in-modal"> </a> 
                         </li>
-                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 3" class="img-responsive show-in-modal"> </a> 
+                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 3" width="100%" class="img-responsive show-in-modal"> </a> 
                         </li>
-                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 4" class="img-responsive show-in-modal"> </a> 
+                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 4" width="100%" class="img-responsive show-in-modal"> </a> 
                         </li>
-                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 5" class="img-responsive show-in-modal"> </a> 
+                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 5" width="100%" class="img-responsive show-in-modal"> </a> 
                         </li>
-                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 6" class="img-responsive show-in-modal"> </a> 
+                        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 6" width="100%" class="img-responsive show-in-modal"> </a> 
                         </li>
                     </ul> 
                 </div>
