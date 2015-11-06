@@ -9,7 +9,7 @@ class PhotoMapImageUploader extends Model
     protected $table = 'photoMap_image_uploader';
 
     public function Marker_location() {
-    	return $this->belongsTo('App\Marker_location', 'markerLocation');
+    	return $this->belongsTo('App\Marker_location', 'markerLocationId');
     }
 
     public function user() {

@@ -35,11 +35,19 @@
                       <input type="text" class="form-control"
                       id="address" name="address"/>
                   </div>
-                  <div class="form-group">
-                    <label for="suburb">suburb</label>
-                      <input type="text" class="form-control"
-                      id="suburb" name="suburb"/>
-                  </div>
+
+                  <div>
+                    <label for="imageLocation">Choose location</label>
+                    <select name="imageLocation" id="imageLocation">
+
+                        @foreach($allLocations as $location)
+
+                        <option value="{{ $location->id }}">{{$location->locationName}}</option>
+                        @endforeach
+                    </select>
+                    
+                </div>
+
                   <div class="form-group">
                     <label for="city">city</label>
                       <input type="text" class="form-control"

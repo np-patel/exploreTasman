@@ -18,8 +18,9 @@ class PhotoMapController extends Controller
     public function index(){
 
         $allUserPhotos = PhotoMapImageUploader::all();
+        $allLocations = Marker_location::all();
 
-        return view('photoMap.index', compact('allUserPhotos')); 
+        return view('photoMap.index', compact('allUserPhotos', 'allLocations')); 
         
     }
 
