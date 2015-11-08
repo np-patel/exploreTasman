@@ -13,6 +13,6 @@ class PhotoMapImageUploader extends Model
     }
 
     public function user() {
-    	return $this->belongTo('App\User', 'userId');
+    	return $this->belongsTo('App\User', 'userId');
     }
 }

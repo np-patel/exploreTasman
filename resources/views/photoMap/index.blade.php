@@ -10,7 +10,9 @@
 
 
 	<div>
-		<input type="submit" value="add Pic" class="picButton btn" data-toggle="modal" data-target="#myModal">
+		{{-- <input type="submit" value='\f030' class="btn orange-circle-button" data-toggle="modal" data-target="#myModal"> --}}
+
+        <button type="button" class="btn orange-circle-button" data-toggle="modal" data-target="#myModal"><i class="fa fa-camera"></i></button>
 	</div>
 
 
@@ -29,11 +31,15 @@
       <!-- Modal Body -->
             <div class="modal-body">
                 
-                <form role="form">
+                <form role="form" action="/photoMap/add" method="post" enctype="multipart/form-data" role="form" novalidate>
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                   <div class="form-group">
-                    <label for="address">Address</label>
+                    <label for="imageTitle">Title</label>
                       <input type="text" class="form-control"
-                      id="address" name="address"/>
+                      id="imageTitle" name="imageTitle"/>
+                      {{$errors->first('imageTitle')}}
                   </div>
 
                   <div>
@@ -45,66 +51,51 @@
                         <option value="{{ $location->id }}">{{$location->locationName}}</option>
                         @endforeach
                     </select>
-                    
-                </div>
+                  </div>
 
                   <div class="form-group">
-                    <label for="city">city</label>
-                      <input type="text" class="form-control"
-                      id="city" name="city"/>
+                    <label for="locationImage">Upload Image</label>
+                      <input id="locationImage" name="locationImage" type="file">
+                      {{$errors->first('locationImage')}}
                   </div>
                   <div class="form-group">
-                    <label for="country">country</label>
-                      <input type="text" class="form-control"
-                      id="country" name="country"/>
-                  </div>
-                  <div class="form-group">
-                    <label for="zip">zip</label>
-                      <input type="text" class="form-control"
-                      id="zip" name="zip"/>
+                    <label for="imageDescription">Image Description</label>
+                      <textarea id="imageDescription" name="imageDescription" class="form-control" placeholder="Write about image"></textarea>
+                      {{$errors->first('imageDescription')}}
+                      
                   </div>
                   
+                  <input type="submit" value="Add Photo" class="btn btn-primary" name="addPhoto" />
+
                 </form>
                 
                 
             </div>
 
-      <div class="modal-footer">
-        <input type="submit" id="submit" data-dismiss="modal" name="submit" />
-      </div>
+              {{-- <div class="modal-footer">
+                <input type="submit" id="submit" class="btn-primary" data-dismiss="modal" name="submit" />
+              </div> --}}
     </div>
   </div>
 </div>
 
-{{-- model for marker --}}
 
-<div class="modal fade" id="markerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Location Name</h4>
-      </div>
-      <div class="modal-body">
-       <div class="panel-body text-center"> 
-                    <ul class="photos"> 
-                        
-                    @foreach($allUserPhotos as $photoMap)
-                        <li> <a href="#"> <img src="img/{{$photoMap->locationImage}}" alt="photo 1" class="img-responsive show-in-modal"> </a> 
-                        </li>
-                    @endforeach
-                        
-                    </ul> 
-                </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div id="recentItem" class="recentItem"> <a href="#" id="closX"><i class="fa fa-times floatR"></i></a>
+        <div class="recentItemTxt clearfix">Recent Images</div>
+
+        <div class="photoMap text-center"> 
+            <ul class="photos"> 
+
+                @foreach($allUserPhotos as $photoMap)
+                    <li> 
+                        <a href="#"> <img src="img/{{$photoMap->locationImage}}" alt="photo 1" width="100%" class="img-responsive show-in-modal"> </a> 
+                    </li>
+                @endforeach
+                
+            </ul> 
+        </div>
+
     </div>
-  </div>
-</div>
-
  
 </div>
 </div>

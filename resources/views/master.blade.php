@@ -37,7 +37,7 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-								<li class="search"><a data-target=".search-wrapper" data-toggle="modal" href="javascript:void(0);"><i class="fa fa-search"></i></a></li>
+								
 								
 								<li class="dropdown langs nav-border">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-globe"></i> <span>Welcome Nehal</span> <i class="fa fa-caret-down"></i></a>
@@ -73,5 +73,9 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/map.js"></script>
+
+
+   
+
 	</body>
 </html>

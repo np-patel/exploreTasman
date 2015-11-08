@@ -46,7 +46,7 @@ Route::get('profilePage', 'ProfilePageController@index');
 Route::get('photoMap', 'PhotoMapController@index');
 Route::get('getMarkers', 'PhotoMapController@getMarkers');
 
-// Route::get('getImages', 'PhotoMapController@getImages');
+Route::post('photoMap/add', 'PhotoUploderController@uploadUserImage');
 
 
 

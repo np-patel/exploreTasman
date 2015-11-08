@@ -53,21 +53,6 @@ $(document).ready(function(){
        // var islands[]; saving islands values in this variables array
             for( var i = 0; i < arrayLength; i++ ) {
 
-        //         var islands = [
-        // [ dataFromServer[i].locationName,  dataFromServer[i].latitude, dataFromServer[i].longitude]
-        // ];
-                // var islands = [dataFromServer[i].latitude, dataFromServer[i].longitude];
-                // console.log(islands);
-            // }
-
-
-
-
-        // loop through each island in the colaction and display a marker
-            // for (var i = 0; i <islands.length; i++) {
-                //grab the array containing info abt island
-                // var island = islands[i];
-
                 //ganerate letlng for the position of this marker using google api
                 var position = new google.maps.LatLng( dataFromServer[i].latitude, dataFromServer[i].longitude );
 
@@ -80,7 +65,17 @@ $(document).ready(function(){
                 });
 
                 google.maps.event.addListener(marker, 'click', function(){
-                    $('#markerModal').modal('show');
+                    $(".recentItem").animate({
+                        right: '0'
+                    });
+                    $("body").css('overflow','hidden');
+                });
+
+                $("#closX").click(function(){
+                    $(".recentItem").animate({
+                        right: '-500px'
+                    });
+                    $("body").css('overflow','auto');
                 });
             }
 

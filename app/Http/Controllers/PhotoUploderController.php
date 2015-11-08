@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\PhotoMapImageUploader;
 
 class PhotoUploderController extends Controller
 {
@@ -13,6 +14,40 @@ class PhotoUploderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+     public function uploadUserImage(Request $request){
+        
+        $this->validate($request,[
+                'imageTitle'=> 'required|max:20|min:3',
+                'locationImage' => 'required|image',
+                'imageDescription'=> 'required|max:100|min:10'
+            ]);
+
+        $uploadImage = new PhotoMapImageUploader();
+
+        $uploadImage->title = $request->get('imageTitle');
+        $uploadImage->userId = \Auth::user()->id;
+
+        $fileName = uniqid().'.'.$request->file('locationImage')->getClientOriginalExtension();
+
+
+        \Image::make($request->file('locationImage') )
+            ->save('img/'.$fileName);
+
+
+              $uploadImage->markerLocationId = $request->imageLocation;
+
+        $uploadImage->locationImage = $fileName;
+
+        $uploadImage->imageDescription = $request->get('imageDescription');
+
+        $uploadImage->save();
+
+        return redirect('photoMap');
+    }
+
+
     public function index()
     {
         //
