@@ -17,32 +17,29 @@ class PhotoMapController extends Controller
      */
     public function index(){
 
-        $allUserPhotos = PhotoMapImageUploader::orderBy('photoMapId')->get();
+        // $allUserPhotos = PhotoMapImageUploader::orderBy('photoMapId')->get();
         $allLocations = Marker_location::all();
 
-        return view('photoMap.index', compact('allUserPhotos', 'allLocations')); 
+        return view('photoMap.index', compact('allLocations')); 
         
     }
 
     public function getMarkers(){
          $MarkerLocation = Marker_location::orderBy('id')->get();
 
-        // $data = [];
 
-        //  foreach( $MarkerLocation as $test ) {
-           
-        //    $data[] = $test->PhotoMapImageUploader;
-        //  }
 
-        //  return $data;
 
-         
-         // return json_encode($MarkerLocation);
-            return  Response::json($MarkerLocation);
-         // return Response::json(array(
-         //            'success' => true,
-         //            'data'   => $MarkerLocation
-         //        )); 
+         $allUserPhotos = PhotoMapImageUploader::orderBy('photoMapId')->get();
+
+         $dataToSend = [
+            'markers'=>$MarkerLocation,
+            'images'=>$allUserPhotos
+         ];
+
+
+            return  Response::json($dataToSend);
+
     }
 
     public function getImages(){

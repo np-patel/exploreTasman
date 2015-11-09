@@ -81,16 +81,16 @@
 
 
     <div id="recentItem" class="recentItem"> <a href="#" id="closX"><i class="fa fa-times floatR"></i></a>
-        <div class="recentItemTxt clearfix">Recent Images</div>
+        <div class="recentItemTxt clearfix"></div>
 
         <div class="photoMap text-center"> 
             <ul class="photos"> 
 
-                @foreach($allUserPhotos as $photoMap)
-                    <li> 
-                        <a href="#"> <img src="img/{{$photoMap->locationImage}}" alt="photo 1" width="100%" class="img-responsive show-in-modal"> </a> 
-                    </li>
-                @endforeach
+                {{-- @foreach($allUserPhotos as $photoMap) --}}
+                    {{-- <li>  --}}
+                        {{-- <a href="#"> <img src="img/{{$photoMap->locationImage}}" alt="photo 1" width="100%" class="img-responsive show-in-modal"> </a>  --}}
+                    {{-- </li> --}}
+                {{-- @endforeach --}}
                 
             </ul> 
         </div>
@@ -99,5 +99,17 @@
  
 </div>
 </div>
+
+
+@endsection
+
+@section('footer')
+
+
+@if(count($errors)>0)
+  <script type="text/javascript">
+    $('#myModal').modal('show');
+    </script>
+@endif
 
 @endsection

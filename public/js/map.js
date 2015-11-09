@@ -40,31 +40,49 @@ $(document).ready(function(){
 
                 console.log(dataFromServer);
 
-
-
-                // console.log(dataFromServer[0].locationName);
-
-        // var islands = [
-        // [ dataFromServer[0].locationName,  dataFromServer[0].latitude, dataFromServer[0].longitude]
-        // ]; //loop inside the island array to get all the location
         
 
-        var arrayLength = dataFromServer.length;
+        var arrayLength = dataFromServer.markers.length;
+
+
        // var islands[]; saving islands values in this variables array
             for( var i = 0; i < arrayLength; i++ ) {
 
                 //ganerate letlng for the position of this marker using google api
-                var position = new google.maps.LatLng( dataFromServer[i].latitude, dataFromServer[i].longitude );
+                var position = new google.maps.LatLng( dataFromServer.markers[i].latitude, dataFromServer.markers[i].longitude );
 
                 // place the marker
                 var marker = new google.maps.Marker({
                     position: position,
                     map: map,
                     icon: 'img/map-red.png',
-                    animation: google.maps.Animation.DROP
+                    animation: google.maps.Animation.DROP,
+                    markerID: dataFromServer.markers[i].id,
+                    locationName: dataFromServer.markers[i].locationName
                 });
 
                 google.maps.event.addListener(marker, 'click', function(){
+                    
+                    // -------
+                    // Clear any current images
+                    $('#recentItem .photos').html('');
+                    $('#recentItem .recentItemTxt').html('');
+
+                    $('#recentItem .recentItemTxt').append(this.locationName);
+
+                    for(var i = 0; i < dataFromServer.images.length; i++) {
+
+                        if( dataFromServer.images[i].markerLocationId == this.markerID ) {
+                            //console.log('i: '+i+ ', data: '+dataFromServer.markers[i].locationName);
+                            
+                            //console.log(dataFromServer.images[i].locationImage);
+                            $('#recentItem .photoMap .photos').append('<li><a href="#"><img alt="photo 1" width="100%" class="img-responsive show-in-modal" src="img/'+dataFromServer.images[i].locationImage+'"></a></li>');
+                           
+                        }
+                    }
+
+                    // ------
+
                     $(".recentItem").animate({
                         right: '0'
                     });

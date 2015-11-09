@@ -35,10 +35,9 @@ class PhotoUploderController extends Controller
         \Image::make($request->file('locationImage') )
             ->save('img/'.$fileName);
 
-
-              $uploadImage->markerLocationId = $request->imageLocation;
-
         $uploadImage->locationImage = $fileName;
+
+        $uploadImage->markerLocationId = $request->imageLocation;
 
         $uploadImage->imageDescription = $request->get('imageDescription');
 

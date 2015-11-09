@@ -74,7 +74,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/map.js"></script>
 
-
+	@yield('footer')
    
 
 	</body>
