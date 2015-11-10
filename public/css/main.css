@@ -24,7 +24,7 @@ body {
   clear: both;
   border: 0;
   height: 1px;
-  background-image: -moz-linear-gradient(left center, #061c1f, #ee534f, #081d1f); }
+  background-image: -moz-linear-gradient(left center, #061C1F, #EE534F, #081D1F); }
 
 .panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
   height: 45px;
@@ -191,6 +191,12 @@ a:hover, a:focus {
   padding: 20px; }
   .tab-content .form-control {
     resize: vertical; }
+
+.tab-PostContent {
+  padding: 20px 0px; }
+
+#UpdateProfile {
+  padding: 0px 15px; }
 
 .card {
   background: #FFF none repeat scroll 0% 0%;
@@ -530,3 +536,5 @@ a:hover, a:focus {
           .recentItem .photoMap .photos li a img {
             width: 100%;
             height: 150px; }
+
+/*# sourceMappingURL=main.css.map */

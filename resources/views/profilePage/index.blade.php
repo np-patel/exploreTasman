@@ -45,18 +45,22 @@
                 <!-- Tab panes -->
                 <div class="tab-content clearfix">
                     <div role="tabpanel" class="tab-pane active" id="home">
-                        <form class="form-horizontal" role="form">
-                            
-                             <div class="form-group" style="padding:14px; margin-bottom:0px;">
-                              <textarea class="form-control" placeholder="Update your status"></textarea>
+                        <form action="/profilePage/postFeed" method="post" enctype="multipart/form-data"     class="form-horizontal" role="form" novalidate>
+                              
+                            {{ csrf_field() }}
+
+                            <div class="form-group" style="padding:14px; margin-bottom:0px;">
+                              <textarea id="status" name="status" class="form-control" placeholder="Update your status"></textarea>
                             </div>
-                            <button class="btn btn-primary pull-right" type="button">Post</button>
+                            {{$errors->first('status')}}
                             
-                                <div class="btn btn-style btn-file pull-right">
-                                    <i class="glyphicon glyphicon-camera pull-right"></i> <input type="file">
-                                </div>
-                        
-                          </form>
+                            <input class="btn btn-primary pull-right" value="post" type="submit">
+
+                            <div class="btn btn-style btn-file pull-right ">
+                                <i class="glyphicon glyphicon-camera pull-right"></i> <input id="photo" name="photo" type="file">
+                                
+                            </div>
+                        </form>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
                     
@@ -64,156 +68,166 @@
             </div>
 
 
-           <!--  Post 1 -->
 
-              <div class="panel panel-white post panel-shadow">
-                  <div class="post-heading">
-                      <div class="pull-left image">
-                          <img src="img/Profile/profile.jpg" class="img-rounded avatar" alt="user profile image">
-                      </div>
-                      <div class="pull-left meta">
-                          <div class="title h5">
-                              <a href="#" class="post-user-name">Nickson Bejarano</a>
-                              uploaded a photo.
-                          </div>
-                          <h6 class="text-muted time">5 seconds ago</h6>
-                      </div>
-                  </div>
-                  <div class="post-image">
-                      <img src="img/Post/place1-full.jpg" alt="image post">
-                  </div>
-                  <div class="post-description">
-                      <p>This is a short description</p>
-                      <div class="stats">
-                          <a href="#">
-                              <i class="fa fa-commenting-o"></i>
-                              23 Comments
-                          </a>
-                      </div>
-                  </div>
-                  <div class="post-footer">
-                      <div class="input-group"> 
-                          <input class="form-control" placeholder="Add a comment" type="text">
-                          <span class="input-group-addon">
-                              <a href="#"><i class="fa fa-edit"></i></a>  
-                          </span>
-                      </div>
-                      <ul class="comments-list">
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Antony andrew lobghi</a></h4>
-                                      <h5 class="time">7 minutes ago</h5>
+
+            <!-- All posts and update Profile Page  -->
+
+            <div class="panel">
+                <ul class="nave nav-tabs clearfix" role="tablist">
+                    <li role="presentation" class="active"><a href="#allUserProfile" aria-controls="home" role="tab" data-toggle="tab">All Posts</a></li>
+                    <li role="presentation"><a href="#UpdateProfile" aria-controls="profile" role="tab" data-toggle="tab">Update Profile</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content tab-PostContent clearfix">
+                    <div role="tabpanel" class="tab-pane active" id="allUserProfile">
+                            
+                         <!--  Post 1 -->
+                           @foreach($allUserPosts as $post)
+                              <div class="panel panel-white post panel-shadow">
+                                  <div class="post-heading">
+                                      <div class="pull-left image">
+                                          <img src="img/Profile/profile.jpg" class="img-rounded avatar" alt="user profile image">
+                                      </div>
+                                      <div class="pull-left meta">
+                                          <div class="title h5">
+                                              <a href="#" class="post-user-name">
+                                              @if($post->user->additionalInfo) 
+                                                {{ $post->user->additionalInfo->firstName }} {{ $post->user->additionalInfo->lastName }}
+                                              
+                                              @else 
+                                                {{ $post->user->username }}
+                                              @endif
+
+                                               </a>
+                                    
+                                          </div>
+                                          <h6 class="text-muted time">{{ $post->created_at->format('M d,Y \a\t h:i a') }}</h6>
+                                      </div>
                                   </div>
-                                  <p>This is a comment bla bla bla</p>
-                              </div>
-                          </li>
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Jeferh Smith</a></h4>
-                                      <h5 class="time">3 minutes ago</h5>
+
+                                    @if($post->photo == 'noImage.jpg')
+
+                                        @else
+                                          <div class="post-image">
+                                              <img src="img/Post/{{$post->photo}}" alt="image post">
+                                          </div>
+                                    @endif
+
+                                  <div class="post-description">
+                                      <p>{{$post->status}}</p>
+                                      <div class="stats">
+                                          <a href="#">
+                                              <i class="fa fa-commenting-o"></i>
+                                              23 Comments
+                                          </a>
+                                      </div>
                                   </div>
-                                  <p>This is another comment bla bla bla</p>
-                              </div>
-                          </li>
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Maria fernanda coronel</a></h4>
-                                      <h5 class="time">10 seconds ago</h5>
+
+                                  
+                        
+                    
+                                  <div class="post-footer">
+                                      
+                                  <form action="/comment/add" method="post" class="form-horizontal" role="form" novalidate>
+
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="on_post" value="{{ $post->id }}">
+
+                                      <div class="input-group"> 
+                                          <input class="form-control" name="body" placeholder="Add a comment" type="text">
+                                          <span class="input-group-addon">
+                                          <input type="submit" name='post_comment' value="post">
+                                              {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
+                                          </span>
+                                      </div>
+                                  </form>
+                                      <ul class="comments-list">
+
+                                        @foreach($post->comments as $comment)
+
+                                          <li class="comment">
+                                              <a class="pull-left" href="#">
+                                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
+                                              </a>
+                                              <div class="comment-body">
+                                                  <div class="comment-heading">
+                                                      <h4 class="comment-user-name"><a href="#">
+                                                      {{-- {{$comment->user->username}} --}}
+                                                      @if($comment->user->additionalInfo) 
+                                                        {{ $comment->user->additionalInfo->firstName }} {{ $comment->user->additionalInfo->lastName }}
+                                                      
+                                                      @else 
+                                                        {{ $comment->user->username }}
+                                                      @endif
+
+                                                      </a></h4>
+                                                      <h5 class="time">{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</h5>
+                                                  </div>
+                                                  <p>{{ $comment->body }}</p>
+                                              </div>
+                                          </li>
+                                        @endforeach
+                                          
+                                      </ul>
                                   </div>
-                                  <p>Wow! so cool my friend</p>
                               </div>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
+                            @endforeach
             
               <!-- post 2 -->
 
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="UpdateProfile">
 
-              <div class="panel panel-white post panel-shadow">
-                  <div class="post-heading">
-                      <div class="pull-left image">
-                          <img src="img/Profile/profile.jpg" class="img-rounded avatar" alt="user profile image">
-                      </div>
-                      <div class="pull-left meta">
-                          <div class="title h5">
-                              <a href="#" class="post-user-name">Nickson Bejarano</a>
-                              uploaded a photo.
-                          </div>
-                          <h6 class="text-muted time">5 seconds ago</h6>
-                      </div>
-                  </div>
-                  <!-- <div class="post-image">
-                      <img src="img/Post/place1-full.jpg" alt="image post">
-                  </div> -->
-                  <div class="post-description">
-                      <p>This is a short description</p>
-                      <div class="stats">
-                          <a href="#">
-                              <i class="fa fa-commenting-o"></i>
-                              23 Comments
-                          </a>
-                      </div>
-                  </div>
-                  <div class="post-footer">
-                      <div class="input-group"> 
-                          <input class="form-control" placeholder="Add a comment" type="text">
-                          <span class="input-group-addon">
-                              <a href="#"><i class="fa fa-edit"></i></a>  
-                          </span>
-                      </div>
-                      <ul class="comments-list">
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Antony andrew lobghi</a></h4>
-                                      <h5 class="time">7 minutes ago</h5>
-                                  </div>
-                                  <p>This is a comment bla bla bla</p>
+                        <form role="form" action="/profilePage/edit" method="post" enctype="multipart/form-data" role="form" novalidate>
+
+                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                              <div class="form-group">
+                                <label for="firstName">FirstName: </label>
+                                  <input type="text" class="form-control"
+                                  id="firstName" name="firstName"/>
+                                  {{-- {{$errors->first('imageTitle')}} --}}
                               </div>
-                          </li>
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Jeferh Smith</a></h4>
-                                      <h5 class="time">3 minutes ago</h5>
-                                  </div>
-                                  <p>This is another comment bla bla bla</p>
+
+                              <div class="form-group">
+                                <label for="lastName">LastName: </label>
+                                  <input type="text" class="form-control"
+                                  id="lastName" name="lastName"/>
+                                  {{-- {{$errors->first('imageTitle')}} --}}
                               </div>
-                          </li>
-                          <li class="comment">
-                              <a class="pull-left" href="#">
-                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
-                              </a>
-                              <div class="comment-body">
-                                  <div class="comment-heading">
-                                      <h4 class="comment-user-name"><a href="#">Maria fernanda coronel</a></h4>
-                                      <h5 class="time">10 seconds ago</h5>
-                                  </div>
-                                  <p>Wow! so cool my friend</p>
+
+                              <div class="form-group">
+                                <label for="profileImage">Upload-profile-Image</label>
+                                  <input id="profileImage" name="profileImage" type="file">
+                                  {{-- {{$errors->first('locationImage')}} --}}
                               </div>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
+
+                              <div class="form-group">
+                                <label for="coverImage">Upload-cover-Image</label>
+                                  <input id="coverImage" name="coverImage" type="file">
+                                  {{-- {{$errors->first('locationImage')}} --}}
+                              </div>
+
+                              <div class="form-group">
+                                <label for="userBio">About Me: </label>
+                                  <textarea id="userBio" name="userBio" class="form-control" placeholder="Write about image"></textarea>
+                                  {{-- {{$errors->first('imageDescription')}} --}}
+                                  
+                              </div>
+                          
+                            <input type="submit" value="Update Profile" class="btn btn-primary" name="updateProfile" />
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+          
+
+
+              
 
 
         </div> <!-- end of col 8 -->

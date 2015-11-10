@@ -41,6 +41,10 @@ Route::post('comment/add','CommentController@store');
 
 // profile page
 Route::get('profilePage', 'ProfilePageController@index');
+Route::post('profilePage/postFeed', 'ProfilePageController@postNewsFeed');
+// Route::post('profilePage/edit/{id}', 'ProfilePageController@updateUserProfile');
+Route::post('profilePage/edit', 'ProfilePageController@updateUserProfile');
+
 
 //photoMap
 Route::get('photoMap', 'PhotoMapController@index');
