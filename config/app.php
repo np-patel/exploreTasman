@@ -138,6 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -145,6 +146,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
 
     ],
 
