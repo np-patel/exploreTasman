@@ -22,8 +22,10 @@ class ProfilePageController extends Controller
         $allUserPosts = Posts::where('user_id', \Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
         // $UAI = UserAdditionalInfo::findOrFail($UAI_id);
+        $userInfo = UserAdditionalInfo::where('user_id', \Auth::user()->id)->first();
 
-        return view('profilePage.index', compact('allUserPosts', 'UAI'));
+
+        return view('profilePage.index', compact('allUserPosts', 'userInfo'));
     }
 
 
@@ -70,16 +72,19 @@ class ProfilePageController extends Controller
         
         if (!$UAI->isEmpty()) {
 
-            dd('u have saved data in the database ');
-            // $userUpdateInfo = UserAdditionalInfo::findOrFail($id);
+            // dd('u have saved data in the database ');
+            $userUpdateInfo = $UAI->first();
 
             // dd($userUpdateInfo);
+            // $userUpdateInfo->fill($request->input());
 
-            // $userUpdateInfo->firstName = $request->get('firstName');
+            $userUpdateInfo->firstName = $request->get('firstName');
+            $userUpdateInfo->lastName = $request->get('lastName');
+            $userUpdateInfo->bio = $request->get('userBio');
 
-            // $userUpdateInfo->save();
+            $userUpdateInfo->save();
 
-            // return redirect('profilePage');
+            return redirect('profilePage');
 
          }
 

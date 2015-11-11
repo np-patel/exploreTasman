@@ -186,14 +186,14 @@
                               <div class="form-group">
                                 <label for="firstName">FirstName: </label>
                                   <input type="text" class="form-control"
-                                  id="firstName" name="firstName"/>
+                                  id="firstName" name="firstName" value="{{ $userInfo->firstName }}" />
                                   {{-- {{$errors->first('imageTitle')}} --}}
                               </div>
 
                               <div class="form-group">
                                 <label for="lastName">LastName: </label>
                                   <input type="text" class="form-control"
-                                  id="lastName" name="lastName"/>
+                                  id="lastName" name="lastName" value="{{ $userInfo->lastName }}"/>
                                   {{-- {{$errors->first('imageTitle')}} --}}
                               </div>
 
@@ -211,7 +211,7 @@
 
                               <div class="form-group">
                                 <label for="userBio">About Me: </label>
-                                  <textarea id="userBio" name="userBio" class="form-control" placeholder="Write about image"></textarea>
+                                  <textarea id="userBio" name="userBio" class="form-control" placeholder="Write about image">{{ $userInfo->bio }}</textarea>
                                   {{-- {{$errors->first('imageDescription')}} --}}
                                   
                               </div>
