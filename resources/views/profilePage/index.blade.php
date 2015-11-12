@@ -32,10 +32,10 @@
                 <div class="social-avatar"> 
 
                     <div class="img-avatar pull-left">
-                        <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120">
+                        {{-- <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120"> --}}
 
                         @if(!is_null($userInfo)) 
-                        <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120">
+                          <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120">
                         @else 
                             <img src="img/Profile/default.jpg">
                             
@@ -121,7 +121,7 @@
                                               @else 
                                                 {{ $post->user->username }}
                                               @endif
-
+                                              
                                                </a>
                                     
                                           </div>
