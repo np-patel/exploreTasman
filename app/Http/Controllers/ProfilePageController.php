@@ -25,14 +25,14 @@ class ProfilePageController extends Controller
         $userInfo = UserAdditionalInfo::where('user_id', \Auth::user()->id)->first();
 
         // dd($userInfo);
-        if (is_null($userInfo)) {
-            return view('profilePage.index', compact('allUserPosts'));
-        }
+        // if (is_null($userInfo)) {
+        //     return view('profilePage.index', compact('allUserPosts'));
+        // }
         
-        else{
+        // else{
             return view('profilePage.index', compact('allUserPosts', 'userInfo'));
 
-        }
+        // }
     }
 
 
@@ -105,19 +105,32 @@ class ProfilePageController extends Controller
 
             $userInfo->user_id = \Auth::user()->id;
 
+            if($request->file('profileImage') == ''){
+
+                $userInfo->profileImage = 'default.jpg';
+            }
+            else{
                 $profileImage = uniqid().'.'.$request->file('profileImage')->getClientOriginalExtension();
 
-                    \Image::make($request->file('profileImage') )
-                    ->save('img/Profile/'.$profileImage);
+                \Image::make($request->file('profileImage') )
+                ->save('img/Profile/'.$profileImage);
 
-            $userInfo->profileImage = $profileImage;
+                $userInfo->profileImage = $profileImage;
+            }
 
+            if($request->file('coverImage') == ''){
+
+                $userInfo->CoverImage = 'default.jpg';
+            }
+
+            else{
                 $coverImage = uniqid().'.'.$request->file('coverImage')->getClientOriginalExtension();
 
-                        \Image::make($request->file('coverImage') )
-                        ->save('img/Profile/cover/'.$coverImage);
+                \Image::make($request->file('coverImage') )
+                ->save('img/Profile/cover/'.$coverImage);
 
-            $userInfo->CoverImage = $coverImage;
+                $userInfo->CoverImage = $coverImage;
+            }
 
             $userInfo->bio = $request->get('userBio');
 

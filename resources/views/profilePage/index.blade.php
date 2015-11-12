@@ -9,6 +9,22 @@
     <div class="row">
         <div class="col-md-12">
             <div class="cover-container" >
+            <div id="cv">
+                {{-- <img src="img/Profile/cover/{{$userInfo->CoverImage}}"> --}}
+                {{-- @if($allUserPosts->user->additionalInfo)  --}}
+                @if(!is_null($userInfo)) 
+
+                    <img src="img/Profile/cover/{{$userInfo->CoverImage}}">
+                    
+                @else 
+                    
+                    <img src="img/Profile/cover/default.jpg">
+                    
+                @endif
+
+                
+            </div>
+
                 <div class="social-cover">
                     
                 </div>
@@ -16,7 +32,14 @@
                 <div class="social-avatar"> 
 
                     <div class="img-avatar pull-left">
-                        <img src="img/Profile/profile.jpg" height="120" width="120">
+                        <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120">
+
+                        @if(!is_null($userInfo)) 
+                        <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120">
+                        @else 
+                            <img src="img/Profile/default.jpg">
+                            
+                        @endif
                     </div>
                     <div class="profile-text">
                         <h4 class=" profileName text-left text-shadow">Nehal Patel</h4> 
@@ -87,7 +110,7 @@
                               <div class="panel panel-white post panel-shadow">
                                   <div class="post-heading">
                                       <div class="pull-left image">
-                                          <img src="img/Profile/profile.jpg" class="img-rounded avatar" alt="user profile image">
+                                          <img src="img/Profile/{{ $post->user->additionalInfo->profileImage }}" class="img-rounded avatar" alt="user profile image">
                                       </div>
                                       <div class="pull-left meta">
                                           <div class="title h5">
@@ -186,14 +209,14 @@
                               <div class="form-group">
                                 <label for="firstName">FirstName: </label>
                                   <input type="text" class="form-control"
-                                  id="firstName" name="firstName" value="{{ $userInfo->firstName }}" />
+                                  id="firstName" name="firstName" value="" />
                                   {{-- {{$errors->first('imageTitle')}} --}}
                               </div>
 
                               <div class="form-group">
                                 <label for="lastName">LastName: </label>
                                   <input type="text" class="form-control"
-                                  id="lastName" name="lastName" value="{{ $userInfo->lastName }}"/>
+                                  id="lastName" name="lastName" value=""/>
                                   {{-- {{$errors->first('imageTitle')}} --}}
                               </div>
 
@@ -211,7 +234,7 @@
 
                               <div class="form-group">
                                 <label for="userBio">About Me: </label>
-                                  <textarea id="userBio" name="userBio" class="form-control" placeholder="Write about image">{{ $userInfo->bio }}</textarea>
+                                  <textarea id="userBio" name="userBio" class="form-control" placeholder="Write about image"></textarea>
                                   {{-- {{$errors->first('imageDescription')}} --}}
                                   
                               </div>

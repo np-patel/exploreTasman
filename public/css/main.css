@@ -24,7 +24,7 @@ body {
   clear: both;
   border: 0;
   height: 1px;
-  background-image: -moz-linear-gradient(left center, #061C1F, #EE534F, #081D1F); }
+  background-image: -moz-linear-gradient(left center, #061c1f, #ee534f, #081d1f); }
 
 .panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
   height: 45px;
@@ -393,13 +393,16 @@ a:hover, a:focus {
         width: 100%; }
 
 .cover-container {
-  background-image: url(../img/Profile/cover/game.jpg);
   height: 350px;
-  margin-top: -21px;
+  margin-top: -20px;
   background-size: cover;
   position: relative;
   background-position: center center;
   margin-bottom: 20px; }
+
+#cv img {
+  width: 100%;
+  height: 350px; }
 
 .social-cover {
   position: absolute;
@@ -536,5 +539,3 @@ a:hover, a:focus {
           .recentItem .photoMap .photos li a img {
             width: 100%;
             height: 150px; }
-
-/*# sourceMappingURL=main.css.map */
