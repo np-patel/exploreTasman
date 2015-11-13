@@ -76,7 +76,7 @@ $(document).ready(function(){
                             //console.log('i: '+i+ ', data: '+dataFromServer.markers[i].locationName);
                             
                             //console.log(dataFromServer.images[i].locationImage);
-                            $('#recentItem .photoMap .photos').append('<li><a href="#"><img alt="photo 1" width="100%" class="img-responsive show-in-modal" src="img/'+dataFromServer.images[i].locationImage+'"></a></li>');
+                            $('#recentItem .photoMap .photos').append('<li><a href="#"><img alt="photo 1" width="100%" class="img-responsive show-in-modal" src="img/PhotoMap/'+dataFromServer.images[i].locationImage+'"></a></li>');
                            
                         }
                     }

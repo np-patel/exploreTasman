@@ -33,7 +33,7 @@ class PhotoUploderController extends Controller
 
 
         \Image::make($request->file('locationImage') )
-            ->save('img/'.$fileName);
+            ->save('img/PhotoMap/'.$fileName);
 
         $uploadImage->locationImage = $fileName;
 

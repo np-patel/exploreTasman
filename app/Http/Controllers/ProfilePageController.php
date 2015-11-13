@@ -113,7 +113,7 @@ class ProfilePageController extends Controller
                 $profileImage = uniqid().'.'.$request->file('profileImage')->getClientOriginalExtension();
 
                 \Image::make($request->file('profileImage') )
-                ->save('img/Profile/'.$profileImage);
+                ->save('img/Profile/ProfileImage/'.$profileImage);
 
                 $userInfo->profileImage = $profileImage;
             }
@@ -127,7 +127,7 @@ class ProfilePageController extends Controller
                 $coverImage = uniqid().'.'.$request->file('coverImage')->getClientOriginalExtension();
 
                 \Image::make($request->file('coverImage') )
-                ->save('img/Profile/cover/'.$coverImage);
+                ->save('img/Profile/Cover/'.$coverImage);
 
                 $userInfo->CoverImage = $coverImage;
             }

@@ -14,11 +14,11 @@
                 {{-- @if($allUserPosts->user->additionalInfo)  --}}
                 @if(!is_null($userInfo)) 
 
-                    <img src="img/Profile/cover/{{$userInfo->CoverImage}}">
+                    <img src="img/Profile/Cover/{{$userInfo->CoverImage}}">
                     
                 @else 
                     
-                    <img src="img/Profile/cover/default.jpg">
+                    <img src="img/Profile/Cover/default.jpg">
                     
                 @endif
 
@@ -35,9 +35,9 @@
                         {{-- <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120"> --}}
 
                         @if(!is_null($userInfo)) 
-                          <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120">
+                          <img src="img/Profile/ProfileImage/{{$userInfo->profileImage}}" height="120" width="120">
                         @else 
-                            <img src="img/Profile/default.jpg">
+                            <img src="img/Profile/ProfileImage/default.jpg" height="120" width="120">
                             
                         @endif
                     </div>
@@ -110,7 +110,8 @@
                               <div class="panel panel-white post panel-shadow">
                                   <div class="post-heading">
                                       <div class="pull-left image">
-                                          <img src="img/Profile/{{ $post->user->additionalInfo->profileImage }}" class="img-rounded avatar" alt="user profile image">
+
+                                          <img src="img/Profile/ProfileImage/{{ $post->user->additionalInfo ? $post->user->additionalInfo->profileImage : 'default.jpg' }}" class="img-rounded avatar" alt="user profile image">
                                       </div>
                                       <div class="pull-left meta">
                                           <div class="title h5">
@@ -171,7 +172,7 @@
 
                                           <li class="comment">
                                               <a class="pull-left" href="#">
-                                                  <img class="avatar" src="img/Profile/profile.jpg" alt="avatar">
+                                                  <img class="avatar" src="img/Profile/ProfileImage/{{ $comment->user->additionalInfo ? $comment->user->additionalInfo->profileImage : 'default.jpg' }}" alt="avatar">
                                               </a>
                                               <div class="comment-body">
                                                   <div class="comment-heading">
@@ -266,7 +267,7 @@
                 <!-- event1 -->
                 <div class="event-heading clearfix">
                     <div class="pull-left image">
-                        <img src="img/Profile/profile.jpg" class="event-img-rounded avatar" alt="user profile image">
+                        <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
                     </div>
                     <div class="meta">
                         <div class="title h5">
@@ -283,7 +284,7 @@
                 <!-- event2 -->
                 <div class="event-heading clearfix">
                     <div class="pull-left image">
-                        <img src="img/Profile/profile.jpg" class="event-img-rounded avatar" alt="user profile image">
+                        <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
                     </div>
                     <div class="meta">
                         <div class="title h5">

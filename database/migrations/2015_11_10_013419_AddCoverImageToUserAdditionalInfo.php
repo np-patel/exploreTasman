@@ -28,6 +28,8 @@ class AddCoverImageToUserAdditionalInfo extends Migration
      */
     public function down()
     {
-        $table->dropColumn('CoverImage');
+        Schema::table('userAdditionalInfo', function ($table) {
+            $table->dropColumn('CoverImage');
+        });
     }
 }
