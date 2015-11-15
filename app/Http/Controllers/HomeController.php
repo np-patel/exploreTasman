@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Posts;
 use App\User;
 use App\Comments;
+use App\UserAdditionalInfo;
 
 class HomeController extends Controller
 {
@@ -34,9 +35,9 @@ class HomeController extends Controller
 
          $allPost = Posts::orderBy('created_at', 'DESC')->get(); //getting all the post from post database table
          
-         //$allComments = Comments::orderBy('created_at')->get(); //getting all the comments from comment table
+        $userInfo = UserAdditionalInfo::where('user_id', \Auth::user()->id)->first();
 
-          return view('home.index', compact('allPost'));
+          return view('home.index', compact('allPost', 'userInfo'));
     }
 
     public function postNewsFeed(Request $request){

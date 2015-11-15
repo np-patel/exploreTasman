@@ -12,7 +12,7 @@
             <div class="panel">
                 <ul class="nave nav-tabs clearfix" role="tablist">
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Add Your Feed</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Add Photo/Video</a></li>
+                    {{-- <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Add Photo/Video</a></li> --}}
                     
                 </ul>
 
@@ -36,7 +36,7 @@
                             </div>
                         </form>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                    {{-- <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div> --}}
                     
                 </div>
 		    </div>
@@ -141,19 +141,29 @@
         <div class="col-md-4">
 
             <div class="card2 hovercard">
-               <img src="http://placehold.it/300x200/000000/&text=Header" alt=""/>
+               {{-- <img src="http://placehold.it/300x200/000000/&text=Header" alt=""/> --}}
+                <div>
+                    @if(!is_null($userInfo)) 
+                      <img src="img/Profile/Cover/{{$userInfo->CoverImage}}">
+                    @else 
+                        <img src="img/Profile/Cover/default.jpg">
+                    @endif
+                </div>
                <div class="avatar">
-                  <img src="http://placehold.it/80X80/333333/&text=Head" alt="" />
+                    {{-- <img src="http://placehold.it/80X80/333333/&text=Head" alt="" /> --}}
+                    @if(!is_null($userInfo)) 
+                        <img src="img/Profile/ProfileImage/{{$userInfo->profileImage}}">
+                    @else 
+                        <img src="img/Profile/ProfileImage/default.jpg">
+                            
+                    @endif
                </div>
                <div class="info">
                   <div class="title">
-                     The Title
+                     {{$userInfo->firstName}} {{$userInfo->lastName}}
                   </div>
-                  <div class="desc">Loremzfgzf drghs hdhdfhgvabgklbfg b klabglakbg bsgklbgklajbgkjal gkag kag k ipsum</div>
+                  <div class="desc">{{$userInfo->bio}}</div>
                   
-               </div>
-               <div class="bottom">
-                  <button class="btn btn-default">Button</button>
                </div>
             </div>
 
