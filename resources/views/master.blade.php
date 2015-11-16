@@ -55,8 +55,9 @@
 						<ul id="nav-pad" class="nav navbar-nav">
 								<li><a href="/home">Home</a></li>
 								<li><a href="/photoMap">PhotoMap</a></li>
-								<li><a href="#">Events</a></li>
+								<li><a href="/events">Events</a></li>
 								<li><a href="#">Contact Us</a></li>
+								<li><a href="/admin">Admin</a></li>
 						</ul>
 				</div>
 			</div>
@@ -72,6 +73,8 @@
 		<script src="http://maps.google.com/maps/api/js" type="text/javascript"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+
 		<script src="js/map.js"></script>
 
 	@yield('footer')

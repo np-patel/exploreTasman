@@ -42,8 +42,8 @@
                         @endif
                     </div>
                     <div class="profile-text">
-                        <h4 class=" profileName text-left text-shadow">Nehal Patel</h4> 
-                        <h5 class=" profileBio text-left" style="opacity:0.8;">Write about myself sdfgszDGszG sZG sG SG SDGsdfa SDF sdF gdS SD Z fszg</h5>
+                        <h4 class=" profileName text-left text-shadow">{{$userInfo->firstName}} {{$userInfo->lastName}}</h4> 
+                        <h5 class=" profileBio text-left" style="opacity:0.8;">{{$userInfo->bio}}</h5>
                          
                          <div class="text-left"> 
                          <input class="btn btn-profile" value="Edit Profile" type="submit"> 

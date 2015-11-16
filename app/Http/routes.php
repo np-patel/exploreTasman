@@ -52,5 +52,11 @@ Route::get('getMarkers', 'PhotoMapController@getMarkers');
 
 Route::post('photoMap/add', 'PhotoUploderController@uploadUserImage');
 
+//Admin Controll
+Route::get('admin', 'AdminController@index');
+
+//events Controller
+Route::get('events', 'EventsController@index');
+
 
 
