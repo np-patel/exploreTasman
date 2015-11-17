@@ -54,4 +54,8 @@ class User extends Model implements AuthenticatableContract,
      public function PhotoMapImageUploader() {
         return $this->hasMany('App\PhotoMapImageUploader', 'userId');
     }
+
+    public function events(){
+        return $this->hasMany('App\Events','eventUserId');
+    }
 }

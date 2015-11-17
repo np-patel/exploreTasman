@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Marker_location;
+use App\Events;
+
 
 class AdminController extends Controller
 {
@@ -14,9 +17,37 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin.index');
+    public function index(){
+
+        $allLocations = Marker_location::all();
+
+        return view('admin.index', compact('allLocations'));
+    }
+
+
+    public function addEvent(Request $request){
+        // dd('add event');
+        $addEvent = new Events();
+
+        $addEvent->eventName = $request->get('eventTitle');
+
+        $addEvent->eventUserId = \Auth::user()->id;
+
+        $fileName = uniqid().'.'.$request->file('eventImage')->getClientOriginalExtension();
+
+        \Image::make($request->file('eventImage') )
+            ->save('img/Event/'.$fileName);
+
+        $addEvent->eventImage = $fileName;
+
+        $addEvent->eventLocationId = $request->eventLocation;
+
+        $addEvent->eventDescription = $request->get('eventDescription');
+
+        $addEvent->save();
+
+        return redirect('events');
+
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Events;
 
 class EventsController extends Controller
 {
@@ -14,9 +15,11 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('events.index');
+    public function index(){
+
+        $allEvents = Events::orderBy('created_at', 'DESC')->get();
+
+        return view('events.index', compact('allEvents'));
     }
 
     /**

@@ -7,40 +7,30 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="col-md-6">
-				    <div class="blogpost">
-				        <h4><a href="#">Events Name</a></h4>
+				@foreach($allEvents as $event)
+					<div class="col-md-6">
+						<div class="panel">
+						    <div class="events">
+						        <h4><a href="#">{{ $event->eventName}}</a></h4>
 
-				        <div><p>Location: location Name</p></div>
-				        
-				        <div>
-				        	<div>
-				        	<p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-				        	</div>
-				        	<div class="pull-right">
-				        	<p>by <a href="">nehal patel</a></p>
-				        	</div>
-				        </div>
-				        <img class="img-responsive" src="http://placehold.it/900x300" alt="" style="padding:20px 0px;">
-				        
-				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
-				        
+						        <div><p>{{ $event->marker_location->locationName}}</p></div>
+						        
+						        <div>
+						        	<div class="pull-left">
+						        	<p><span class="glyphicon glyphicon-time"></span> {{ $event->created_at->format('M d,Y \a\t h:i a') }}</p>
+						        	</div>
+						        	<div class="pull-right">
+						        	<p><strong>by</strong> {{$event->user->additionalInfo->firstName}} {{$event->user->additionalInfo->lastName}}</p>
+						        	</div>
+						        </div>
+						        <img class="img-responsive" src="img/Event/{{$event->eventImage}}" alt="" style="padding:10px 0px;">
+						        
+						        <p>{{ $event->eventDescription}}</p>
+						        
+						    </div>
+					    </div>
 				    </div>
-			    </div>
-			    <div class="col-md-6">
-				    <div class="blogpost">
-				        <h4><a href="#">Events Name</a></h4>
-
-				        <p>by <a href="">nehal patel</a></p>
-				        
-				        <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-				        
-				        <img class="img-responsive" src="http://placehold.it/900x300" alt="" style="padding:20px 0px;">
-				        
-				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
-				        
-				    </div>
-			    </div>
+			    @endforeach
 		    </div>
 	    </div>
     </div>
