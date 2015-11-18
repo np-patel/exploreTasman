@@ -57,7 +57,11 @@
 								<li><a href="/photoMap">PhotoMap</a></li>
 								<li><a href="/events">Events</a></li>
 								<li><a href="#">Contact Us</a></li>
-								<li><a href="/admin">Admin</a></li>
+								
+								@if(\Auth::user()->role == 'admin')
+										<li><a href="/admin">Admin</a></li>
+									@else
+								@endif
 						</ul>
 				</div>
 			</div>

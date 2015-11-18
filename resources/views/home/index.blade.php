@@ -52,6 +52,7 @@
                       <div class="pull-left meta">
                           <div class="title h5">
                               <a href="#" class="post-user-name">
+
                               @if($post->user->additionalInfo) 
                                 {{ $post->user->additionalInfo->firstName }} {{ $post->user->additionalInfo->lastName }}
                               
@@ -143,16 +144,16 @@
             <div class="card2 hovercard">
                {{-- <img src="http://placehold.it/300x200/000000/&text=Header" alt=""/> --}}
                 <div>
-                    @if(!is_null($userInfo)) 
-                      <img src="img/Profile/Cover/{{$userInfo->CoverImage}}">
+                    @if($userInfo->additionalInfo) 
+                      <img src="img/Profile/Cover/{{$userInfo->additionalInfo->CoverImage}}">
                     @else 
                         <img src="img/Profile/Cover/default.jpg">
                     @endif
                 </div>
                <div class="avatar">
                     {{-- <img src="http://placehold.it/80X80/333333/&text=Head" alt="" /> --}}
-                    @if(!is_null($userInfo)) 
-                        <img src="img/Profile/ProfileImage/{{$userInfo->profileImage}}">
+                    @if($userInfo->additionalInfo) 
+                        <img src="img/Profile/ProfileImage/{{$userInfo->additionalInfo->profileImage}}">
                     @else 
                         <img src="img/Profile/ProfileImage/default.jpg">
                             
@@ -160,9 +161,20 @@
                </div>
                <div class="info">
                   <div class="title">
-                     {{$userInfo->firstName}} {{$userInfo->lastName}}
+                    @if($userInfo->additionalInfo) 
+                        {{$userInfo->additionalInfo->firstName}} {{$userInfo->additionalInfo->lastName}}
+                      @else
+                        {{$userInfo->username}}
+                    @endif
                   </div>
-                  <div class="desc">{{$userInfo->bio}}</div>
+                  <div class="desc">
+                    @if($userInfo->additionalInfo) 
+                        {{$userInfo->additionalInfo->bio}}
+                      @else
+                        write About Your Self
+                    @endif
+
+                  </div>
                   
                </div>
             </div>
@@ -174,38 +186,26 @@
                     <p>Events</p>
                 </div>
                 <!-- event1 -->
-                <div class="event-heading clearfix">
-                    <div class="pull-left image">
-                        <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
-                    </div>
-                    <div class="meta">
-                        <div class="title">
-                            <a href="#">Event Name</a>
-                        </div>
-                        <h5 class="text-muted time">22 October 2015</h5>
-                        <h6 class="text-muted time">Comming In 5 Days</h6>
-                    </div>
-                    <div class="event-description">
-                        <p>Loremzfgzf drghs hdhdfhgvabgklbfg b klabglakbg bsgklbgklajbgkjal gkag kag k ipsum</p>
-                    </div>
-                </div>
 
-                <!-- event2 -->
+                @foreach($allEvents as $event )
                 <div class="event-heading clearfix">
                     <div class="pull-left image">
                         <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
                     </div>
                     <div class="meta">
                         <div class="title">
-                            <a href="#">Event Name</a>
+                            {{$event->eventName}}
                         </div>
-                        <h5 class="text-muted time">22 October 2015</h5>
+                        <h5 class="text-muted time">{{$event->created_at->format('d M Y')}}</h5>
                         <h6 class="text-muted time">Comming In 5 Days</h6>
                     </div>
                     <div class="event-description">
-                        <p>Loremzfgzf drghs hdhdfhgvabgklbfg b klabglakbg bsgklbgklajbgkjal gkag kag k ipsum</p>
+                      <div id="txt">
+                        <p>{{$event->eventDescription}}</p>
+                      </div>
                     </div>
                 </div>
+                @endforeach
 
             </div>
 

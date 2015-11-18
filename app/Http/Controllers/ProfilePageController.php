@@ -22,7 +22,8 @@ class ProfilePageController extends Controller
         $allUserPosts = Posts::where('user_id', \Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
         // $UAI = UserAdditionalInfo::findOrFail($UAI_id);
-        $userInfo = UserAdditionalInfo::where('user_id', \Auth::user()->id)->first();
+        // $userInfo = UserAdditionalInfo::where('user_id', \Auth::user()->id)->first();
+        $userInfo = \Auth::user();
 
         // dd($userInfo);
         // if (is_null($userInfo)) {

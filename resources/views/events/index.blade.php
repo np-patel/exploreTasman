@@ -25,7 +25,8 @@
 						        </div>
 						        <img class="img-responsive" src="img/Event/{{$event->eventImage}}" alt="" style="padding:10px 0px;">
 						        
-						        <p>{{ $event->eventDescription}}</p>
+						        <div id="more">{{ $event->eventDescription}}</div>
+						        <a href="#" id="load">Load More</a>
 						        
 						    </div>
 					    </div>

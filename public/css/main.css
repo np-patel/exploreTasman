@@ -363,10 +363,21 @@ a:hover, a:focus {
     font-size: 16px; }
   .panel .event-heading .event-img-rounded {
     border-radius: 6px; }
-  .panel .event-heading .event-description p {
+  .panel .event-heading .event-description #txt p {
     padding-top: 10px;
     box-sizing: border-box;
-    font-size: 12px; }
+    font-size: 12px;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -moz-box;
+    -moz-line-clamp: 2;
+    -moz-box-orient: vertical;
+    height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    clear: left; }
 
 .panel .picture-title p {
   padding: 20px 15px 0px;
@@ -546,3 +557,5 @@ a:hover, a:focus {
   .events img {
     width: 100%;
     height: 200px; }
+  .events #more {
+    height: 50px; }

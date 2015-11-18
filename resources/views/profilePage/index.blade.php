@@ -12,9 +12,9 @@
             <div id="cv">
                 {{-- <img src="img/Profile/cover/{{$userInfo->CoverImage}}"> --}}
                 {{-- @if($allUserPosts->user->additionalInfo)  --}}
-                @if(!is_null($userInfo)) 
+                @if($userInfo->additionalInfo) 
 
-                    <img src="img/Profile/Cover/{{$userInfo->CoverImage}}">
+                    <img src="img/Profile/Cover/{{$userInfo->additionalInfo->CoverImage}}">
                     
                 @else 
                     
@@ -34,16 +34,28 @@
                     <div class="img-avatar pull-left">
                         {{-- <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120"> --}}
 
-                        @if(!is_null($userInfo)) 
-                          <img src="img/Profile/ProfileImage/{{$userInfo->profileImage}}" height="120" width="120">
+                        @if($userInfo->additionalInfo) 
+                          <img src="img/Profile/ProfileImage/{{$userInfo->additionalInfo->profileImage}}" height="120" width="120">
                         @else 
                             <img src="img/Profile/ProfileImage/default.jpg" height="120" width="120">
                             
                         @endif
                     </div>
                     <div class="profile-text">
-                        <h4 class=" profileName text-left text-shadow">{{$userInfo->firstName}} {{$userInfo->lastName}}</h4> 
-                        <h5 class=" profileBio text-left" style="opacity:0.8;">{{$userInfo->bio}}</h5>
+                        <h4 class=" profileName text-left text-shadow">
+                          @if($userInfo->additionalInfo) 
+                              {{$userInfo->additionalInfo->firstName}} {{$userInfo->additionalInfo->lastName}}
+                            @else
+                              {{$userInfo->username}}
+                          @endif
+                        </h4> 
+                        <h5 class=" profileBio text-left" style="opacity:0.8;">
+                          @if($userInfo->additionalInfo) 
+                              {{$userInfo->additionalInfo->bio}}
+                            @else
+                              write About Your Self
+                          @endif
+                        </h5>
                          
                          <div class="text-left"> 
                          <input class="btn btn-profile" value="Edit Profile" type="submit"> 

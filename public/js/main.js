@@ -54,3 +54,20 @@ $(document).ready(function()
         $('#' + target).show();
     });
 });
+
+// var h = $('#more')[0].scrollHeight;
+
+
+// $('#load').click(function(e) {
+//     e.stopPropagation();
+//     $('#more').animate({
+//         'height': h
+//     })
+// });
+
+// $(document).click(function() {
+//     $('#more').animate({
+//         'height': '150px'
+//     })
+// })
+

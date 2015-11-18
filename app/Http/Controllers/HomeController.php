@@ -9,6 +9,7 @@ use App\Posts;
 use App\User;
 use App\Comments;
 use App\UserAdditionalInfo;
+use App\Events;
 
 class HomeController extends Controller
 {
@@ -22,22 +23,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        // if(User::find(1)->additionalInfo) {
-        //     return User::find(1)->additionalInfo->firstName;
-        // } else {
-        //     return 'username';
-        // }
+    public function index(){
+        
+        $allPost = Posts::orderBy('created_at', 'DESC')->get(); //getting all the post from post database table
 
+        $userInfo = \Auth::user();
 
+        $allEvents = Events::orderBy('created_at', 'DESC')->take(2)->get();
 
-
-         $allPost = Posts::orderBy('created_at', 'DESC')->get(); //getting all the post from post database table
-         
-        $userInfo = UserAdditionalInfo::where('user_id', \Auth::user()->id)->first();
-
-          return view('home.index', compact('allPost', 'userInfo'));
+          return view('home.index', compact('allPost', 'userInfo', 'allEvents'));
     }
 
     public function postNewsFeed(Request $request){
