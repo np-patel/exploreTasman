@@ -40,7 +40,13 @@
 								
 								
 								<li class="dropdown langs nav-border">
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-globe"></i> <span>Welcome Nehal</span> <i class="fa fa-caret-down"></i></a>
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-globe"></i> <span>
+											@if(\Auth::user()->additionalInfo) 
+						                        Welcome {{\Auth::user()->additionalInfo->firstName}}
+						                      @else
+						                        {{\Auth::user()->username}}
+						                    @endif
+										</span> <i class="fa fa-caret-down"></i></a>
 										<ul class="dropdown-menu">
 												<li><a href="/profilePage">My Profile</a></li>
 												<li><a href="/auth/logout">Logout</a></li>

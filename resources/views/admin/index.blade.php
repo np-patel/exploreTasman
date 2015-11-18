@@ -18,11 +18,11 @@
                 <li><a href="" data-target-id="settings"><i class="fa fa-cogs fa-fw"></i>Settings</a></li> --}}
             </ul>
         </div>
-        <div class="col-md-9 well admin-content" id="home">
+        <div class="col-md-9 admin-content" id="home">
             <div>home</div>
         </div>
-        <div class="col-md-9 well admin-content" id="widgets">
-
+        <div class="col-md-9 admin-content" id="widgets">
+        <div class="panel" style="padding:20px;">
             <div>
                 <h4>Add Events</h4>
             </div>
@@ -39,7 +39,7 @@
                   </div>
 
                   <div>
-                    <label for="eventLocation">Choose location</label>
+                    <label for="eventLocation">Choose event location</label>
                     <select name="eventLocation" id="eventLocation">
 
                         @foreach($allLocations as $location)
@@ -66,8 +66,35 @@
 
                 </form>
             </div>
+            </div>
+
+            <div class="panel" style="padding:20px;">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>EventName</th>
+                      <th>EventLocation</th>
+                      <th>Event-Day</th>
+                      <th>UpdateEvent</th>
+                      <th>DeleteEvent</th>
+                    </tr>
+                  </thead>
+                  @foreach($allEvents as $event)
+                  <tbody>
+                    <tr>
+                      <td>{{$event->eventName}}</td>
+                      <td>{{ $event->marker_location->locationName}}</td>
+                      <td>{{ $event->created_at->format('M d,Y \a\t h:i a') }}</td>
+                      <td><a href="/admin/updatEvent/{{$event->event_id}}" class="btn btn-primary" data-toggle="modal" data-target="#updateEvent">Update</a></td>
+                      <td><a href="" class="btn btn-primary">Delete</a></td>
+                    </tr>
+                  </tbody>
+                  @endforeach
+                </table>
+            </div>
         </div>
-        <div class="col-md-9 well admin-content" id="pages">
+        
+        <div class="col-md-9 admin-content" id="pages">
             Pages
         </div>
         {{-- <div class="col-md-9 well admin-content" id="charts">
@@ -93,5 +120,60 @@
         </div> --}}
     </div>
 </div>
+<!-- Modal -->
+<div id="updateEvent" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Event</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+                <form role="form" action="" method="post" enctype="multipart/form-data" role="form" novalidate>
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                  <div class="form-group">
+                    <label for="eventTitle">Event Title: </label>
+                      <input type="text" class="form-control"
+                      id="eventTitle" name="eventTitle"/>
+                      {{-- {{$errors->first('eventTitle')}} --}}
+                  </div>
+
+                  <div>
+                    <label for="eventLocation">Choose Event location</label>
+                    <select name="eventLocation" id="eventLocation">
+
+                        @foreach($allLocations as $location)
+
+                        <option value="{{ $location->id }}">{{$location->locationName}}</option>
+                        @endforeach
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="eventImage">Upload Event Image</label>
+                      <input id="eventImage" name="eventImage" type="file">
+                      {{-- {{$errors->first('eventImage')}} --}}
+                  </div>
+
+                  <div class="form-group">
+                    <label for="eventDescription">Event Description</label>
+                      <textarea id="eventDescription" name="eventDescription" class="form-control" placeholder="Write about event"></textarea>
+                      {{-- {{$errors->first('eventDescription')}} --}}
+                      
+                  </div>
+                  
+                  <input type="submit" value="Update Event" class="btn btn-primary" name="updateEvent" />
+
+                </form>
+            </div>
+      </div>
+    </div>
+
+  </div>
+</div>
   @endsection

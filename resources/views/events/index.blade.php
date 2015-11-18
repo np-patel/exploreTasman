@@ -7,6 +7,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+			@if(!$allEvents->isEmpty()) 
 				@foreach($allEvents as $event)
 					<div class="col-md-6">
 						<div class="panel">
@@ -32,6 +33,9 @@
 					    </div>
 				    </div>
 			    @endforeach
+			    @else
+			    	<div class="center">No Event </div>
+			    @endif
 		    </div>
 	    </div>
     </div>

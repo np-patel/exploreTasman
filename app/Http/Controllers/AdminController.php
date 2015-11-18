@@ -20,8 +20,9 @@ class AdminController extends Controller
     public function index(){
 
         $allLocations = Marker_location::all();
+        $allEvents = Events::orderBy('created_at', 'DESC')->get();
 
-        return view('admin.index', compact('allLocations'));
+        return view('admin.index', compact('allLocations', 'allEvents'));
     }
 
 

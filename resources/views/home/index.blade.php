@@ -180,35 +180,37 @@
             </div>
 
             <!-- events -->
-
-            <div class="panel">
-                <div class="events-title">
-                    <p>Events</p>
-                </div>
-                <!-- event1 -->
-
-                @foreach($allEvents as $event )
-                <div class="event-heading clearfix">
-                    <div class="pull-left image">
-                        <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
-                    </div>
-                    <div class="meta">
-                        <div class="title">
-                            {{$event->eventName}}
-                        </div>
-                        <h5 class="text-muted time">{{$event->created_at->format('d M Y')}}</h5>
-                        <h6 class="text-muted time">Comming In 5 Days</h6>
-                    </div>
-                    <div class="event-description">
-                      <div id="txt">
-                        <p>{{$event->eventDescription}}</p>
+            @if(!$allEvents->isEmpty())
+              <div class="panel">
+                  <div class="events-title">
+                      <p>Events</p>
+                  </div>
+                  <!-- event1 -->
+                  
+                  @foreach($allEvents as $event )
+                  <div class="event-heading clearfix">
+                      <div class="pull-left image">
+                          <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
                       </div>
-                    </div>
-                </div>
-                @endforeach
-
-            </div>
-
+                      <div class="meta">
+                          <div class="title">
+                              {{$event->eventName}}
+                          </div>
+                          <h5 class="text-muted time">{{$event->created_at->format('d M Y')}}</h5>
+                          <h6 class="text-muted time">Comming In 5 Days</h6>
+                      </div>
+                      <div class="event-description">
+                        <div id="txt">
+                          <p>{{$event->eventDescription}}</p>
+                        </div>
+                      </div>
+                  </div>
+                  @endforeach
+                  
+              </div>
+                 @else
+                
+                @endif
             <!-- picture -->
 
             <div class="panel panel-default"> 
