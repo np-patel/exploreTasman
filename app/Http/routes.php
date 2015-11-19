@@ -55,6 +55,8 @@ Route::post('photoMap/add', 'PhotoUploderController@uploadUserImage');
 //Admin Controll
 Route::get('admin', 'AdminController@index');
 Route::post('admin/addEvent', 'AdminController@addEvent');
+Route::post('admin/updateEvent/{id}', 'AdminController@updateEvent');
+
 
 //events Controller
 Route::get('events', 'EventsController@index');

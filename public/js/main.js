@@ -53,6 +53,37 @@ $(document).ready(function()
         var target = $(this).attr('data-target-id');
         $('#' + target).show();
     });
+
+
+
+
+    // --------
+
+    $('table td a').click(function(){
+
+        var eventName = $(this).data('event-name');
+
+        var eventDesc = $(this).data('event-description');
+
+        var eventId = $(this).data('event-id');
+
+        $('#updateEventTitle').val(eventName);
+
+        $('#updateEventDescription').val(eventDesc);
+
+        $('#updateEventLocation option[value='+$(this).data('location-id')+']').attr('selected', 'selected');
+
+        $("#UpdateEvent").attr("action", "/admin/updateEvent/"+eventId);
+
+        //$('#updateEventLocation option[value='+$(this).data('id')+']').attr('selected');
+        // $('[name=updateEventLocation]').val(eventLocation);
+
+    });
+
+
+    // -------
+
+
 });
 
 // var h = $('#more')[0].scrollHeight;

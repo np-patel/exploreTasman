@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Events extends Model
 {
+	protected $primaryKey = 'event_id';
+
     public function user(){
     	return $this->belongsTo('App\User', 'eventUserId');
     }

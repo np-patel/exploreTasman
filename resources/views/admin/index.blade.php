@@ -9,13 +9,7 @@
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-home fa-fw"></i>Home</a></li>
                 <li><a href="" data-target-id="widgets"><i class="fa fa-list-alt fa-fw"></i>Events</a></li>
                 <li><a href="" data-target-id="pages"><i class="fa fa-file-o fa-fw"></i>Pages</a></li>
-                {{-- <li><a href="" data-target-id="charts"><i class="fa fa-bar-chart-o fa-fw"></i>Charts</a></li>
-                <li><a href="" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
-                <li><a href="" data-target-id="forms"><i class="fa fa-tasks fa-fw"></i>Forms</a></li>
-                <li><a href="" data-target-id="calender"><i class="fa fa-calendar fa-fw"></i>Calender</a></li>
-                <li><a href="" data-target-id="library"><i class="fa fa-book fa-fw"></i>Library</a></li>
-                <li><a href="" data-target-id="applications"><i class="fa fa-pencil fa-fw"></i>Applications</a></li>
-                <li><a href="" data-target-id="settings"><i class="fa fa-cogs fa-fw"></i>Settings</a></li> --}}
+                
             </ul>
         </div>
         <div class="col-md-9 admin-content" id="home">
@@ -85,7 +79,14 @@
                       <td>{{$event->eventName}}</td>
                       <td>{{ $event->marker_location->locationName}}</td>
                       <td>{{ $event->created_at->format('M d,Y \a\t h:i a') }}</td>
-                      <td><a href="/admin/updatEvent/{{$event->event_id}}" class="btn btn-primary" data-toggle="modal" data-target="#updateEvent">Update</a></td>
+                      <td><a href="" class="btn btn-primary"
+                                      data-event-id="{{$event->event_id}}"
+                                      data-location-id="{{ $event->marker_location->id }}" 
+                                      data-toggle="modal" 
+                                      data-target="#updateEvent" 
+                                      data-event-name="{{ $event->eventName }}" 
+                                      data-event-description="{{$event->eventDescription}}">Update</a>
+                      </td>
                       <td><a href="" class="btn btn-primary">Delete</a></td>
                     </tr>
                   </tbody>
@@ -97,27 +98,7 @@
         <div class="col-md-9 admin-content" id="pages">
             Pages
         </div>
-        {{-- <div class="col-md-9 well admin-content" id="charts">
-            Charts
-        </div>
-        <div class="col-md-9 well admin-content" id="table">
-            Table
-        </div>
-        <div class="col-md-9 well admin-content" id="forms">
-            Forms
-        </div>
-        <div class="col-md-9 well admin-content" id="calender">
-            Calender
-        </div>
-        <div class="col-md-9 well admin-content" id="library">
-            Library
-        </div>
-        <div class="col-md-9 well admin-content" id="applications">
-            Applications
-        </div>
-        <div class="col-md-9 well admin-content" id="settings">
-            Settings
-        </div> --}}
+        
     </div>
 </div>
 <!-- Modal -->
@@ -132,42 +113,43 @@
       </div>
       <div class="modal-body">
         <div>
-                <form role="form" action="" method="post" enctype="multipart/form-data" role="form" novalidate>
+                <form id="UpdateEvent" role="form" action="" method="post" enctype="multipart/form-data" role="form" novalidate>
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                   <div class="form-group">
-                    <label for="eventTitle">Event Title: </label>
+                    <label for="updateEventTitle">Event Title: </label>
                       <input type="text" class="form-control"
-                      id="eventTitle" name="eventTitle"/>
+                      id="updateEventTitle" name="updateEventTitle"/>
                       {{-- {{$errors->first('eventTitle')}} --}}
                   </div>
 
                   <div>
-                    <label for="eventLocation">Choose Event location</label>
-                    <select name="eventLocation" id="eventLocation">
+                    <label for="updateEventLocation">Choose Event location</label>
+                    <select name="updateEventLocation" id="updateEventLocation">
 
                         @foreach($allLocations as $location)
 
                         <option value="{{ $location->id }}">{{$location->locationName}}</option>
                         @endforeach
+
                     </select>
                   </div>
 
                   <div class="form-group">
-                    <label for="eventImage">Upload Event Image</label>
-                      <input id="eventImage" name="eventImage" type="file">
+                    <label for="updateEventImage">Upload Event Image</label>
+                      <input id="updateEventImage" name="updateEventImage" type="file">
                       {{-- {{$errors->first('eventImage')}} --}}
                   </div>
 
                   <div class="form-group">
-                    <label for="eventDescription">Event Description</label>
-                      <textarea id="eventDescription" name="eventDescription" class="form-control" placeholder="Write about event"></textarea>
+                    <label for="updateEventDescription">Event Description</label>
+                      <textarea id="updateEventDescription" name="updateEventDescription" class="form-control" placeholder="Write about event"></textarea>
                       {{-- {{$errors->first('eventDescription')}} --}}
                       
                   </div>
                   
-                  <input type="submit" value="Update Event" class="btn btn-primary" name="updateEvent" />
+                  <input type="submit" value="Update Event" class="btn btn-primary" name="updateEvent"/>
 
                 </form>
             </div>

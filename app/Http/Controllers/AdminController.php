@@ -51,6 +51,39 @@ class AdminController extends Controller
 
     }
 
+    public function updateEvent(Request $request, $id){
+
+        $updateEvent = Events::where('event_id', $id)->firstOrFail();
+
+        $updateEvent->eventName = $request->updateEventTitle;
+
+        $updateEvent->eventUserId = \Auth::user()->id;
+
+        $updateEvent->eventLocationId = $request->updateEventLocation;
+
+        $updateEvent->eventDescription = $request->get('updateEventDescription');
+
+        if ( $request->hasFile('updateEventImage')) {
+
+        $fileName = uniqid().'.'.$request->file('updateEventImage')->getClientOriginalExtension();
+
+        \Image::make($request->file('updateEventImage') )
+            ->save('img/Event/'.$fileName);
+
+            
+
+
+            //delete the old image
+            \File::Delete('img/Event/'.$updateEvent->eventImage);
+
+            $updateEvent->eventImage = $fileName;
+
+        }
+
+        $updateEvent->save();
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
