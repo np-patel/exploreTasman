@@ -65,13 +65,10 @@ class AdminController extends Controller
 
         if ( $request->hasFile('updateEventImage')) {
 
-        $fileName = uniqid().'.'.$request->file('updateEventImage')->getClientOriginalExtension();
+            $fileName = uniqid().'.'.$request->file('updateEventImage')->getClientOriginalExtension();
 
-        \Image::make($request->file('updateEventImage') )
-            ->save('img/Event/'.$fileName);
-
-            
-
+            \Image::make($request->file('updateEventImage') )
+                ->save('img/Event/'.$fileName);
 
             //delete the old image
             \File::Delete('img/Event/'.$updateEvent->eventImage);
@@ -82,6 +79,19 @@ class AdminController extends Controller
 
         $updateEvent->save();
 
+        return redirect('events');
+
+    }
+
+    public function deleteEvent($deleteEventId){
+        // return('i ma deleting event');
+
+        $deleteEvent = Events::where('event_id', $deleteEventId)->delete();
+
+        //delete the old image
+            // \File::Delete('img/Event/'.$deleteEvent->eventImage);
+
+        return redirect('events');
     }
 
     /**

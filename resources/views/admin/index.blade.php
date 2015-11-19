@@ -87,7 +87,10 @@
                                       data-event-name="{{ $event->eventName }}" 
                                       data-event-description="{{$event->eventDescription}}">Update</a>
                       </td>
-                      <td><a href="" class="btn btn-primary">Delete</a></td>
+                      <td><a href="" id="deleteMyEvent" class="btn btn-primary"
+                                     data-event-delete="{{$event->event_id}}"
+                                     data-toggle="modal" 
+                                     data-target="#deleteEvent">Delete</a></td>
                     </tr>
                   </tbody>
                   @endforeach
@@ -158,4 +161,34 @@
 
   </div>
 </div>
+
+
+
+
+<div id="deleteEvent" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content clearfix">
+      <div class="modal-header1 clearfix">
+        <a href="" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+        
+      </div>
+
+
+      <div class="modal-body text-center">
+        <p>Are You Sure. You Want To Delete This Event?</p>
+      </div>
+      <div class="col-md-12 text-center footer-model-btn">
+        <div class="col-md-3 col-md-offset-3">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+
+      <div class="col-md-3 col-md-offset-right-3">
+        <a href="" class="btn btn-primary deleteButton">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   @endsection

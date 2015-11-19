@@ -75,30 +75,56 @@ $(document).ready(function()
 
         $("#UpdateEvent").attr("action", "/admin/updateEvent/"+eventId);
 
-        //$('#updateEventLocation option[value='+$(this).data('id')+']').attr('selected');
-        // $('[name=updateEventLocation]').val(eventLocation);
+        //delete button
+        var deleteEventId = $(this).data('event-delete');
+        console.log(deleteEventId);
+        $(".deleteButton").attr("href", "/admin/deleteEvent/"+deleteEventId);
+
 
     });
 
+});
 
-    // -------
 
+
+//event collepse js
+var collapsedSize = '40px';
+$('.item').each(function() {
+    var h = this.scrollHeight;
+    console.log(h);
+    var div = $(this);
+    if (h > 30) {
+        div.css('height', collapsedSize);
+        div.after('<a id="more" class="item" href="#">Read more</a><br/>');
+        var link = div.next();
+        link.click(function(e) {
+            e.stopPropagation();
+
+            if (link.text() != 'Hide Text') {
+                link.text('Hide Text');
+                div.animate({
+                    'height': h
+                });
+
+            } else {
+                div.animate({
+                    'height': collapsedSize
+                });
+                link.text('Read more');
+            }
+
+        });
+    }
 
 });
 
-// var h = $('#more')[0].scrollHeight;
+//hide alert modal on admin event page
+$('.modal-header1 .close').modal('hide');
 
+  
 
-// $('#load').click(function(e) {
-//     e.stopPropagation();
-//     $('#more').animate({
-//         'height': h
-//     })
-// });
+// $('#deleteMyEvent').click(function(){
 
-// $(document).click(function() {
-//     $('#more').animate({
-//         'height': '150px'
-//     })
-// })
-
+//       var deleteEvent = $(this).data('event-id');
+//       console.log(deleteEvent);
+//   });

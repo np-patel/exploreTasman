@@ -24,7 +24,7 @@ body {
   clear: both;
   border: 0;
   height: 1px;
-  background-image: -moz-linear-gradient(left center, #061c1f, #ee534f, #081d1f); }
+  background-image: -moz-linear-gradient(left center, #061C1F, #EE534F, #081D1F); }
 
 .panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
   height: 45px;
@@ -557,5 +557,22 @@ a:hover, a:focus {
   .events img {
     width: 100%;
     height: 200px; }
-  .events #more {
-    height: 50px; }
+  .events .item {
+    overflow: hidden; }
+
+/**************************** Admin Controll *********************/
+.footer-model-btn {
+  padding-bottom: 20px; }
+
+.modal-content {
+  border-radius: 0px; }
+  .modal-content .modal-header1 {
+    background-color: #fff; }
+    .modal-content .modal-header1 .close {
+      padding: 10px 10px 0px 10px;
+      color: #333;
+      font-size: 28px;
+      font-weight: 100;
+      opacity: 10; }
+
+/*# sourceMappingURL=main.css.map */

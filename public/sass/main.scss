@@ -834,14 +834,35 @@ left: 0px;
             height: 200px;
         }
 
-    #more{
-        height:50px;
+    .item{
+        overflow: hidden;
     }
 }
 
 
+/**************************** Admin Controll *********************/
 
+.footer-model-btn{
+    padding-bottom:20px;
+}
 
+.modal-content{
+
+    border-radius:0px;
+
+    .modal-header1{
+        background-color: #fff;
+
+        .close {
+            padding:10px 10px 0px 10px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 100;
+            opacity: 10;
+        }
+
+    }
+}
 
 
 

@@ -12,7 +12,7 @@
 					<div class="col-md-6">
 						<div class="panel">
 						    <div class="events">
-						        <h4><a href="#">{{ $event->eventName}}</a></h4>
+						        <h4>{{ $event->eventName}}</h4>
 
 						        <div><p>{{ $event->marker_location->locationName}}</p></div>
 						        
@@ -26,8 +26,8 @@
 						        </div>
 						        <img class="img-responsive" src="img/Event/{{$event->eventImage}}" alt="" style="padding:10px 0px;">
 						        
-						        <div id="more">{{ $event->eventDescription}}</div>
-						        <a href="#" id="load">Load More</a>
+						        <div class="item">{{ $event->eventDescription}}</div>
+						        {{-- <a href="#" id="load">Load More</a> --}}
 						        
 						    </div>
 					    </div>
