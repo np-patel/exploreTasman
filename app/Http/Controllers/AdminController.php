@@ -86,10 +86,14 @@ class AdminController extends Controller
     public function deleteEvent($deleteEventId){
         // return('i ma deleting event');
 
-        $deleteEvent = Events::where('event_id', $deleteEventId)->delete();
+        //$deleteEvent = Events::where('event_id', $deleteEventId)->firstOrFail();
+        $deleteEvent = Events::find($deleteEventId);
+        //return $deleteEvent->eventImage;
 
-        //delete the old image
-            // \File::Delete('img/Event/'.$deleteEvent->eventImage);
+        //delete the image associative with the event
+            \File::Delete('img/Event/'.$deleteEvent->eventImage);
+
+        $deleteEvent->delete();
 
         return redirect('events');
     }

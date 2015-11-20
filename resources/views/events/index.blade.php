@@ -2,42 +2,42 @@
 
 @extends('master')
 @section('main_content')
-	<!-- Second Blog Post -->
+<!-- Second Blog Post -->
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
 			@if(!$allEvents->isEmpty()) 
-				@foreach($allEvents as $event)
-					<div class="col-md-6">
-						<div class="panel">
-						    <div class="events">
-						        <h4>{{ $event->eventName}}</h4>
+			@foreach($allEvents as $event)
+			<div class="col-md-6 pull-left">
+				<div class="panel eventPanel">
+					<div class="events">
+						<h4>{{ $event->eventName}}</h4>
 
-						        <div><p>{{ $event->marker_location->locationName}}</p></div>
-						        
-						        <div>
-						        	<div class="pull-left">
-						        	<p><span class="glyphicon glyphicon-time"></span> {{ $event->created_at->format('M d,Y \a\t h:i a') }}</p>
-						        	</div>
-						        	<div class="pull-right">
-						        	<p><strong>by</strong> {{$event->user->additionalInfo->firstName}} {{$event->user->additionalInfo->lastName}}</p>
-						        	</div>
-						        </div>
-						        <img class="img-responsive" src="img/Event/{{$event->eventImage}}" alt="" style="padding:10px 0px;">
-						        
-						        <div class="item">{{ $event->eventDescription}}</div>
-						        {{-- <a href="#" id="load">Load More</a> --}}
-						        
-						    </div>
-					    </div>
-				    </div>
-			    @endforeach
-			    @else
-			    	<div class="center">No Event </div>
-			    @endif
-		    </div>
-	    </div>
-    </div>
+						<div><p>{{ $event->marker_location->locationName}}</p></div>
+
+						<div>
+							<div class="pull-left">
+								<p><span class="glyphicon glyphicon-time"></span> {{ $event->created_at->format('M d,Y \a\t h:i a') }}</p>
+							</div>
+							<div class="pull-right">
+								<p><strong>by</strong> {{$event->user->additionalInfo->firstName}} {{$event->user->additionalInfo->lastName}}</p>
+							</div>
+						</div>
+						<img class="img-responsive" src="img/Event/{{$event->eventImage}}" alt="" style="padding:10px 0px;">
+
+						<div>{{ $event->eventDescription}}</div>
+						{{-- <a href="#" id="load">Load More</a> --}}
+
+					</div>
+				</div>
+			</div>
+			@endforeach
+			@else
+			<div class="center">No Event </div>
+			@endif
+		</div>
+	</div>
+</div>
 
 @endsection

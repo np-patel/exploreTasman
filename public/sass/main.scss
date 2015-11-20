@@ -5,7 +5,7 @@ $highlight-color: #ee534f;
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
-  }
+}
 }
 
 body{
@@ -14,14 +14,14 @@ body{
 
 
 .bg {
-position: fixed;
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-background-size: cover;
-background-position: 50% 50%;
-background-image: url(../img/bg.jpg);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-image: url(../img/bg.jpg);
 }
 /**************** login page ************************/
 
@@ -125,19 +125,19 @@ background-image: url(../img/bg.jpg);
     	li{
 
     		a{
-				color:#fff;
+                color:#fff;
 
-    			&:hover{
-    				color:$highlight-color;
-    			}
+                &:hover{
+                    color:$highlight-color;
+                }
 
-    			&:focus{
-    				color:$highlight-color;
-    			}
+                &:focus{
+                    color:$highlight-color;
+                }
 
-    		}
+            }
 
-    	}
+        }
 
     }
 
@@ -155,10 +155,10 @@ background-image: url(../img/bg.jpg);
             color: #333333;
 
             &:hover {
-            border-width: 0;
-            border: none;
-            color: $highlight-color !important; 
-            background: transparent;
+                border-width: 0;
+                border: none;
+                color: $highlight-color !important; 
+                background: transparent;
             }
 
             &::after{
@@ -211,7 +211,7 @@ background-image: url(../img/bg.jpg);
 }
 
 .navbar {
-    
+
     border: none;
     border-radius: 0px;
 }
@@ -238,15 +238,15 @@ background-image: url(../img/bg.jpg);
 }
 
 .dropdown-menu > li > a:hover,
- .dropdown-menu > li > a:focus {
+.dropdown-menu > li > a:focus {
     color: #262626;
     text-decoration: none;
     background-color: #273238;
 }
 
 .navbar-default .navbar-nav > .open > a,
- .navbar-default .navbar-nav > .open > a:hover,
-  .navbar-default .navbar-nav > .open > a:focus {
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
     color: $highlight-color;
     background-color: #273238;
 }
@@ -261,13 +261,13 @@ background-image: url(../img/bg.jpg);
     li{
 
         a{
-        position: relative;
-        display: block;
-        padding: 10px 15px;
-        list-style: none;
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            list-style: none;
         // color: red;
-        }
     }
+}
 }
 
 a:hover, a:focus {
@@ -295,7 +295,7 @@ a:hover, a:focus {
     background: #FFF none repeat scroll 0% 0%;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
     margin-bottom: 30px; 
-  }
+}
 
 //image upload with feed
 
@@ -303,7 +303,7 @@ a:hover, a:focus {
     position: relative;
     overflow: hidden;
 
-        input[type=file] {
+    input[type=file] {
         position: absolute;
         top: 0;
         right: 0;
@@ -376,35 +376,35 @@ a:hover, a:focus {
           max-width: 80px;
           max-height: 80px;
           -webkit-border-radius: 50%;
-             -moz-border-radius: 50%;
-                  border-radius: 50%;
-        }
-    }
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+      }
+  }
 
-    .info {
+  .info {
       padding: 4px 8px 10px;
-    }
+  }
 
-    .title {
+  .title {
       margin-bottom: 4px;
       font-size: 24px;
       line-height: 1;
       color: #262626;
       vertical-align: middle;
-    }
+  }
 
-    .desc {
+  .desc {
       overflow: hidden;
       font-size: 12px;
       line-height: 20px;
       color: #737373;
       text-overflow: ellipsis;
-    }
+  }
 
-    .bottom {
+  .bottom {
       padding: 0 20px;
       margin-bottom: 17px;
-    }
+  }
 }
 
 /************************** post *****************/
@@ -518,67 +518,67 @@ a:hover, a:focus {
 .panel{
         // margin-bottom: 0px;
 
-    .events-title {
-        p {
-            padding: 20px 15px 0px;
-            margin:0px;
-            font-size: 22px;
-        }
-    }
-
-    .event-heading {
-        height: auto;
-        padding: 20px 15px 10px;
-
-        .avatar {
-            width: 100px;
-            height: 80px;
-            display: block;
-            margin-right: 15px;
-        }
-
-        .title{
-            a{
-                color: #333;
-                font-size: 16px;
+        .events-title {
+            p {
+                padding: 20px 15px 0px;
+                margin:0px;
+                font-size: 22px;
             }
         }
 
-        .event-img-rounded {
-            border-radius: 6px;
-        }
+        .event-heading {
+            height: auto;
+            padding: 20px 15px 10px;
 
-        .event-description {
+            .avatar {
+                width: 100px;
+                height: 80px;
+                display: block;
+                margin-right: 15px;
+            }
+
+            .title{
+                a{
+                    color: #333;
+                    font-size: 16px;
+                }
+            }
+
+            .event-img-rounded {
+                border-radius: 6px;
+            }
+
+            .event-description {
 
                 #txt{
 
                     p{
-                    
-                    padding-top:10px;
-                    box-sizing: border-box;
-                    font-size: 12px;
 
-                    display: block;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
+                        padding-top:10px;
+                        box-sizing: border-box;
+                        font-size: 12px;
 
-                    display: -moz-box;
-                    -moz-line-clamp: 2;
-                    -moz-box-orient: vertical;
-                    height: 45px;
+                        display: block;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
 
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  
-                   clear: left;
+                        display: -moz-box;
+                        -moz-line-clamp: 2;
+                        -moz-box-orient: vertical;
+                        height: 45px;
 
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        clear: left;
+
+                    }
                 }
             }
         }
-    }
 
-}
+    }
 
 // recent picture
 
@@ -653,10 +653,10 @@ a:hover, a:focus {
 
 .social-avatar {
     left: 0px;
-right: 300px;
+    right: 300px;
     bottom: 0px;
-top: 0px;
-position: absolute;
+    top: 0px;
+    position: absolute;
     width: 450px;
 }
 
@@ -696,12 +696,12 @@ position: absolute;
 /************************ map ****************************/
 
 #display_map {
-width:100%;
-height:100%;
-position: absolute;
-z-index : -200;
-top: 0px;
-left: 0px;
+    width:100%;
+    height:100%;
+    position: absolute;
+    z-index : -200;
+    top: 0px;
+    left: 0px;
 }
 
 .modal-body{
@@ -757,7 +757,7 @@ left: 0px;
 // .recentItem a > i{ color:#000; font-size:30px;}
 // .recentItem a:hover > i{ color:#a54686;}
 .floatR {
- float:left;
+   float:left;
 }
 
 .recentItem{
@@ -771,26 +771,26 @@ left: 0px;
     overflow:auto;
     height:100%;
 
-        a>i{
-            color:#000;
-            font-size:30px;
-            padding:5px 0px 5px 10px;
-            font-weight: 100;
-        }
+    a>i{
+        color:#000;
+        font-size:30px;
+        padding:5px 0px 5px 10px;
+        font-weight: 100;
+    }
 
     .recentItemTxt {
-            color: #fff;
-            padding: 10px 0px; 
-            margin: 50px 0px 0px;
-            font-size: 22px;
-            text-align: center;
-            background-color:$highlight-color;
+        color: #fff;
+        padding: 10px 0px; 
+        margin: 50px 0px 0px;
+        font-size: 22px;
+        text-align: center;
+        background-color:$highlight-color;
         
     }
 
     .photoMap {
-            padding:10px;
-            display: inline-block;
+        padding:10px;
+        display: inline-block;
         .photos {
             list-style: outside none none;
             display: inline-block;
@@ -824,22 +824,23 @@ left: 0px;
 
 /************************** events page ****************************/
 
+.eventPanel{
 
+    height: 470px;
 
-.events{
-    padding:10px 20px;
+    .events{
+        padding:10px 20px;
 
         img {
             width: 100%;
             height: 200px;
         }
 
-    .item{
-        overflow: hidden;
+        .item{
+            overflow: hidden;
+        }
     }
 }
-
-
 /**************************** Admin Controll *********************/
 
 .footer-model-btn{
@@ -865,10 +866,57 @@ left: 0px;
 }
 
 
+// ****************************** Table Resize **********************
 
+@media only screen and (max-width: 600px) {
 
+    /* Force table to not be like tables anymore */
+    #no-more-tables table, 
+    #no-more-tables thead, 
+    #no-more-tables tbody, 
+    #no-more-tables th, 
+    #no-more-tables td, 
+    #no-more-tables tr { 
+        display: block; 
+    }
 
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #no-more-tables thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
 
+    #no-more-tables tr { border: 1px solid #ccc; }
+
+    #no-more-tables td { 
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 50%; 
+        white-space: normal;
+        text-align:left;
+    }
+
+    #no-more-tables td:before { 
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%; 
+        padding-right: 10px; 
+        white-space: nowrap;
+        text-align:left;
+        font-weight: bold;
+    }
+
+    /*
+    Label the data
+    */
+    #no-more-tables td:before { content: attr(data-title); }
+}
 
 
 
