@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Marker_location;
 use App\Events;
+use App\Posts;
 
 
 class AdminController extends Controller
@@ -21,8 +22,10 @@ class AdminController extends Controller
 
         $allLocations = Marker_location::all();
         $allEvents = Events::orderBy('created_at', 'DESC')->get();
+        $allPost = Posts::orderBy('created_at', 'DESC')->get(); //getting all the post from post database table
 
-        return view('admin.index', compact('allLocations', 'allEvents'));
+
+        return view('admin.index', compact('allLocations', 'allEvents', 'allPost'));
     }
 
 
@@ -96,6 +99,15 @@ class AdminController extends Controller
         $deleteEvent->delete();
 
         return redirect('events');
+    }
+
+    public function deletePost($deletePostId){
+
+        $deletePost = Posts::find($deletePostId);
+
+        $deletePost->delete();
+
+        return redirect('admin');
     }
 
     /**

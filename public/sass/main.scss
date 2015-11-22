@@ -918,7 +918,15 @@ a:hover, a:focus {
     #no-more-tables td:before { content: attr(data-title); }
 }
 
+table td #postStatus{
+white-space: nowrap; 
+    width: 8em; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
 
 
-
+// table td[title] {
+//     border: 5px solid yellow;
+// }
 

@@ -57,6 +57,7 @@ Route::get('admin', 'AdminController@index');
 Route::post('admin/addEvent', 'AdminController@addEvent');
 Route::post('admin/updateEvent/{id}', 'AdminController@updateEvent');
 Route::get('admin/deleteEvent/{deleteEventId}', 'AdminController@deleteEvent');
+Route::get('admin/deletePost/{deletePostId}', 'AdminController@deletePost');
 
 
 //events Controller

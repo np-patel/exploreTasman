@@ -75,13 +75,19 @@ $(document).ready(function()
 
         $("#UpdateEvent").attr("action", "/admin/updateEvent/"+eventId);
 
-        //delete button
+        //event delete button
         var deleteEventId = $(this).data('event-delete');
         console.log(deleteEventId);
         $(".deleteButton").attr("href", "/admin/deleteEvent/"+deleteEventId);
 
+        //event delete button
+        var deletePostId = $(this).data('post-delete');
+        console.log(deletePostId);
+        $(".deletePostButton").attr("href", "/admin/deletePost/"+deletePostId);
+
 
     });
+
 
 });
 
@@ -128,3 +134,8 @@ $('.modal-header1 .close').modal('hide');
 //       var deleteEvent = $(this).data('event-id');
 //       console.log(deleteEvent);
 //   });
+      
+  // $(function() {
+    // $( document ).tooltip();
+
+  // });
