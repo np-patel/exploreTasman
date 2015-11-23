@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="social-cover">
-                    
+
                 </div>
                 
                 <div class="social-avatar"> 
@@ -58,18 +58,18 @@
                       </h5>
                       
                       <div class="text-left"> 
-                       <input class="btn btn-profile" value="Edit Profile" type="submit"> 
-                   </div>
-               </div>
-           </div>
-       </div>  
-   </div>      
-</div>
+                         <input class="btn btn-profile" value="Edit Profile" type="submit"> 
+                     </div>
+                 </div>
+             </div>
+         </div>  
+     </div>      
+ </div>
 
-<div class="row">
+ <div class="row">
 
     <div class="col-md-8">
-        
+
         <div class="panel">
             <ul class="nave nav-tabs clearfix" role="tablist">
                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Add Your Feed</a></li>
@@ -81,7 +81,7 @@
             <div class="tab-content clearfix">
                 <div role="tabpanel" class="tab-pane active" id="home">
                     <form action="/profilePage/postFeed" method="post" enctype="multipart/form-data"     class="form-horizontal" role="form" novalidate>
-                      
+
                         {{ csrf_field() }}
 
                         <div class="form-group" style="padding:14px; margin-bottom:0px;">
@@ -116,120 +116,133 @@
         <!-- Tab panes -->
         <div class="tab-content tab-PostContent clearfix">
             <div role="tabpanel" class="tab-pane active" id="allUserProfile">
-                
-               <!--  Post 1 -->
-               @foreach($allUserPosts as $post)
-               <div class="panel panel-white post panel-shadow">
-                  <div class="post-heading">
-                      <div class="pull-left image">
 
-                          <img src="img/Profile/ProfileImage/{{ $post->user->additionalInfo ? $post->user->additionalInfo->profileImage : 'default.jpg' }}" class="img-rounded avatar" alt="user profile image">
-                      </div>
-                      <div class="pull-left meta">
-                          <div class="title h5">
-                              <a href="#" class="post-user-name">
-                                  @if($post->user->additionalInfo) 
-                                  {{ $post->user->additionalInfo->firstName }} {{ $post->user->additionalInfo->lastName }}
-                                  
-                                  @else 
-                                  {{ $post->user->username }}
-                                  @endif
-                                  
-                              </a>
-                              
-                          </div>
-                          <h6 class="text-muted time">{{ $post->created_at->format('M d,Y \a\t h:i a') }}</h6>
-                      </div>
+             <!--  Post 1 -->
+             @foreach($allUserPosts as $post)
+             <div class="panel panel-white post panel-shadow">
+              <div class="post-heading">
+                  <div class="pull-left image">
+
+                      <img src="img/Profile/ProfileImage/{{ $post->user->additionalInfo ? $post->user->additionalInfo->profileImage : 'default.jpg' }}" class="img-rounded avatar" alt="user profile image">
                   </div>
+                  <div class="pull-left meta">
+                      <div class="title h5">
+                          <a href="#" class="post-user-name">
+                              @if($post->user->additionalInfo) 
+                              {{ $post->user->additionalInfo->firstName }} {{ $post->user->additionalInfo->lastName }}
 
-                  @if($post->photo == 'noImage.jpg')
+                              @else 
+                              {{ $post->user->username }}
+                              @endif
 
-                  @else
-                  <div class="post-image">
-                      <img src="img/Post/{{$post->photo}}" alt="image post">
-                  </div>
-                  @endif
-
-                  <div class="post-description">
-                      <p>{{$post->status}}</p>
-                      <div class="stats">
-                          <a href="#">
-                              <i class="fa fa-commenting-o"></i>
-                              23 Comments
                           </a>
+
                       </div>
+                      <h6 class="text-muted time">{{ $post->created_at->format('M d,Y \a\t h:i a') }}</h6>
                   </div>
+              </div>
 
-                  
-                  
-                  
-                  <div class="post-footer">
-                      
-                      <form action="/comment/add" method="post" class="form-horizontal" role="form" novalidate>
+              @if($post->photo == 'noImage.jpg')
 
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="on_post" value="{{ $post->id }}">
+              @else
+              <div class="post-image">
+                  <img src="img/Post/{{$post->photo}}" alt="image post">
+              </div>
+              @endif
 
-                        <div class="input-group"> 
-                          <input class="form-control" name="body" placeholder="Add a comment" type="text">
-                          <span class="input-group-addon">
-                              <input type="submit" name='post_comment' value="post">
-                              {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
-                          </span>
-                      </div>
-                  </form>
-                  <ul class="comments-list">
-
-                    @foreach($post->comments as $comment)
-
-                    <li class="comment">
-                      <a class="pull-left" href="#">
-                          <img class="avatar" src="img/Profile/ProfileImage/{{ $comment->user->additionalInfo ? $comment->user->additionalInfo->profileImage : 'default.jpg' }}" alt="avatar">
+              <div class="post-description">
+                  <p>{{$post->status}}</p>
+                  <div class="stats">
+                      <a href="#">
+                          <i class="fa fa-commenting-o"></i>
+                          23 Comments
                       </a>
-                      <div class="comment-body">
-                          <div class="comment-heading">
-                              <h4 class="comment-user-name"><a href="#">
-                                  {{-- {{$comment->user->username}} --}}
-                                  @if($comment->user->additionalInfo) 
-                                  {{ $comment->user->additionalInfo->firstName }} {{ $comment->user->additionalInfo->lastName }}
-                                  
-                                  @else 
-                                  {{ $comment->user->username }}
-                                  @endif
+                  </div>
+              </div>
 
-                              </a></h4>
-                              <h5 class="time">{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</h5>
-                          </div>
-                          <p>{{ $comment->body }}</p>
+
+
+
+              <div class="post-footer">
+
+                  <form action="/comment/add" method="post" class="form-horizontal" role="form" novalidate>
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="on_post" value="{{ $post->id }}">
+
+                    <div class="input-group"> 
+                      <input class="form-control" name="body" placeholder="Add a comment" type="text">
+                      <span class="input-group-addon">
+                          <input type="submit" name='post_comment' value="post">
+                          {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
+                      </span>
+                  </div>
+              </form>
+              <ul class="comments-list">
+
+                @foreach($post->comments as $comment)
+
+                <li class="comment">
+                  <a class="pull-left" href="#">
+                      <img class="avatar" src="img/Profile/ProfileImage/{{ $comment->user->additionalInfo ? $comment->user->additionalInfo->profileImage : 'default.jpg' }}" alt="avatar">
+                  </a>
+                  <div class="comment-body">
+                      <div class="comment-heading">
+                          <h4 class="comment-user-name"><a href="#">
+                              {{-- {{$comment->user->username}} --}}
+                              @if($comment->user->additionalInfo) 
+                              {{ $comment->user->additionalInfo->firstName }} {{ $comment->user->additionalInfo->lastName }}
+
+                              @else 
+                              {{ $comment->user->username }}
+                              @endif
+
+                          </a></h4>
+                          <h5 class="time">{{ $comment->created_at->format('M d,Y \a\t h:i a') }}</h5>
                       </div>
-                  </li>
-                  @endforeach
-                  
-              </ul>
-          </div>
-      </div>
-      @endforeach
-      
-      <!-- post 2 -->
+                      <p>{{ $comment->body }}</p>
+                  </div>
+              </li>
+              @endforeach
 
+          </ul>
+      </div>
   </div>
-  <div role="tabpanel" class="tab-pane" id="UpdateProfile">
+  @endforeach
+
+  <!-- post 2 -->
+
+</div>
+<div role="tabpanel" class="tab-pane" id="UpdateProfile">
 
     <form role="form" action="/profilePage/edit" method="post" enctype="multipart/form-data" role="form" novalidate>
 
-       <input type="hidden" name="_token" value="{{ csrf_token() }}">
+     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-       <div class="form-group">
+     <div class="form-group">
         <label for="firstName">FirstName: </label>
-        <input type="text" class="form-control"
-        id="firstName" name="firstName" value="" />
+
+        @if($userInfo->additionalInfo) 
+          {{ $firstName = $userInfo->additionalInfo->firstName }}
+        @else
+          {{ $firstName = '' }}
+        @endif
+
+    <input type="text" class="form-control"
+        id="firstName" name="firstName" value="{{ $firstName }}"/>
         {{-- {{$errors->first('imageTitle')}} --}}
     </div>
+
+    @if($userInfo->additionalInfo) 
+      {{ $lastName = $userInfo->additionalInfo->lastName }}
+    @else
+      {{ $lastName = '' }}
+    @endif
 
     <div class="form-group">
         <label for="lastName">LastName: </label>
         <input type="text" class="form-control"
-        id="lastName" name="lastName" value=""/>
+        id="lastName" name="lastName" value="{{ $lastName }}"/>
         {{-- {{$errors->first('imageTitle')}} --}}
     </div>
 
@@ -245,9 +258,15 @@
         {{-- {{$errors->first('locationImage')}} --}}
     </div>
 
+    @if($userInfo->additionalInfo) 
+      {{ $Bio = $userInfo->additionalInfo->bio }}
+    @else
+      {{ $Bio = '' }}
+    @endif
+
     <div class="form-group">
         <label for="userBio">About Me: </label>
-        <textarea id="userBio" name="userBio" class="form-control" placeholder="Write about image"></textarea>
+        <textarea id="userBio" name="userBio" class="form-control" placeholder="Write about image">{{$Bio}}</textarea>
         {{-- {{$errors->first('imageDescription')}} --}}
         
     </div>

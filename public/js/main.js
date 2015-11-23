@@ -77,13 +77,18 @@ $(document).ready(function()
 
         //event delete button
         var deleteEventId = $(this).data('event-delete');
-        console.log(deleteEventId);
+        // console.log(deleteEventId);
         $(".deleteButton").attr("href", "/admin/deleteEvent/"+deleteEventId);
 
         //event delete button
         var deletePostId = $(this).data('post-delete');
-        console.log(deletePostId);
+        // console.log(deletePostId);
         $(".deletePostButton").attr("href", "/admin/deletePost/"+deletePostId);
+
+        //event delete button
+        var deleteUserImageId = $(this).data('userimage-delete');
+        console.log(deleteUserImageId);
+        $(".deleteUserImageButton").attr("href", "/admin/deleteUserImage/"+deleteUserImageId);
 
 
     });

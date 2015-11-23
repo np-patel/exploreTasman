@@ -25,15 +25,9 @@ class ProfilePageController extends Controller
         // $userInfo = UserAdditionalInfo::where('user_id', \Auth::user()->id)->first();
         $userInfo = \Auth::user();
 
-        // dd($userInfo);
-        // if (is_null($userInfo)) {
-        //     return view('profilePage.index', compact('allUserPosts'));
-        // }
         
-        // else{
             return view('profilePage.index', compact('allUserPosts', 'userInfo'));
 
-        // }
     }
 
 

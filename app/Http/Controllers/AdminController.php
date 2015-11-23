@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Marker_location;
 use App\Events;
 use App\Posts;
+use App\PhotoMapImageUploader;
+
 
 
 class AdminController extends Controller
@@ -23,9 +25,11 @@ class AdminController extends Controller
         $allLocations = Marker_location::all();
         $allEvents = Events::orderBy('created_at', 'DESC')->get();
         $allPost = Posts::orderBy('created_at', 'DESC')->get(); //getting all the post from post database table
+        $allUserPhotos = PhotoMapImageUploader::orderBy('photoMapId')->get();
 
 
-        return view('admin.index', compact('allLocations', 'allEvents', 'allPost'));
+
+        return view('admin.index', compact('allLocations', 'allEvents', 'allPost', 'allUserPhotos'));
     }
 
 
@@ -105,9 +109,29 @@ class AdminController extends Controller
 
         $deletePost = Posts::find($deletePostId);
 
+        if ($deletePost->photo != 'noImage.jpg') {
+             //delete the image associative with the post
+            \File::Delete('img/Post/'.$deletePost->photo);
+        }
+
         $deletePost->delete();
 
         return redirect('admin');
+    }
+
+
+    public function deleteUserImage($deleteImageId){
+
+         $deleteUserImage = PhotoMapImageUploader::find($deleteImageId);
+
+         //delete the image associative with the event
+            \File::Delete('img/PhotoMap/'.$deleteUserImage->locationImage);
+
+        $deleteUserImage->delete();
+
+        return redirect('admin');
+
+
     }
 
     /**

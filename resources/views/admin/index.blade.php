@@ -8,7 +8,7 @@
             <ul class="nav nav-pills nav-stacked admin-menu">
                 <li class="active"><a href="#" data-target-id="post"><i class="fa fa-home fa-fw"></i>Posts</a></li>
                 <li><a href="" data-target-id="widgets"><i class="fa fa-list-alt fa-fw"></i>Events</a></li>
-                <li><a href="" data-target-id="pages"><i class="fa fa-file-o fa-fw"></i>Pages</a></li>
+                <li><a href="" data-target-id="photoMap"><i class="fa fa-file-o fa-fw"></i>PhotoMap</a></li>
                 
             </ul>
         </div>
@@ -46,17 +46,17 @@
                           </td>
                           <td data-title="Post Date">{{ $post->created_at->format('M d,Y \a\t h:i a') }}</td>
                           <td data-title="Delete Post"><a href="" class="btn btn-primary"
-                           data-post-delete="{{$post->id}}"
-                           data-toggle="modal" 
-                           data-target="#deletePost">Delete</a></td>
-                       </tr>
-                   </tbody>
-                   @endforeach
-               </table>
-           </div>
-       </div>
+                             data-post-delete="{{$post->id}}"
+                             data-toggle="modal" 
+                             data-target="#deletePost">Delete</a></td>
+                         </tr>
+                     </tbody>
+                     @endforeach
+                 </table>
+             </div>
+         </div>
 
-   </div>
+     </div>
 
 {{-- <div>
   <a href="#" data-toggle="tooltip" title="Hooray!">Hover over me</a>
@@ -137,22 +137,68 @@
                   data-event-description="{{$event->eventDescription}}">Update</a>
               </td>
               <td data-title="DeleteEvent"><a href="" class="btn btn-primary"
-               data-event-delete="{{$event->event_id}}"
-               data-toggle="modal" 
-               data-target="#deleteEvent">Delete</a></td>
-           </tr>
-       </tbody>
-       @endforeach
-   </table>
+                 data-event-delete="{{$event->event_id}}"
+                 data-toggle="modal" 
+                 data-target="#deleteEvent">Delete</a></td>
+             </tr>
+         </tbody>
+         @endforeach
+     </table>
+ </div>
 </div>
+
+
 </div>
 
 
+
+
+<div class="col-md-9 admin-content" id="photoMap">
+    <div class="panel" style="padding:20px;">
+        <h3>Delete User uploded Images</h3>
+
+         <div id="no-more-tables">
+            <table class="table table-hover">
+              <thead class="cf">
+                <tr>
+                  <th>User</th>
+                  <th>Image Title</th>
+                  <th>Image Location</th>
+                  <th>Image Capture</th>
+                  <th>DeleteUserImage</th>
+              </tr>
+          </thead>
+          @foreach($allUserPhotos as $photo)
+          <tbody>
+            <tr>
+              <td data-title="User">
+                  @if($photo->user->additionalInfo) 
+                      {{ $photo->user->additionalInfo->firstName }} {{ $photo->user->additionalInfo->lastName }}
+                      
+                      @else 
+                      {{ $photo->user->username }}
+                      @endif
+
+              </td>
+              <td data-title="ImageTitle">{{$photo->title}}</td>
+              <td data-title="Image Location">{{ $photo->marker_location->locationName}}</td>
+              <td data-title="Image Capture">{{ $photo->created_at->format('M d,Y \a\t h:i a') }}</td>
+              <td data-title="DeleteUserImage"><a href="" class="btn btn-primary"
+                 data-userimage-delete="{{$photo->photoMapId}}"
+                 data-toggle="modal" 
+                 data-target="#deleteUserImage">Delete</a></td>
+             </tr>
+         </tbody>
+         @endforeach
+     </table>
+ </div>
+
+    </div>
 </div>
 
-<div class="col-md-9 admin-content" id="pages">
-    Pages
-</div>
+
+
+
 
 </div>
 </div>
@@ -264,6 +310,34 @@
 
         <div class="col-md-3 col-md-offset-right-3">
             <a href="" class="btn btn-primary deletePostButton">Delete</a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+{{-- model for delete User Uploded Image --}}
+
+<div id="deleteUserImage" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content clearfix">
+      <div class="modal-header1 clearfix">
+        <a href="" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+        
+    </div>
+
+
+    <div class="modal-body text-center">
+        <p>Are You Sure. You Want To Delete This User Image?</p>
+    </div>
+    <div class="col-md-12 text-center footer-model-btn">
+        <div class="col-md-3 col-md-offset-3">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+        <div class="col-md-3 col-md-offset-right-3">
+            <a href="" class="btn btn-primary deleteUserImageButton">Delete</a>
         </div>
     </div>
 </div>
