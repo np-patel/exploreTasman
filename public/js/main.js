@@ -80,17 +80,23 @@ $(document).ready(function()
         // console.log(deleteEventId);
         $(".deleteButton").attr("href", "/admin/deleteEvent/"+deleteEventId);
 
-        //event delete button
+        //post delete button
         var deletePostId = $(this).data('post-delete');
         // console.log(deletePostId);
         $(".deletePostButton").attr("href", "/admin/deletePost/"+deletePostId);
 
-        //event delete button
+        //userImage delete button
         var deleteUserImageId = $(this).data('userimage-delete');
-        console.log(deleteUserImageId);
+        // console.log(deleteUserImageId);
         $(".deleteUserImageButton").attr("href", "/admin/deleteUserImage/"+deleteUserImageId);
 
 
+    });
+
+    $('a').click(function(){
+
+            // var deleteUserPost = $(this).data('userpost-delete');
+            console.log('hi');
     });
 
 

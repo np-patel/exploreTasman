@@ -628,4 +628,15 @@ table td #postStatus {
   overflow: hidden;
   text-overflow: ellipsis; }
 
+.admin-menu li.active a {
+  color: #FFF;
+  background-color: #ee534f; }
+  .admin-menu li.active a:hover {
+    background-color: #ee534f; }
+  .admin-menu li.active a:focus {
+    background-color: #ee534f; }
+
+.nav-pills > li > a {
+  color: #333; }
+
 /*# sourceMappingURL=main.css.map */

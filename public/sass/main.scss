@@ -930,3 +930,28 @@ white-space: nowrap;
 //     border: 5px solid yellow;
 // }
 
+.admin-menu{
+
+    // color: #222;
+
+    li.active{
+        a{
+            color: #FFF;
+            background-color: $highlight-color;
+
+             &:hover{
+                background-color: $highlight-color;
+            }
+
+            &:focus{
+                background-color: $highlight-color;
+            }
+        }
+
+       
+    }
+}
+
+.nav-pills > li > a{
+    color: #333;
+}
