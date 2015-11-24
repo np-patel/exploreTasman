@@ -33,6 +33,8 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 //HomePage Routs...
 Route::get('home', 'HomeController@index');
 Route::post('home/index', 'HomeController@postNewsFeed');
+Route::post('home/updatePost/{id}', 'HomeController@updatePost');
+Route::get('home/deleteUserpost/{id}', 'HomeController@deletePost');
 
 // add comment
 Route::post('comment/add','CommentController@store');

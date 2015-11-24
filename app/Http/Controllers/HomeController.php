@@ -72,6 +72,38 @@ class HomeController extends Controller
     
     }
 
+
+    public function updatePost(Request $request, $updatePostId){
+
+        $this->validate($request,[
+                'updateStatus'=> 'required|max:255',
+                // 'photo' => 'required|image'
+            ]);
+
+        $updatePost = Posts::find($updatePostId);
+        $updatePost->status = $request->get('updateStatus');
+
+        $updatePost->save();
+
+        return redirect('home');
+        
+
+    }
+
+    public function deletePost($deletePostId){
+
+        $deletePost = Posts::find($deletePostId);
+
+        if ($deletePost->photo != 'noImage.jpg') {
+             //delete the image associative with the post
+            \File::Delete('img/Post/'.$deletePost->photo);
+        }
+
+        $deletePost->delete();
+
+        return redirect('home');
+    }
+
     //*************************** this code is for getting all comments from comments table*********************//
 
     // public function showComments(){

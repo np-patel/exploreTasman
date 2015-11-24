@@ -93,10 +93,23 @@ $(document).ready(function()
 
     });
 
-    $('a').click(function(){
+    $('.updatePost').click(function(){
 
-            // var deleteUserPost = $(this).data('userpost-delete');
-            console.log('hi');
+            var updateUserPost = $(this).data('userpost-update');
+            // console.log(updateUserPost);
+            $('#updateStatus').val(updateUserPost);
+
+            var updatePostId = $(this).data('userid-update');
+            // console.log(updatePostId);
+
+            $("#UpdateUserPost").attr("action", "/home/updatePost/"+updatePostId);
+
+
+            var deleteUserPost = $(this).data('userid-delete');
+            console.log(deleteUserPost);
+            $(".deleteUserPostButton").attr("href", "/home/deleteUserpost/"+deleteUserPost);
+
+
     });
 
 

@@ -223,9 +223,9 @@
           <label for="firstName">FirstName: </label>
 
           @if($userInfo->additionalInfo) 
-          {{ $firstName = $userInfo->additionalInfo->firstName }}
+          <?php $firstName = $userInfo->additionalInfo->firstName ?>
           @else
-          {{ $firstName = '' }}
+          <?php $firstName = '' ?>
           @endif
 
           <input type="text" class="form-control"
@@ -234,9 +234,9 @@
         </div>
 
         @if($userInfo->additionalInfo) 
-        {{ $lastName = $userInfo->additionalInfo->lastName }}
+        <?php $lastName = $userInfo->additionalInfo->lastName ?>
         @else
-        {{ $lastName = '' }}
+        <?php $lastName = '' ?>
         @endif
 
         <div class="form-group">
@@ -259,9 +259,9 @@
         </div>
 
         @if($userInfo->additionalInfo) 
-        {{ $Bio = $userInfo->additionalInfo->bio }}
+        <?php $Bio = $userInfo->additionalInfo->bio ?>
         @else
-        {{ $Bio = '' }}
+        <?php $Bio = '' ?>
         @endif
 
         <div class="form-group">
