@@ -204,13 +204,13 @@
       @foreach($allEvents as $event )
       <div class="event-heading clearfix">
         <div class="pull-left image">
-          <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
+          <img src="img/Event/{{ $event->eventImage}}" class="event-img-rounded avatar" alt="user profile image">
         </div>
         <div class="meta">
           <div class="title">
             {{$event->eventName}}
           </div>
-          <h5 class="text-muted time">{{$event->created_at->format('d M Y')}}</h5>
+          <h5 class="text-muted time">{{ $event->eventDate }}</h5>
           <h6 class="text-muted time">Comming In 5 Days</h6>
         </div>
         <div class="event-description">

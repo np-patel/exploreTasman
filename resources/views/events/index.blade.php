@@ -17,8 +17,13 @@
 						<div><p>{{ $event->marker_location->locationName}}</p></div>
 
 						<div>
+
+							{{-- <div class="pull-left">
+								<p><span class="glyphicon glyphicon-time"></span> {{ \Carbon\Carbon::createFromFormat('Y-m-d H', '1975-05-21 22')->toDateTimeString() }}</p>
+							</div> --}}
+						
 							<div class="pull-left">
-								<p><span class="glyphicon glyphicon-time"></span> {{ $event->created_at->format('M d,Y \a\t h:i a') }}</p>
+								<p><span class="glyphicon glyphicon-time"></span> {{ $event->eventDate }}</p>
 							</div>
 							<div class="pull-right">
 								<p><strong>by</strong> {{$event->user->additionalInfo->firstName}} {{$event->user->additionalInfo->lastName}}</p>

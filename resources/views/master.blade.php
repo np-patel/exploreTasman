@@ -11,6 +11,8 @@
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link href="css/main.css" rel="stylesheet">
+   		<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,7 +49,7 @@
 						                        {{\Auth::user()->username}}
 						                    @endif
 										</span> <i class="fa fa-caret-down"></i></a>
-										<ul class="dropdown-menu">
+										<ul class="dropdown-menu headerDropdown">
 												<li><a href="/profilePage">My Profile</a></li>
 												<li><a href="/auth/logout">Logout</a></li>
 										</ul>
@@ -86,6 +88,19 @@
 		<script src="js/main.js"></script>
 
 		<script src="js/map.js"></script>
+
+		<script src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+
+		<script type="text/javascript">
+		    $(".form_datetime").datetimepicker({
+		        format: "yyyy-mm-dd hh:ii:ss",
+		        autoclose: true,
+		        todayBtn: true,
+		        startDate: "2013-02-14 10:00",
+		        minuteStep: 10
+		    });
+		</script>            
+
 
 	@yield('footer')
    

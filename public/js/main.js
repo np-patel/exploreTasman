@@ -67,11 +67,17 @@ $(document).ready(function()
 
         var eventId = $(this).data('event-id');
 
+        var eventDate = $(this).data('event-date');
+        console.log(eventDate);
+
+
         $('#updateEventTitle').val(eventName);
 
         $('#updateEventDescription').val(eventDesc);
 
         $('#updateEventLocation option[value='+$(this).data('location-id')+']').attr('selected', 'selected');
+
+        $('#update_dtp_input1').val(eventDate);
 
         $("#UpdateEvent").attr("action", "/admin/updateEvent/"+eventId);
 
@@ -106,8 +112,30 @@ $(document).ready(function()
 
 
             var deleteUserPost = $(this).data('userid-delete');
-            console.log(deleteUserPost);
+            // console.log(deleteUserPost);
             $(".deleteUserPostButton").attr("href", "/home/deleteUserpost/"+deleteUserPost);
+
+
+    });
+
+
+    //profile Page
+
+        $('.updatePost2').click(function(){
+
+            var updateUserPost = $(this).data('userpost-update');
+            // console.log(updateUserPost);
+            $('#updateStatus').val(updateUserPost);
+
+            var updatePostId = $(this).data('userid-update');
+            // console.log(updatePostId);
+
+            $("#UpdateUserPost").attr("action", "/profilePage/updatePost/"+updatePostId);
+
+
+            var deleteUserPost = $(this).data('userid-delete');
+            // console.log(deleteUserPost);
+            $(".deleteUserPostButton").attr("href", "/profilePage/deleteUserpost/"+deleteUserPost);
 
 
     });

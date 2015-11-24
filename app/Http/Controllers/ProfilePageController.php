@@ -84,6 +84,44 @@ class ProfilePageController extends Controller
             $userUpdateInfo->lastName = $request->get('lastName');
             $userUpdateInfo->bio = $request->get('userBio');
 
+
+            //profile Image
+            if ( $request->hasFile('profileImage')) {
+
+                $fileName = uniqid().'.'.$request->file('profileImage')->getClientOriginalExtension();
+
+                \Image::make($request->file('profileImage') )
+                    ->save('img/Profile/ProfileImage/'.$fileName);
+
+                
+                    if($userUpdateInfo->profileImage != 'default.jpg'){
+                        //delete the old image
+                        \File::Delete('img/Profile/ProfileImage/'.$userUpdateInfo->profileImage);
+                    }
+
+                $userUpdateInfo->profileImage = $fileName;
+
+            }
+
+            //cover Image
+            if ( $request->hasFile('coverImage')) {
+
+                $fileName = uniqid().'.'.$request->file('coverImage')->getClientOriginalExtension();
+
+                \Image::make($request->file('coverImage') )
+                    ->save('img/Profile/Cover/'.$fileName);
+
+                
+                    if($userUpdateInfo->CoverImage != 'default.jpg'){
+                        //delete the old image
+                        \File::Delete('img/Profile/Cover/'.$userUpdateInfo->CoverImage);
+                    }
+
+                $userUpdateInfo->CoverImage = $fileName;
+
+            }
+
+
             $userUpdateInfo->save();
 
             return redirect('profilePage');
@@ -133,6 +171,38 @@ class ProfilePageController extends Controller
 
             return redirect('profilePage');
          }
+    }
+
+
+        public function updatePost(Request $request, $updatePostId){
+
+        $this->validate($request,[
+                'updateStatus'=> 'required|max:255',
+                // 'photo' => 'required|image'
+            ]);
+
+        $updatePost = Posts::find($updatePostId);
+        $updatePost->status = $request->get('updateStatus');
+
+        $updatePost->save();
+
+        return redirect('profilePage');
+        
+
+    }
+
+    public function deletePost($deletePostId){
+
+        $deletePost = Posts::find($deletePostId);
+
+        if ($deletePost->photo != 'noImage.jpg') {
+             //delete the image associative with the post
+            \File::Delete('img/Post/'.$deletePost->photo);
+        }
+
+        $deletePost->delete();
+
+        return redirect('profilePage');
     }
 
     /**

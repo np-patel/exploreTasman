@@ -58,7 +58,7 @@
             </h5>
             
             <div class="text-left"> 
-             <input class="btn btn-profile" value="Edit Profile" type="submit"> 
+              <a href="#UpdateProfile" aria-controls="profile" role="tab" data-toggle="tab">Edit Profile</a> 
            </div>
          </div>
        </div>
@@ -121,6 +121,22 @@
          @foreach($allUserPosts as $post)
          <div class="panel panel-white post panel-shadow">
           <div class="post-heading">
+
+            {{-- if person is loggedin is == to person post userid than show this update function  --}}
+              @if(\Auth::user()->id == $post->user_id)
+              <div>
+                  <a herf="" class="pull-right updatePost2" data-toggle="modal" data-target="#deleteUserPost" data-userid-delete="{{$post->id}}"><i class="fa fa-trash-o"></i></a>
+                  
+              </div>
+
+              <div>
+                  <a herf="" class="pull-right updatePost2" data-toggle="modal" data-target="#updatePost" data-userpost-update="{{$post->status}}" data-userid-update="{{$post->id}}"><i class="fa fa-pencil"></i></a>
+                  
+              </div>
+              @else
+
+              @endif
+
             <div class="pull-left image">
 
               <img src="img/Profile/ProfileImage/{{ $post->user->additionalInfo ? $post->user->additionalInfo->profileImage : 'default.jpg' }}" class="img-rounded avatar" alt="user profile image">
@@ -165,7 +181,7 @@
 
           <div class="post-footer">
 
-            <form action="/comment/add" method="post" class="form-horizontal" role="form" novalidate>
+            <form action="/comment/profilePageAdd" method="post" class="form-horizontal" role="form" novalidate>
 
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" name="on_post" value="{{ $post->id }}">
@@ -360,5 +376,67 @@
 </div><!-- /.row -->
 
 </div><!-- /.container -->
+
+<!-- Modal -->
+<div id="updatePost" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Event</h4>
+    </div>
+    <div class="modal-body">
+        <div>
+            <form id="UpdateUserPost" role="form" action="" method="post" enctype="multipart/form-data" role="form" novalidate>
+
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                <div class="form-group">
+                    <label for="updateStatus">Event Description</label>
+                    <textarea id="updateStatus" name="updateStatus" class="form-control" placeholder="Write about event"></textarea>
+                    {{$errors->first('updateStatus')}}
+                    
+                </div>
+                
+                <input type="submit" value="Update Post" class="btn btn-primary" name="update post"/>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+{{-- model for delete Post --}}
+
+<div id="deleteUserPost" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content clearfix">
+      <div class="modal-header1 clearfix">
+        <a href="" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+        
+    </div>
+
+
+    <div class="modal-body text-center">
+        <p>Are You Sure. You Want To Delete This Post?</p>
+    </div>
+    <div class="col-md-12 text-center footer-model-btn">
+        <div class="col-md-3 col-md-offset-3">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+        </div>
+
+        <div class="col-md-3 col-md-offset-right-3">
+            <a href="" class="btn btn-primary deleteUserPostButton">Delete</a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
 
 @endsection

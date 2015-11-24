@@ -39,6 +39,8 @@ class AdminController extends Controller
 
         $addEvent->eventName = $request->get('eventTitle');
 
+        $addEvent->eventDate = $request->get('dtp_input1');
+
         $addEvent->eventUserId = \Auth::user()->id;
 
         $fileName = uniqid().'.'.$request->file('eventImage')->getClientOriginalExtension();
@@ -67,6 +69,8 @@ class AdminController extends Controller
         $updateEvent->eventUserId = \Auth::user()->id;
 
         $updateEvent->eventLocationId = $request->updateEventLocation;
+
+        $updateEvent->eventDate = $request->get('update_dtp_input1');
 
         $updateEvent->eventDescription = $request->get('updateEventDescription');
 

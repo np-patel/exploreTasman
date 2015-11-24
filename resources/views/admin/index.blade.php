@@ -92,6 +92,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="dtp_input1" class="control-label">Pick Event Date&Time</label>
+                    <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
+                        <input class="form-control" size="16" name="dtp_input1" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_input1" value="" />
+                </div>
+
+                <div class="form-group">
                     <label for="eventImage">Upload Event Image</label>
                     <input id="eventImage" name="eventImage" type="file">
                     {{-- {{$errors->first('eventImage')}} --}}
@@ -127,10 +137,11 @@
             <tr>
               <td data-title="EventName">{{$event->eventName}}</td>
               <td data-title="EventLocation">{{ $event->marker_location->locationName}}</td>
-              <td data-title="Event-Day">{{ $event->created_at->format('M d,Y \a\t h:i a') }}</td>
+              <td data-title="Event-Day">{{ $event->eventDate }}</td>
               <td data-title="UpdateEvent"><a href="" class="btn btn-primary"
                   data-event-id="{{$event->event_id}}"
-                  data-location-id="{{ $event->marker_location->id }}" 
+                  data-location-id="{{ $event->marker_location->id }}"
+                  data-event-date="{{$event->eventDate}}" 
                   data-toggle="modal" 
                   data-target="#updateEvent" 
                   data-event-name="{{ $event->eventName }}" 
@@ -235,6 +246,16 @@
                         @endforeach
 
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="update_dtp_input1" class="control-label">Pick Event Date&Time</label>
+                    <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="update_dtp_input1">
+                        <input class="form-control" size="16" id="update_dtp_input1" name="update_dtp_input1" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    </div>
+                    <input type="hidden" id="update_dtp_input1" value="" />
                 </div>
 
                 <div class="form-group">

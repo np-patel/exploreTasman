@@ -52,6 +52,20 @@ class CommentController extends Controller
         return redirect('home');
     }
 
+    public function addComment(Request $request){
+        
+
+        $comments = new Comments();
+        
+        $comments->from_user = \Auth::user()->id;
+        $comments->on_post =  $request->input('on_post');
+        $comments->body = $request->get('body');
+
+        $comments->save();
+
+        return redirect('profilePage');
+    }
+
     /**
      * Display the specified resource.
      *

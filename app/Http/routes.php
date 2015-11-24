@@ -38,6 +38,7 @@ Route::get('home/deleteUserpost/{id}', 'HomeController@deletePost');
 
 // add comment
 Route::post('comment/add','CommentController@store');
+Route::post('comment/profilePageAdd','CommentController@addComment');
 // Route::get('home/index', 'HomeController@showComments');
 
 
@@ -46,6 +47,8 @@ Route::get('profilePage', 'ProfilePageController@index');
 Route::post('profilePage/postFeed', 'ProfilePageController@postNewsFeed');
 // Route::post('profilePage/edit/{id}', 'ProfilePageController@updateUserProfile');
 Route::post('profilePage/edit', 'ProfilePageController@updateUserProfile');
+Route::post('profilePage/updatePost/{id}', 'ProfilePageController@updatePost');
+Route::get('profilePage/deleteUserpost/{id}', 'ProfilePageController@deletePost');
 
 
 //photoMap
