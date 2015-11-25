@@ -9,6 +9,8 @@ use App\Posts;
 use App\User;
 use App\Comments;
 use App\UserAdditionalInfo;
+use App\Events;
+use App\PhotoMapImageUploader;
 
 class ProfilePageController extends Controller
 {
@@ -25,8 +27,11 @@ class ProfilePageController extends Controller
         // $userInfo = UserAdditionalInfo::where('user_id', \Auth::user()->id)->first();
         $userInfo = \Auth::user();
 
+        $allEvents = Events::orderBy('created_at', 'DESC')->take(2)->get();
+
+        $allUserPhotos = PhotoMapImageUploader::where('userId', \Auth::user()->id)->orderBy('photoMapId', 'DESC')->take(6)->get();
         
-            return view('profilePage.index', compact('allUserPosts', 'userInfo'));
+            return view('profilePage.index', compact('allUserPosts', 'userInfo', 'allEvents', 'allUserPhotos'));
 
     }
 

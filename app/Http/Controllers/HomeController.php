@@ -10,6 +10,7 @@ use App\User;
 use App\Comments;
 use App\UserAdditionalInfo;
 use App\Events;
+use App\PhotoMapImageUploader;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,16 @@ class HomeController extends Controller
 
         $allEvents = Events::orderBy('created_at', 'DESC')->take(2)->get();
 
-          return view('home.index', compact('allPost', 'userInfo', 'allEvents'));
+        $allUserPhotos = PhotoMapImageUploader::orderBy('photoMapId', 'DESC')->take(6)->get();
+
+
+        // $postId = $allPost->id;
+
+        // $TotalComments = Comments::where('on_post', '5')->count();
+
+        // dd($TotalComments);
+
+          return view('home.index', compact('allPost', 'userInfo', 'allEvents', 'allUserPhotos'));
     }
 
     public function postNewsFeed(Request $request){

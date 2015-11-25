@@ -171,7 +171,7 @@
             <div class="stats">
               <a href="#">
                 <i class="fa fa-commenting-o"></i>
-                23 Comments
+                {{$post->comments->count()}}
               </a>
             </div>
           </div>
@@ -307,69 +307,57 @@
 
   <!-- events -->
 
-  <div class="panel">
-    <div class="events-title">
-      <p>Events</p>
-    </div>
-    <!-- event1 -->
-    <div class="event-heading clearfix">
-      <div class="pull-left image">
-        <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
-      </div>
-      <div class="meta">
-        <div class="title h5">
-          <a href="#">Event Name</a>
-        </div>
-        <h5 class="text-muted time">22 October 2015</h5>
-        <h6 class="text-muted time">Comming In 5 Days</h6>
-      </div>
-      <div class="event-description">
-        <p>Loremzfgzf drghs hdhdfhgvabgklbfg b klabglakbg bsgklbgklajbgkjal gkag kag k ipsum</p>
-      </div>
-    </div>
+<!-- events -->
+@if(!$allEvents->isEmpty())
+<div class="panel">
+  <div class="events-title">
+    <p>Events</p>
+</div>
+<!-- event1 -->
 
-    <!-- event2 -->
-    <div class="event-heading clearfix">
-      <div class="pull-left image">
-        <img src="img/Profile/ProfileImage/event.jpg" class="event-img-rounded avatar" alt="user profile image">
-      </div>
-      <div class="meta">
-        <div class="title h5">
-          <a href="#">Event Name</a>
-        </div>
-        <h5 class="text-muted time">22 October 2015</h5>
-        <h6 class="text-muted time">Comming In 5 Days</h6>
-      </div>
-      <div class="event-description">
-        <p>Loremzfgzf drghs hdhdfhgvabgklbfg b klabglakbg bsgklbgklajbgkjal gkag kag k ipsum</p>
-      </div>
-    </div>
-
+@foreach($allEvents as $event )
+<div class="event-heading clearfix">
+    <div class="pull-left image">
+      <img src="img/Event/{{ $event->eventImage}}" class="event-img-rounded avatar" alt="user profile image">
   </div>
+  <div class="meta">
+      <div class="title">
+        {{$event->eventName}}
+    </div>
+    <h5 class="text-muted time">{{ \Carbon\Carbon::parse($event->eventDate )->toFormattedDateString() }}</h5>
+    <h6 class="text-muted time">{{ \Carbon\Carbon::parse($event->eventDate )->diffForHumans() }}</h6>
+</div>
+<div class="event-description">
+  <div id="txt">
+    <p>{{$event->eventDescription}}</p>
+</div>
+</div>
+</div>
+@endforeach
+
+</div>
+@else
+
+@endif
 
   <!-- picture -->
 
+@if(!$allUserPhotos->isEmpty())
   <div class="panel panel-default"> 
     <div class="picture-title">
       <p>Recent Images</p>
-    </div>
-    <div class="panel-body text-center"> 
-      <ul class="photos"> 
-        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 1" class="img-responsive show-in-modal"> </a> 
-        </li>
-        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 2" class="img-responsive show-in-modal"> </a> 
-        </li>
-        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 3" class="img-responsive show-in-modal"> </a> 
-        </li>
-        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 4" class="img-responsive show-in-modal"> </a> 
-        </li>
-        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 5" class="img-responsive show-in-modal"> </a> 
-        </li>
-        <li> <a href="#"> <img src="http://placehold.it/600x350" alt="photo 6" class="img-responsive show-in-modal"> </a> 
-        </li>
-      </ul> 
-    </div>
   </div>
+  <div class="panel-body text-center"> 
+      <ul class="photos"> 
+          @foreach($allUserPhotos as $photo)
+          <li> <a href="#"> <img src="img/PhotoMap/{{ $photo->locationImage }}" data-toggle="modal" data-target="#userImage{{$photo->photoMapId}}" alt="photo 1" class="img-responsive"> </a></li>
+          @endforeach  
+      </ul> 
+  </div>
+  </div>
+@else
+
+@endif
   
 </div>
 
@@ -438,5 +426,32 @@
 </div>
 </div>
 
+
+<!-- Modal for user images -->
+@foreach($allUserPhotos as $photo)
+<div id="userImage{{$photo->photoMapId}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{$photo->title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modalImage text-center">
+                    <img src="img/PhotoMap/{{ $photo->locationImage }}" class="img-responsive">
+                </div>
+
+                <div class="modelBodyText">
+                    <p>{{$photo->imageDescription}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@endforeach
 
 @endsection

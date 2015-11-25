@@ -19,12 +19,18 @@
 						<div>
 
 							{{-- <div class="pull-left">
-								<p><span class="glyphicon glyphicon-time"></span> {{ \Carbon\Carbon::createFromFormat('Y-m-d H', '1975-05-21 22')->toDateTimeString() }}</p>
+								<p><span class="glyphicon glyphicon-time"></span> {{ \Carbon\Carbon::createFromFormat('Y-m-d H',  '$event->eventDate' )->toDateTimeString() }}</p>
 							</div> --}}
-						
+
 							<div class="pull-left">
-								<p><span class="glyphicon glyphicon-time"></span> {{ $event->eventDate }}</p>
+								{{-- <p><span class="glyphicon glyphicon-time"></span> {{ \Carbon\Carbon::parse($event->eventDate )->formatLocalized('%A %d %B %Y at %H %a') }}</p> --}}
+								<p><span class="glyphicon glyphicon-time"></span> {{ \Carbon\Carbon::parse($event->eventDate )->format('l jS \\of F Y h:i A') }}</p>
+
 							</div>
+						
+							{{-- <div class="pull-left">
+								<p><span class="glyphicon glyphicon-time"></span> {{ $event->eventDate }}</p>
+							</div> --}}
 							<div class="pull-right">
 								<p><strong>by</strong> {{$event->user->additionalInfo->firstName}} {{$event->user->additionalInfo->lastName}}</p>
 							</div>
