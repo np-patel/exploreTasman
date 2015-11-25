@@ -24,7 +24,7 @@ body {
   clear: both;
   border: 0;
   height: 1px;
-  background-image: -moz-linear-gradient(left center, #061c1f, #ee534f, #081d1f); }
+  background-image: -moz-linear-gradient(left center, #061C1F, #EE534F, #081D1F); }
 
 .panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
   height: 45px;
@@ -384,7 +384,6 @@ a:hover, a:focus {
   font-size: 22px; }
 .panel .panel-body .photos {
   list-style: outside none none;
-  display: inline-block;
   background: #FFF none repeat scroll 0% 0%;
   top: 0px;
   right: 0px;
@@ -542,24 +541,23 @@ a:hover, a:focus {
   .recentItem .photoMap {
     padding: 10px;
     display: inline-block; }
-    .recentItem .photoMap .photos {
+    .recentItem .photoMap ul.photos {
       list-style: outside none none;
-      display: inline-block;
       background: #FFF none repeat scroll 0% 0%;
       top: 0px;
       right: 0px;
       z-index: 2;
       margin-bottom: 0px;
       padding: 0px; }
-      .recentItem .photoMap .photos li {
+      .recentItem .photoMap ul.photos li {
         float: left;
         margin: 0px;
         width: 50%; }
-        .recentItem .photoMap .photos li a {
+        .recentItem .photoMap ul.photos li a {
           display: block;
           padding-left: 1px;
           padding-top: 1px; }
-          .recentItem .photoMap .photos li a img {
+          .recentItem .photoMap ul.photos li a img {
             width: 100%;
             height: 150px; }
 
@@ -677,3 +675,69 @@ table td #postStatus {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176); }
+
+/************************** contact page ****************************/
+.contact_panel {
+  padding: 10px 20px; }
+
+.modal-dialog {
+  margin: 160px auto; }
+
+/****************Responsive Page Code *************************/
+@media only screen and (max-width: 330px) {
+  .orange-circle-button {
+    height: 3em;
+    width: 3em;
+    bottom: 30px;
+    right: 135px;
+    margin: 0 auto; }
+
+  .modal-dialog {
+    margin: 60px auto; }
+
+  /*  map uaerImage sidebar */
+  .recentItem {
+    position: fixed;
+    right: -300px;
+    background: #fff;
+    top: 50px;
+    z-index: 100;
+    width: 300px;
+    overflow: auto;
+    height: 100%; }
+    .recentItem .photoMap .photos li a img {
+      width: 100%;
+      height: 100px; } }
+@media (min-width: 331px) and (max-width: 767px) {
+  .orange-circle-button {
+    height: 3em;
+    width: 3em;
+    bottom: 35px;
+    right: 155px;
+    margin: 0 auto; }
+
+  /*  map uaerImage sidebar */
+  .recentItem {
+    position: fixed;
+    right: -340px;
+    background: #fff;
+    top: 50px;
+    z-index: 100;
+    width: 340px;
+    overflow: auto;
+    height: 100%; }
+    .recentItem .photos li a img {
+      width: 100%;
+      height: 100px; } }
+@media (min-width: 768px) and (max-width: 1200px) {
+  .orange-circle-button {
+    height: 4em;
+    width: 4em;
+    bottom: 100px;
+    right: 175px;
+    margin: 0 auto; }
+
+  .modal-dialog {
+    margin: 160px auto; } }
+
+/*# sourceMappingURL=main.css.map */

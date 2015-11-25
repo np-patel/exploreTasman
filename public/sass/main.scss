@@ -597,7 +597,7 @@ a:hover, a:focus {
 
         .photos {
             list-style: outside none none;
-            display: inline-block;
+            // display: inline-block;
             background: #FFF none repeat scroll 0% 0%;
             top: 0px;
             right: 0px;
@@ -814,9 +814,9 @@ a:hover, a:focus {
     .photoMap {
         padding:10px;
         display: inline-block;
-        .photos {
+        ul.photos {
             list-style: outside none none;
-            display: inline-block;
+            // display: inline-block;
             background: #FFF none repeat scroll 0% 0%;
             top: 0px;
             right: 0px;
@@ -844,6 +844,9 @@ a:hover, a:focus {
     }
 }
 
+// ul{
+//     padding:0px;
+// }
 
 /************************** events page ****************************/
 
@@ -1020,11 +1023,117 @@ white-space: nowrap;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
 }
 
+/************************** contact page ****************************/
+
+.contact_panel{
+
+    padding:10px 20px;
+}
+
+.modal-dialog {
+    margin: 160px auto;
+}
+
+/****************Responsive Page Code *************************/
+
+@media only screen and (max-width: 330px) {
+    .orange-circle-button {
+        height: 3em;
+        width: 3em;
+        bottom: 30px;
+        right: 135px;
+        margin: 0 auto; 
+    }
+
+    .modal-dialog {
+    margin: 60px auto;
+}
+
+    /*  map uaerImage sidebar */
+
+    .recentItem{
+
+        position:fixed;
+        right:-300px;
+        background:#fff;
+        top:50px;
+        z-index:100;
+        width:300px;
+        overflow:auto;
+        height:100%; 
+
+        .photoMap {
+            
+            .photos {
+                
+
+                li {
+                    
+
+                    a {
+                        
+
+                        img {
+                            width: 100%;
+                            height: 100px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+ @media (min-width: 331px) and (max-width: 767px) {
+    
+    .orange-circle-button {
+        height: 3em;
+        width: 3em;
+        bottom: 35px;
+        right: 155px;
+        margin: 0 auto; 
+    }
 
 
+    /*  map uaerImage sidebar */
 
+    .recentItem{
 
+        position:fixed;
+        right:-340px;
+        background:#fff;
+        top:50px;
+        z-index:100;
+        width:340px;
+        overflow:auto;
+        height:100%; 
 
+        .photos li a img{
+            width: 100%;
+            height: 100px;
+        }
+    }
 
+    // ul .photos{
+    //     padding:0px;
+    //     margin:0px;
+    // }
 
+  }
+
+   @media (min-width: 768px) and (max-width: 1200px) {
+    
+    .orange-circle-button {
+        height: 4em;
+        width: 4em;
+        bottom: 100px;
+        right: 175px;
+        margin: 0 auto; 
+    }
+
+    .modal-dialog {
+    margin: 160px auto;
+}
+
+  }
 

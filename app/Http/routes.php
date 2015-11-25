@@ -69,5 +69,8 @@ Route::get('admin/deleteUserImage/{deleteImageId}', 'AdminController@deleteUserI
 //events Controller
 Route::get('events', 'EventsController@index');
 
+//contact Controller
+Route::get('contact', 'ContactController@index');
+
 
 

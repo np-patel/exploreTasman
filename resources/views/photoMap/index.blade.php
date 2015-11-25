@@ -3,7 +3,7 @@
 
 @section('main_content')
 
-    <div id="display_map"></div>
+    <div id="display_map" class="img-responsive"></div>
 
     <div class="container">
     <div class="row">
@@ -84,7 +84,7 @@
         <div class="recentItemTxt clearfix"></div>
 
         <div class="photoMap text-center"> 
-            <ul class="photos"> 
+            <ul class="photos clearfix"> 
 
                 {{-- @foreach($allUserPhotos as $photoMap) --}}
                     {{-- <li>  --}}
