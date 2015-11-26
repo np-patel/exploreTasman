@@ -35,7 +35,7 @@
             {{-- <img src="img/Profile/{{$userInfo->profileImage}}" height="120" width="120"> --}}
 
             @if($userInfo->additionalInfo) 
-            <img src="img/Profile/ProfileImage/{{$userInfo->additionalInfo->profileImage}}" height="120" width="120">
+            <img src="img/Profile/ProfileImage/{{$userInfo->additionalInfo->profileImage}}">
             @else 
             <img src="img/Profile/ProfileImage/default.jpg" height="120" width="120">
             
@@ -68,7 +68,7 @@
 
  <div class="row">
 
-  <div class="col-md-8">
+  <div class="profile_col col-md-8 col-sm-7">
 
     <div class="panel">
       <ul class="nave nav-tabs clearfix" role="tablist">
@@ -87,7 +87,9 @@
             <div class="form-group" style="padding:14px; margin-bottom:0px;">
               <textarea id="status" name="status" class="form-control" placeholder="Update your status"></textarea>
             </div>
-            {{$errors->first('status')}}
+            @if($errors->first('status'))
+                <div class="alert alert-danger">{{$errors->first('status')}}</div>
+            @endif
             
             <input class="btn btn-primary pull-right" value="post" type="submit">
 
@@ -246,7 +248,7 @@
 
           <input type="text" class="form-control"
           id="firstName" name="firstName" value="{{ $firstName }}"/>
-          {{-- {{$errors->first('imageTitle')}} --}}
+          <span class="validation">{{$errors->first('firstName')}}</span>
         </div>
 
         @if($userInfo->additionalInfo) 
@@ -259,7 +261,7 @@
           <label for="lastName">LastName: </label>
           <input type="text" class="form-control"
           id="lastName" name="lastName" value="{{ $lastName }}"/>
-          {{-- {{$errors->first('imageTitle')}} --}}
+          <span class="validation">{{$errors->first('lastName')}}</span>
         </div>
 
         <div class="form-group">
@@ -281,9 +283,9 @@
         @endif
 
         <div class="form-group">
-          <label for="userBio">About Me: </label>
-          <textarea id="userBio" name="userBio" class="form-control" placeholder="Write about image">{{$Bio}}</textarea>
-          {{-- {{$errors->first('imageDescription')}} --}}
+          <label for="profession">Your profession: </label>
+          <textarea id="profession" name="profession" class="form-control" placeholder="Write about your profession (keep your answer Short to 50 letters)">{{$Bio}}</textarea>
+          <span class="validation">{{$errors->first('profession')}}</span>
           
         </div>
         
@@ -303,7 +305,7 @@
 
 </div> <!-- end of col 8 -->
 
-<div class="col-md-4">
+<div class="profile_col_1 col-md-4 col-sm-5">
 
   <!-- events -->
 
@@ -385,7 +387,7 @@
                 <div class="form-group">
                     <label for="updateStatus">Event Description</label>
                     <textarea id="updateStatus" name="updateStatus" class="form-control" placeholder="Write about event"></textarea>
-                    {{$errors->first('updateStatus')}}
+                    <span class="validation">{{$errors->first('updateStatus')}}</span>
                     
                 </div>
                 

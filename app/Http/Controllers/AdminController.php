@@ -35,11 +35,19 @@ class AdminController extends Controller
 
     public function addEvent(Request $request){
         // dd('add event');
+
+        $this->validate($request,[
+                'eventTitle'=> 'required|max:20|min:3',
+                'eventImage' => 'required|image',
+                'Date&Time'=> 'required',
+                'eventDescription'=> 'required|max:500|min:10'
+            ]);
+
         $addEvent = new Events();
 
         $addEvent->eventName = $request->get('eventTitle');
 
-        $addEvent->eventDate = $request->get('dtp_input1');
+        $addEvent->eventDate = $request->get('Date&Time');
 
         $addEvent->eventUserId = \Auth::user()->id;
 
@@ -62,6 +70,12 @@ class AdminController extends Controller
 
     public function updateEvent(Request $request, $id){
 
+        $this->validate($request,[
+                'updateEventTitle'=> 'required|max:20|min:3',
+                'picDate'=> 'required',
+                'updateEventDescription'=> 'required|max:500|min:10'
+            ]);
+
         $updateEvent = Events::where('event_id', $id)->firstOrFail();
 
         $updateEvent->eventName = $request->updateEventTitle;
@@ -70,7 +84,7 @@ class AdminController extends Controller
 
         $updateEvent->eventLocationId = $request->updateEventLocation;
 
-        $updateEvent->eventDate = $request->get('update_dtp_input1');
+        $updateEvent->eventDate = $request->get('picDate');
 
         $updateEvent->eventDescription = $request->get('updateEventDescription');
 

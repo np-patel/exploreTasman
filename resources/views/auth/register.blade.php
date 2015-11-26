@@ -10,7 +10,9 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-login">
-                        <h2>register</h2><a href="/auth/login">login</a>
+                        <div class="log_reg_title">
+                            <h2>Register</h2>
+                        </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -48,6 +50,11 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="reg_account">
+                            <a href="/auth/login">Login To Your Account</a>
+                        </div>
+
                     </div>
                 </div>
             </div>

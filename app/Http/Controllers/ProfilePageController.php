@@ -74,6 +74,13 @@ class ProfilePageController extends Controller
 
     public function updateUserProfile(Request $request){
 
+        $this->validate($request,[
+                'firstName'=> 'required|max:15',
+                'lastName'=> 'required|max:15',
+                'profession'=> 'required|max:50'
+                
+            ]);
+
 
         $UAI = UserAdditionalInfo::where('user_id', \Auth::user()->id)->get();
         
@@ -87,7 +94,7 @@ class ProfilePageController extends Controller
 
             $userUpdateInfo->firstName = $request->get('firstName');
             $userUpdateInfo->lastName = $request->get('lastName');
-            $userUpdateInfo->bio = $request->get('userBio');
+            $userUpdateInfo->bio = $request->get('profession');
 
 
             //profile Image
@@ -170,7 +177,7 @@ class ProfilePageController extends Controller
                 $userInfo->CoverImage = $coverImage;
             }
 
-            $userInfo->bio = $request->get('userBio');
+            $userInfo->bio = $request->get('profession');
 
             $userInfo->save();
 

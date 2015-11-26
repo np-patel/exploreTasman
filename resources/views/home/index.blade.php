@@ -7,7 +7,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="ups col-md-8 col-sm-7">
 
       <div class="panel">
         <ul class="nave nav-tabs clearfix" role="tablist">
@@ -28,7 +28,7 @@
             </div>
             
             @if($errors->first('status'))
-                <span class="alert alert-danger">{{$errors->first('status')}}</span>
+                <div class="alert alert-danger">{{$errors->first('status')}}</div>
             @endif
 
             <input class="btn btn-primary pull-right" value="post" type="submit">
@@ -162,7 +162,7 @@
 
 </div> <!-- end of col 8 -->
 
-<div class="col-md-4">
+<div class="ups1 col-md-4 col-sm-5">
 
   <div class="card2 hovercard">
      {{-- <img src="http://placehold.it/300x200/000000/&text=Header" alt=""/> --}}

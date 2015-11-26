@@ -103,6 +103,10 @@
 
 
 	@yield('footer')
+
+	@yield('adminNav')
+
+	@yield('updateEvent')
    
 
 	</body>

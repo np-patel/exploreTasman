@@ -39,7 +39,10 @@
                     <label for="imageTitle">Title</label>
                       <input type="text" class="form-control"
                       id="imageTitle" name="imageTitle"/>
-                      {{$errors->first('imageTitle')}}
+                      @if($errors->first('imageTitle'))
+                          <span class="validation">{{$errors->first('imageTitle')}}</span>
+                      @endif
+                      {{-- {{$errors->first('imageTitle')}} --}}
                   </div>
 
                   <div>
@@ -56,12 +59,17 @@
                   <div class="form-group">
                     <label for="locationImage">Upload Image</label>
                       <input id="locationImage" name="locationImage" type="file">
-                      {{$errors->first('locationImage')}}
+                      @if($errors->first('locationImage'))
+                          <span class="validation">{{$errors->first('locationImage')}}</span>
+                      @endif
                   </div>
                   <div class="form-group">
                     <label for="imageDescription">Image Description</label>
                       <textarea id="imageDescription" name="imageDescription" class="form-control" placeholder="Write about image"></textarea>
-                      {{$errors->first('imageDescription')}}
+                      @if($errors->first('imageDescription'))
+                          <span class="validation">{{$errors->first('imageDescription')}}</span>
+                      @endif
+                      {{-- {{$errors->first('imageDescription')}} --}}
                       
                   </div>
                   

@@ -77,7 +77,7 @@ $(document).ready(function()
 
         $('#updateEventLocation option[value='+$(this).data('location-id')+']').attr('selected', 'selected');
 
-        $('#update_dtp_input1').val(eventDate);
+        $('#picDate').val(eventDate);
 
         $("#UpdateEvent").attr("action", "/admin/updateEvent/"+eventId);
 
@@ -139,6 +139,25 @@ $(document).ready(function()
 
 
     });
+
+
+        // Get the screen dimensions //homepage
+        // if( window.innerWidth <= 990 && window.innerWidth >= 768 ) {
+        //     // alert('mobile');
+
+        //     $('div.ups').removeClass('col-sm-8').addClass('col-sm-7');
+        //     $('div.ups1').removeClass('col-sm-4').addClass('col-sm-5');
+
+        // }
+
+        // // Get the screen dimensions //profilepage
+        // if( window.innerWidth <= 990 && window.innerWidth >= 768 ) {
+        //     // alert('mobile');
+
+        //     $('div.profile_col_8').removeClass('col-md-8').addClass('col-sm-7');
+        //     $('div.profile_col_4').removeClass('col-md-4').addClass('col-sm-5');
+
+        // }
 
 
 });

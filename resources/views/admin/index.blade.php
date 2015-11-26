@@ -7,7 +7,7 @@
         <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked admin-menu">
                 <li class="active"><a href="#" data-target-id="post"><i class="fa fa-home fa-fw"></i>Posts</a></li>
-                <li><a href="" data-target-id="widgets"><i class="fa fa-list-alt fa-fw"></i>Events</a></li>
+                <li><a href="" data-target-id="events"><i class="fa fa-list-alt fa-fw"></i>Events</a></li>
                 <li><a href="" data-target-id="photoMap"><i class="fa fa-file-o fa-fw"></i>PhotoMap</a></li>
                 
             </ul>
@@ -63,7 +63,7 @@
 </div> --}}
 
 </div>
-<div class="col-md-9 admin-content" id="widgets">
+<div class="col-md-9 admin-content" id="events">
     <div class="panel" style="padding:20px;">
         <div>
             <h4>Add Events</h4>
@@ -77,7 +77,7 @@
                     <label for="eventTitle">Event Title: </label>
                     <input type="text" class="form-control"
                     id="eventTitle" name="eventTitle"/>
-                    {{-- {{$errors->first('eventTitle')}} --}}
+                    <span class="validation">{{$errors->first('eventTitle')}}</span>
                 </div>
 
                 <div>
@@ -92,25 +92,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="dtp_input1" class="control-label">Pick Event Date&Time</label>
+                    <label for="Date&Time" class="control-label">Pick Event Date&Time</label>
                     <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
-                        <input class="form-control" size="16" name="dtp_input1" type="text" value="" readonly>
+                        <input class="form-control" size="16" name="Date&Time" type="text" value="" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                     </div>
-                    <input type="hidden" id="dtp_input1" value="" />
+                    <input type="hidden" id="Date&Time" value="" />
+                    <span class="validation">{{$errors->first('Date&Time')}}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="eventImage">Upload Event Image</label>
                     <input id="eventImage" name="eventImage" type="file">
-                    {{-- {{$errors->first('eventImage')}} --}}
+                    <span class="validation">{{$errors->first('eventImage')}}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="eventDescription">Event Description</label>
                     <textarea id="eventDescription" name="eventDescription" class="form-control" placeholder="Write about event"></textarea>
-                    {{-- {{$errors->first('eventDescription')}} --}}
+                    <span class="validation">{{$errors->first('eventDescription')}}</span>
 
                 </div>
 
@@ -233,7 +234,7 @@
                     <label for="updateEventTitle">Event Title: </label>
                     <input type="text" class="form-control"
                     id="updateEventTitle" name="updateEventTitle"/>
-                    {{-- {{$errors->first('eventTitle')}} --}}
+                    <span class="validation">{{$errors->first('updateEventTitle')}}</span>
                 </div>
 
                 <div>
@@ -249,25 +250,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="update_dtp_input1" class="control-label">Pick Event Date&Time</label>
+                    <label for="picDate" class="control-label">Pick Event Date&Time</label>
                     <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="update_dtp_input1">
-                        <input class="form-control" size="16" id="update_dtp_input1" name="update_dtp_input1" type="text" value="" readonly>
+                        <input class="form-control" size="16" id="picDate" name="picDate" type="text" value="" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                     </div>
-                    <input type="hidden" id="update_dtp_input1" value="" />
+                    <span class="validation">{{$errors->first('picDate')}}</span>
+                    <input type="hidden" id="picDate" value="" />
                 </div>
 
                 <div class="form-group">
                     <label for="updateEventImage">Upload Event Image</label>
                     <input id="updateEventImage" name="updateEventImage" type="file">
-                    {{-- {{$errors->first('eventImage')}} --}}
+                    
                 </div>
 
                 <div class="form-group">
                     <label for="updateEventDescription">Event Description</label>
                     <textarea id="updateEventDescription" name="updateEventDescription" class="form-control" placeholder="Write about event"></textarea>
-                    {{-- {{$errors->first('eventDescription')}} --}}
+                    <span class="validation">{{$errors->first('updateEventDescription')}}</span>
                     
                 </div>
                 
@@ -364,5 +366,26 @@
 </div>
 </div>
 </div>
+
+@endsection
+
+@section('adminNav')
+
+@if(count($errors)>0)
+  <script type="text/javascript">
+    $("ul.nav.nav-pills li a[data-target-id=events]").parent().addClass('active').tab('show').siblings().removeClass('active');
+    </script>
+@endif
+
+@endsection
+
+@section('updateEvent')
+
+
+@if(count($errors)>0)
+  <script type="text/javascript">
+    $('#updateEvent').modal('show');
+    </script>
+@endif
 
 @endsection

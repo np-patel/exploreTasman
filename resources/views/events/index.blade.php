@@ -9,7 +9,7 @@
 		<div class="col-md-12">
 			@if(!$allEvents->isEmpty()) 
 			@foreach($allEvents as $event)
-			<div class="col-md-6 pull-left">
+			<div class="col-sm-6">
 				<div class="panel eventPanel">
 					<div class="events">
 						<h4>{{ $event->eventName}}</h4>
@@ -18,20 +18,11 @@
 
 						<div>
 
-							{{-- <div class="pull-left">
-								<p><span class="glyphicon glyphicon-time"></span> {{ \Carbon\Carbon::createFromFormat('Y-m-d H',  '$event->eventDate' )->toDateTimeString() }}</p>
-							</div> --}}
-
-							<div class="pull-left">
-								{{-- <p><span class="glyphicon glyphicon-time"></span> {{ \Carbon\Carbon::parse($event->eventDate )->formatLocalized('%A %d %B %Y at %H %a') }}</p> --}}
+							<div class="eventDate">
 								<p><span class="glyphicon glyphicon-time"></span> {{ \Carbon\Carbon::parse($event->eventDate )->format('l jS \\of F Y h:i A') }}</p>
-
 							</div>
 						
-							{{-- <div class="pull-left">
-								<p><span class="glyphicon glyphicon-time"></span> {{ $event->eventDate }}</p>
-							</div> --}}
-							<div class="pull-right">
+							<div class="eventAuthor">
 								<p><strong>by</strong> {{$event->user->additionalInfo->firstName}} {{$event->user->additionalInfo->lastName}}</p>
 							</div>
 						</div>
