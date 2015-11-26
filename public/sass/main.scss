@@ -813,7 +813,7 @@ a:hover, a:focus {
 
     .photoMap {
         padding:10px;
-        display: inline-block;
+        display: block;
         ul.photos {
             list-style: outside none none;
             // display: inline-block;
@@ -1034,6 +1034,36 @@ white-space: nowrap;
     margin: 160px auto;
 }
 
+
+/******************************************************************
+ Alert Messages style
+******************************************************************/
+
+.alert {
+  padding: 5px 35px 5px 14px;
+  margin: 10px 0px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #c09853;
+}
+
+.alert-danger,
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
+.alert-success {
+    color: #3C763D;
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+}
+
 /****************Responsive Page Code *************************/
 
 @media only screen and (max-width: 330px) {
@@ -1064,7 +1094,7 @@ white-space: nowrap;
 
         .photoMap {
             
-            .photos {
+            ul.photos {
                 
 
                 li {
@@ -1108,16 +1138,26 @@ white-space: nowrap;
         overflow:auto;
         height:100%; 
 
-        .photos li a img{
-            width: 100%;
-            height: 100px;
+        .photoMap {
+            
+            ul.photos {
+                
+
+                li {
+                    
+
+                    a {
+                        
+
+                        img {
+                            width: 100%;
+                            height: 100px;
+                        }
+                    }
+                }
+            }
         }
     }
-
-    // ul .photos{
-    //     padding:0px;
-    //     margin:0px;
-    // }
 
   }
 

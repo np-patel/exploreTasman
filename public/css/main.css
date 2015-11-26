@@ -24,7 +24,7 @@ body {
   clear: both;
   border: 0;
   height: 1px;
-  background-image: -moz-linear-gradient(left center, #061C1F, #EE534F, #081D1F); }
+  background-image: -moz-linear-gradient(left center, #061c1f, #ee534f, #081d1f); }
 
 .panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
   height: 45px;
@@ -540,7 +540,7 @@ a:hover, a:focus {
     background-color: #ee534f; }
   .recentItem .photoMap {
     padding: 10px;
-    display: inline-block; }
+    display: block; }
     .recentItem .photoMap ul.photos {
       list-style: outside none none;
       background: #FFF none repeat scroll 0% 0%;
@@ -683,6 +683,31 @@ table td #postStatus {
 .modal-dialog {
   margin: 160px auto; }
 
+/******************************************************************
+ Alert Messages style
+******************************************************************/
+.alert {
+  padding: 5px 35px 5px 14px;
+  margin: 10px 0px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #c09853; }
+
+.alert-danger,
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48; }
+
+.alert-success {
+  color: #3C763D;
+  background-color: #DFF0D8;
+  border-color: #D6E9C6; }
+
 /****************Responsive Page Code *************************/
 @media only screen and (max-width: 330px) {
   .orange-circle-button {
@@ -705,7 +730,7 @@ table td #postStatus {
     width: 300px;
     overflow: auto;
     height: 100%; }
-    .recentItem .photoMap .photos li a img {
+    .recentItem .photoMap ul.photos li a img {
       width: 100%;
       height: 100px; } }
 @media (min-width: 331px) and (max-width: 767px) {
@@ -726,7 +751,7 @@ table td #postStatus {
     width: 340px;
     overflow: auto;
     height: 100%; }
-    .recentItem .photos li a img {
+    .recentItem .photoMap ul.photos li a img {
       width: 100%;
       height: 100px; } }
 @media (min-width: 768px) and (max-width: 1200px) {
@@ -739,5 +764,3 @@ table td #postStatus {
 
   .modal-dialog {
     margin: 160px auto; } }
-
-/*# sourceMappingURL=main.css.map */

@@ -101,6 +101,36 @@
 </div>
 
 
+
+
+<!-- Modal for user images -->
+@foreach($allPhotos as $photo)
+<div id="userImage{{$photo->photoMapId}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{$photo->title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modalImage text-center">
+                    <img src="img/PhotoMap/{{ $photo->locationImage }}" class="img-responsive">
+                </div>
+
+                <div class="modelBodyText">
+                    <p>{{$photo->imageDescription}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@endforeach
+
+
 @endsection
 
 @section('footer')

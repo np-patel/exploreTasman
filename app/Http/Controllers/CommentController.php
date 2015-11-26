@@ -39,7 +39,10 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request,[
+                'commentTxt'=> 'required|max:255',
+                // 'photo' => 'required|image'
+            ]);
 
         $comments = new Comments();
         
@@ -48,6 +51,8 @@ class CommentController extends Controller
         $comments->body = $request->get('body');
 
         $comments->save();
+
+        
  
         return redirect('home');
     }

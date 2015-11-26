@@ -26,7 +26,10 @@
               <div class="form-group" style="padding:14px; margin-bottom:0px;">
                 <textarea id="status" name="status" class="form-control" placeholder="Update your status"></textarea>
             </div>
-            {{$errors->first('status')}}
+            
+            @if($errors->first('status'))
+                <span class="alert alert-danger">{{$errors->first('status')}}</span>
+            @endif
 
             <input class="btn btn-primary pull-right" value="post" type="submit">
 
@@ -110,13 +113,19 @@
     <input type="hidden" name="on_post" value="{{ $post->id }}">
 
     <div class="input-group"> 
-      <input class="form-control" name="body" placeholder="Add a comment" type="text">
-      <span class="input-group-addon">
-        <input type="submit" name='post_comment' value="post">
-        {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
-    </span>
-</div>
+      <input class="form-control" name="commentTxt" placeholder="Add a comment" type="text">
+        <span class="input-group-addon">
+          <input type="submit" name='post_comment' value="post">
+          {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
+        </span>
+    </div>
+
+    @if($errors->first('commentTxt'))
+        <div class="alert alert-danger">{{$errors->first('commentTxt')}}</div>
+    @endif
+
 </form>
+
 <ul class="comments-list">
 
     @foreach($post->comments as $comment)
