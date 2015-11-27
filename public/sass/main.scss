@@ -24,6 +24,15 @@ body{
     background-image: url(../img/bg.jpg);
 }
 
+.navbar-default {
+    .navbar-brand {
+        color: $highlight-color;
+
+        &:hover{
+            color: $highlight-color;
+        }
+    }
+}
 
 /**************** login page ************************/
 
@@ -1123,6 +1132,10 @@ white-space: nowrap;
 
 
 @media only screen and (max-width: 330px) {
+
+    .bg{
+        position:static;
+    }
 
     //login and register page
     .inner-bg {

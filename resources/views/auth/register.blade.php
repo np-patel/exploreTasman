@@ -21,13 +21,13 @@
                                     <form id="register-form" action="/auth/register" method="post" role="form" novalidate>
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-group">
-                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="{{old('username')}}">
                                             @if($errors->first('username'))
                                                 <div class="alert alert-danger">{{$errors->first('username')}}</div>
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="{{old('email')}}">
                                             @if($errors->first('email'))
                                                 <div class="alert alert-danger">{{$errors->first('email')}}</div>
                                             @endif

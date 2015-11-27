@@ -23,7 +23,13 @@
 							</div>
 						
 							<div class="eventAuthor">
-								<p><strong>by</strong> {{$event->user->additionalInfo->firstName}} {{$event->user->additionalInfo->lastName}}</p>
+								<p><strong>by</strong> @if($event->user->additionalInfo) 
+						            {{ $event->user->additionalInfo->firstName }} {{ $event->user->additionalInfo->lastName }}
+
+						            @else 
+						            {{ $event->user->username }}
+						            @endif
+					            </p>
 							</div>
 						</div>
 						<img class="img-responsive" src="img/Event/{{$event->eventImage}}" alt="" style="padding:10px 0px;">

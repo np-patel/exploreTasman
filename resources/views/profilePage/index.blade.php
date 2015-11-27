@@ -375,7 +375,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Update Event</h4>
+        <h4 class="modal-title">Update status</h4>
     </div>
     <div class="modal-body">
         <div>
@@ -385,10 +385,15 @@
 
 
                 <div class="form-group">
-                    <label for="updateStatus">Event Description</label>
+                    <label for="updateStatus">Update status</label>
                     <textarea id="updateStatus" name="updateStatus" class="form-control" placeholder="Write about event"></textarea>
                     <span class="validation">{{$errors->first('updateStatus')}}</span>
                     
+                </div>
+
+                <div class="btn btn-style btn-file pull-left clearfix ">
+                <i class="glyphicon glyphicon-camera pull-left"></i> <input id="updatephoto" name="updatephoto" type="file">
+
                 </div>
                 
                 <input type="submit" value="Update Post" class="btn btn-primary" name="update post"/>

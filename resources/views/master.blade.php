@@ -33,7 +33,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">ExTasman</a>
+						<a class="navbar-brand" href="/home">Explore Tasman</a>
 						<!-- <a href="index.html"><img src="images/logo.png"></a> -->
 				</div>
 

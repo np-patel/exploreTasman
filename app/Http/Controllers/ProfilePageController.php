@@ -196,6 +196,21 @@ class ProfilePageController extends Controller
         $updatePost = Posts::find($updatePostId);
         $updatePost->status = $request->get('updateStatus');
 
+        if ( $request->hasFile('updatephoto')) {
+
+            $fileName = uniqid().'.'.$request->file('updatephoto')->getClientOriginalExtension();
+
+            \Image::make($request->file('updatephoto') )
+                ->save('img/Post/'.$fileName);
+
+                //delete the old image
+                \File::Delete('img/Post/'.$updatePost->photo);
+                
+
+            $updatePost->photo = $fileName;
+
+        }
+
         $updatePost->save();
 
         return redirect('profilePage');

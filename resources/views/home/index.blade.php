@@ -50,7 +50,7 @@
 <div class="panel panel-white post panel-shadow">
     <div class="post-heading">
         {{-- if person is loggedin is == to person post userid than show this update function  --}}
-        @if(\Auth::user()->id == $post->user_id)
+        @if(\Auth::user()->id == $post->user_id || \Auth::user()->role == 'admin' )
         <div>
             <a herf="" class="pull-right updatePost" data-toggle="modal" data-target="#deleteUserPost" data-userid-delete="{{$post->id}}"><i class="fa fa-trash-o"></i></a>
             
@@ -95,10 +95,10 @@
 <div class="post-description">
   <p>{{$post->status}}</p>
   <div class="stats">
-    <a href="#">
+    <p>
       <i class="fa fa-commenting-o"></i>
       {{$post->comments->count()}}
-  </a>
+  </p>
 </div>
 </div>
 
@@ -107,13 +107,13 @@
 
 <div class="post-footer">
 
-  <form action="/comment/add" method="post" class="form-horizontal" role="form" novalidate>
+  <form action="/comment/add" method="post" class="form-horizontal" role="form">
 
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="on_post" value="{{ $post->id }}">
 
     <div class="input-group"> 
-      <input class="form-control" name="commentTxt" placeholder="Add a comment" type="text">
+      <input class="form-control" id="commentTxt" name="commentTxt" placeholder="Add a comment" type="text" required>
         <span class="input-group-addon">
           <input type="submit" name='post_comment' value="post">
           {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
@@ -265,7 +265,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Update Event</h4>
+        <h4 class="modal-title">Update Your Status</h4>
     </div>
     <div class="modal-body">
         <div>
@@ -275,14 +275,19 @@
 
 
                 <div class="form-group">
-                    <label for="updateStatus">Event Description</label>
+                    <label for="updateStatus">Update Status</label>
                     <textarea id="updateStatus" name="updateStatus" class="form-control" placeholder="Write about event"></textarea>
                     {{$errors->first('updateStatus')}}
                     
                 </div>
-                
-                <input type="submit" value="Update Post" class="btn btn-primary" name="update post"/>
 
+                <div class="btn btn-style btn-file pull-left clearfix ">
+                <i class="glyphicon glyphicon-camera pull-left"></i> <input id="updatephoto" name="updatephoto" type="file">
+
+                </div>
+                <div>
+                <input type="submit" value="Update Post" class="btn btn-primary" name="update post"/>
+                </div>
             </form>
         </div>
     </div>

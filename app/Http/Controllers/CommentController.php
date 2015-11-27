@@ -48,7 +48,7 @@ class CommentController extends Controller
         
         $comments->from_user = \Auth::user()->id;
         $comments->on_post =  $request->input('on_post');
-        $comments->body = $request->get('body');
+        $comments->body = $request->get('commentTxt');
 
         $comments->save();
 

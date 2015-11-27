@@ -21,7 +21,7 @@
                                    <form id="login-form" action="/auth/login" method="post" role="form" style="display: block;" novalidate>
                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">  
                                         <div class="form-group">
-                                            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="{{old('email')}}">
                                         
                                             @if($errors->first('email'))
                                                 <div class="alert alert-danger">{{$errors->first('email')}}</div>

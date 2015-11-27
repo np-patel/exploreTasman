@@ -69,14 +69,14 @@
             <h4>Add Events</h4>
         </div>
         <div>
-            <form role="form" action="/admin/addEvent" method="post" enctype="multipart/form-data" role="form" novalidate>
+            <form role="form" action="/admin/addEvent" method="post" enctype="multipart/form-data" role="form" >
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group">
                     <label for="eventTitle">Event Title: </label>
                     <input type="text" class="form-control"
-                    id="eventTitle" name="eventTitle"/>
+                    id="eventTitle" name="eventTitle" value="{{old('eventTitle')}}" required/>
                     <span class="validation">{{$errors->first('eventTitle')}}</span>
                 </div>
 
@@ -94,23 +94,23 @@
                 <div class="form-group">
                     <label for="Date&Time" class="control-label">Pick Event Date&Time</label>
                     <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
-                        <input class="form-control" size="16" name="Date&Time" type="text" value="" readonly>
+                        <input class="form-control" size="16" name="Date&Time" type="text" value="{{old('Date&Time')}}" readonly required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                     </div>
-                    <input type="hidden" id="Date&Time" value="" />
+                    <input type="hidden" id="Date&Time" value=""/>
                     <span class="validation">{{$errors->first('Date&Time')}}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="eventImage">Upload Event Image</label>
-                    <input id="eventImage" name="eventImage" type="file">
+                    <input id="eventImage" name="eventImage" type="file" required>
                     <span class="validation">{{$errors->first('eventImage')}}</span>
                 </div>
 
                 <div class="form-group">
                     <label for="eventDescription">Event Description</label>
-                    <textarea id="eventDescription" name="eventDescription" class="form-control" placeholder="Write about event"></textarea>
+                    <textarea id="eventDescription" name="eventDescription" class="form-control" placeholder="Write about event" required>{{old('eventDescription')}}</textarea>
                     <span class="validation">{{$errors->first('eventDescription')}}</span>
 
                 </div>
@@ -369,23 +369,17 @@
 
 @endsection
 
-@section('adminNav')
+{{-- @section('adminNav') --}}
 
-@if(count($errors)>0)
-  <script type="text/javascript">
-    $("ul.nav.nav-pills li a[data-target-id=events]").parent().addClass('active').tab('show').siblings().removeClass('active');
-    </script>
-@endif
+{{-- @if(count($errors)>0) --}}
+ <!-- <script type="text/javascript">
+      
+ $("ul.nav.nav-pills li a[data-target-id=events]").parent().addClass('active').tab('show').siblings().removeClass('active');
+ $('#post').css('display', 'none');
+ $('#events').css('display', 'block');
+ 
+  </script> -->
+{{-- @endif --}}
 
-@endsection
+{{-- @endsection --}}
 
-@section('updateEvent')
-
-
-@if(count($errors)>0)
-  <script type="text/javascript">
-    $('#updateEvent').modal('show');
-    </script>
-@endif
-
-@endsection
