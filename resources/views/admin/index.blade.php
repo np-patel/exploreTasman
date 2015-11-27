@@ -9,6 +9,7 @@
                 <li class="active"><a href="#" data-target-id="post"><i class="fa fa-home fa-fw"></i>Posts</a></li>
                 <li><a href="" data-target-id="events"><i class="fa fa-list-alt fa-fw"></i>Events</a></li>
                 <li><a href="" data-target-id="photoMap"><i class="fa fa-file-o fa-fw"></i>PhotoMap</a></li>
+                <li><a href="" data-target-id="addMarkers"><i class="fa fa-file-o fa-fw"></i>Add Marker</a></li>
                 
             </ul>
         </div>
@@ -16,6 +17,10 @@
             <div>
 
                 <div class="panel" style="padding:20px;">
+
+                <div>
+                  <h3>User Posts</h3>
+              </div>
                     <div id="no-more-tables">
                         <table class="table table-hover">
                           <thead class="cf">
@@ -66,7 +71,7 @@
 <div class="col-md-9 admin-content" id="events">
     <div class="panel" style="padding:20px;">
         <div>
-            <h4>Add Events</h4>
+            <h3>Add Events</h3>
         </div>
         <div>
             <form role="form" action="/admin/addEvent" method="post" enctype="multipart/form-data" role="form" >
@@ -208,7 +213,79 @@
     </div>
 </div>
 
+{{-- add marker on the map --}}
 
+  <div class="col-md-9 admin-content" id="addMarkers">
+    <div class="panel" style="padding:20px;">
+        <div>
+            <h3>Add Marker To map</h3>
+        </div>
+        <div>
+            <form role="form" action="/admin/addMarker" method="post" role="form" >
+
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                <div class="form-group">
+                    <label for="locationName">Location Name: </label>
+                    <input type="text" class="form-control" id="locationName" name="locationName" value="" placeholder="location name" required/>
+                    {{-- <span class="validation">{{$errors->first('locationName')}}</span> --}}
+                </div>
+
+                <div class="form-group">
+                    <label for="lat">Latitude: </label>
+                    <input type="text" class="form-control" id="lat" name="lat" value="" placeholder="-41.306373" required/>
+                    {{-- <span class="validation">{{$errors->first('lat')}}</span> --}}
+
+                </div>
+
+                <div class="form-group">
+                    <label for="long">Longitude: </label>
+                    <input type="text" class="form-control" id="long" name="long" value="" placeholder="174.793047" required/>
+                    {{-- <span class="validation">{{$errors->first('long')}}</span> --}}
+
+                </div>
+
+                <input type="submit" value="Add Marker" class="btn btn-primary" name="addMarker" />
+
+            </form>
+        </div>
+    </div>
+
+    {{-- pull all the marker for admin controll --}}
+
+    <div class="panel" style="padding:20px;">
+
+    <div><h3>Delete Marker from Map</h3></div>
+        <div id="no-more-tables">
+            <table class="table table-hover">
+              <thead class="cf">
+                <tr>
+                  <th>location name</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                  <th>DeleteMarker</th>
+              </tr>
+          </thead>
+          @foreach($allLocations as $location)
+            {{-- @foreach($allUserPhotos as $userpic) --}}
+          <tbody>
+            <tr>
+              <td data-title="location name">{{$location->locationName}}</td>
+              <td data-title="Latitude">{{$location->latitude}}</td>
+              <td data-title="Longitude">{{$location->longitude}}</td>
+              <td data-title="DeleteMarker"><a href="" class="btn btn-primary"
+                 data-marker-delete="{{$location->id}}"
+                 data-toggle="modal" 
+                 data-target="#deletemarker">Delete</a></td>
+             </tr>
+         </tbody>
+          {{-- @endforeach --}}
+         @endforeach
+     </table>
+ </div>
+</div>
+
+  </div>
 
 
 
@@ -361,6 +438,33 @@
 
         <div class="col-md-3 col-md-offset-right-3">
             <a href="" class="btn btn-primary deleteUserImageButton">Delete</a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{{-- model for delete Marker --}}
+
+<div id="deletemarker" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content clearfix">
+      <div class="modal-header1 clearfix">
+        <a href="" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+        
+    </div>
+
+
+    <div class="modal-body text-center">
+        <p>Are You Sure. You Want To Delete This Marker from Map?</p>
+    </div>
+    <div class="col-md-12 text-center footer-model-btn">
+        <div class="col-md-3 col-md-offset-3">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+        <div class="col-md-3 col-md-offset-right-3">
+            <a href="" class="btn btn-primary deleteMarkerButton">Delete</a>
         </div>
     </div>
 </div>

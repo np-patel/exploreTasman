@@ -10,8 +10,8 @@
 			@if(!$allEvents->isEmpty()) 
 			@foreach($allEvents as $event)
 			<div class="col-sm-6">
-				<div class="panel eventPanel">
-					<div class="events">
+				<div class="panel eventPanel clearfix">
+					{{-- <div class="events clearfix"> --}}
 						<h4>{{ $event->eventName}}</h4>
 
 						<div><p>{{ $event->marker_location->locationName}}</p></div>
@@ -32,12 +32,15 @@
 					            </p>
 							</div>
 						</div>
+						<div>
 						<img class="img-responsive" src="img/Event/{{$event->eventImage}}" alt="" style="padding:10px 0px;">
-
-						<div>{{ $event->eventDescription}}</div>
+						</div>
+						<div class="eventdesc">
+							<p>{{ $event->eventDescription}}</p>
+						</div>
 						{{-- <a href="#" id="load">Load More</a> --}}
 
-					</div>
+					{{-- </div> --}}
 				</div>
 			</div>
 			@endforeach

@@ -638,7 +638,7 @@ a:hover, a:focus {
             right: 0px;
             z-index: 2;
             margin-bottom: 0px;
-            padding: 0px;
+            padding: 0px 15px;
 
             li {
                 float: left;
@@ -888,11 +888,11 @@ a:hover, a:focus {
 /************************** events page ****************************/
 
 .eventPanel{
+    padding:10px 20px;
+    height: 520px;
 
-    height: 470px;
-
-    .events{
-        padding:10px 20px;
+    // .events{
+        // padding:10px 20px;
 
             .eventDate{
                 p{
@@ -909,13 +909,23 @@ a:hover, a:focus {
 
         img {
             width: 100%;
-            height: 200px;
+            height: 250px;
         }
 
-        .item{
-            overflow: hidden;
+        // .item{
+        //     overflow: hidden;
+        // }
+
+        .eventdesc{
+            p{
+               white-space: pre-wrap;      /* CSS3 */   
+               white-space: -moz-pre-wrap; /* Firefox */    
+               white-space: -pre-wrap;     /* Opera <7 */   
+               white-space: -o-pre-wrap;   /* Opera 7 */    
+               word-wrap: break-word;      /* IE */
+            }
         }
-    }
+    // }
 }
 /**************************** Admin Controll *********************/
 

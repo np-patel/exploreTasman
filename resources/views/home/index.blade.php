@@ -115,8 +115,8 @@
     <div class="input-group"> 
       <input class="form-control" id="commentTxt" name="commentTxt" placeholder="Add a comment" type="text" required>
         <span class="input-group-addon">
-          <input type="submit" name='post_comment' value="post">
-          {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
+          {{-- <input type="submit" name='post_comment' value="post"> --}}
+          <button type="submit" name='post_comment'><i class="fa fa-edit"></i></button>
         </span>
     </div>
 

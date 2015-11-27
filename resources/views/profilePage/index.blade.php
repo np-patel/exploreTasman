@@ -183,16 +183,16 @@
 
           <div class="post-footer">
 
-            <form action="/comment/profilePageAdd" method="post" class="form-horizontal" role="form" novalidate>
+            <form action="/comment/profilePageAdd" method="post" class="form-horizontal" role="form">
 
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" name="on_post" value="{{ $post->id }}">
 
               <div class="input-group"> 
-                <input class="form-control" name="body" placeholder="Add a comment" type="text">
+                <input class="form-control" name="body" placeholder="Add a comment" type="text" required>
                 <span class="input-group-addon">
-                  <input type="submit" name='post_comment' value="post">
-                  {{-- <a href="#"><i class="fa fa-edit"></i></a>   --}}
+                  {{-- <input type="submit" name='post_comment' value="post"> --}}
+                  <button type="submit" name='post_comment'><i class="fa fa-edit"></i></button>
                 </span>
               </div>
             </form>
@@ -347,7 +347,7 @@
 @if(!$allUserPhotos->isEmpty())
   <div class="panel panel-default"> 
     <div class="picture-title">
-      <p>Recent Images</p>
+      <p>My Images</p>
   </div>
   <div class="panel-body text-center"> 
       <ul class="photos"> 

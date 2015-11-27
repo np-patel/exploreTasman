@@ -39,7 +39,7 @@ body {
   clear: both;
   border: 0;
   height: 1px;
-  background-image: -moz-linear-gradient(left center, #061c1f, #ee534f, #081d1f); }
+  background-image: -moz-linear-gradient(left center, #061C1F, #EE534F, #081D1F); }
 
 .panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
   height: 45px;
@@ -414,7 +414,7 @@ a:hover, a:focus {
   right: 0px;
   z-index: 2;
   margin-bottom: 0px;
-  padding: 0px; }
+  padding: 0px 15px; }
   .panel .panel-body .photos li {
     float: left;
     margin: 0px;
@@ -590,18 +590,26 @@ a:hover, a:focus {
 
 /************************** events page ****************************/
 .eventPanel {
-  height: 470px; }
-  .eventPanel .events {
-    padding: 10px 20px; }
-    .eventPanel .events .eventDate p {
-      float: left; }
-    .eventPanel .events .eventAuthor p {
-      float: right; }
-    .eventPanel .events img {
-      width: 100%;
-      height: 200px; }
-    .eventPanel .events .item {
-      overflow: hidden; }
+  padding: 10px 20px;
+  height: 520px; }
+  .eventPanel .eventDate p {
+    float: left; }
+  .eventPanel .eventAuthor p {
+    float: right; }
+  .eventPanel img {
+    width: 100%;
+    height: 250px; }
+  .eventPanel .eventdesc p {
+    white-space: pre-wrap;
+    /* CSS3 */
+    white-space: -moz-pre-wrap;
+    /* Firefox */
+    white-space: -pre-wrap;
+    /* Opera <7 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* IE */ }
 
 /**************************** Admin Controll *********************/
 .footer-model-btn {
@@ -928,3 +936,5 @@ table td #postStatus {
         height: 200px; }
       .eventPanel .events .item {
         overflow: hidden; } }
+
+/*# sourceMappingURL=main.css.map */

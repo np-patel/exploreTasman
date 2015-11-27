@@ -148,8 +148,34 @@ class AdminController extends Controller
         $deleteUserImage->delete();
 
         return redirect('admin');
+    }
+
+    public function addMarker(Request $request){
+        // return('add');
+
+        $addmarkerLocation = new Marker_location();
+
+        $addmarkerLocation->locationName = $request->get('locationName');
+        $addmarkerLocation->latitude = $request->get('lat');
+        $addmarkerLocation->longitude = $request->get('long');
+
+        $addmarkerLocation->save();
+
+        return redirect('photoMap');
+
+    }
+
+    public function deleteMarker($deleteMarkerId){
+
+         $deleteMarker = Marker_location::find($deleteMarkerId);
+
+            // \File::Delete('img/PhotoMap/'.$deleteMarker->PhotoMapImageUploader->markerLocationId);
 
 
+         $deleteMarker->delete();
+
+        return redirect('photoMap');
+        
     }
 
     /**

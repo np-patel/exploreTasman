@@ -68,7 +68,7 @@ $(document).ready(function()
         var eventId = $(this).data('event-id');
 
         var eventDate = $(this).data('event-date');
-        console.log(eventDate);
+        // console.log(eventDate);
 
 
         $('#updateEventTitle').val(eventName);
@@ -95,6 +95,13 @@ $(document).ready(function()
         var deleteUserImageId = $(this).data('userimage-delete');
         // console.log(deleteUserImageId);
         $(".deleteUserImageButton").attr("href", "/admin/deleteUserImage/"+deleteUserImageId);
+
+        //marker delete button
+        var deleteMarkerId = $(this).data('marker-delete');
+        // var deleteMarkerlocationId = $(this).data('markerlocationid-delete');
+        console.log(deleteMarkerId);
+        // console.log(deleteMarkerlocationId);
+        $(".deleteMarkerButton").attr("href", "/admin/deleteMarker/"+deleteMarkerId);
 
 
     });
@@ -165,35 +172,35 @@ $(document).ready(function()
 
 
 //event collepse js
-var collapsedSize = '40px';
-$('.item').each(function() {
-    var h = this.scrollHeight;
-    console.log(h);
-    var div = $(this);
-    if (h > 30) {
-        div.css('height', collapsedSize);
-        div.after('<a id="more" class="item" href="#">Read more</a><br/>');
-        var link = div.next();
-        link.click(function(e) {
-            e.stopPropagation();
+// var collapsedSize = '40px';
+// $('.item').each(function() {
+//     var h = this.scrollHeight;
+//     console.log(h);
+//     var div = $(this);
+//     if (h > 30) {
+//         div.css('height', collapsedSize);
+//         div.after('<a id="more" class="item" href="#">Read more</a><br/>');
+//         var link = div.next();
+//         link.click(function(e) {
+//             e.stopPropagation();
 
-            if (link.text() != 'Hide Text') {
-                link.text('Hide Text');
-                div.animate({
-                    'height': h
-                });
+//             if (link.text() != 'Hide Text') {
+//                 link.text('Hide Text');
+//                 div.animate({
+//                     'height': h
+//                 });
 
-            } else {
-                div.animate({
-                    'height': collapsedSize
-                });
-                link.text('Read more');
-            }
+//             } else {
+//                 div.animate({
+//                     'height': collapsedSize
+//                 });
+//                 link.text('Read more');
+//             }
 
-        });
-    }
+//         });
+//     }
 
-});
+// });
 
 //hide alert modal on admin event page
 $('.modal-header1 .close').modal('hide');
