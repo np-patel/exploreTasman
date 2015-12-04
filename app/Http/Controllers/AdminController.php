@@ -169,7 +169,11 @@ class AdminController extends Controller
 
          $deleteMarker = Marker_location::find($deleteMarkerId);
 
-            // \File::Delete('img/PhotoMap/'.$deleteMarker->PhotoMapImageUploader->markerLocationId);
+         $allImages = $deleteMarker->PhotoMapImageUploader;
+
+         foreach( $allImages as $image ) {
+            \File::Delete('img/PhotoMap/'.$image->locationImage);
+         }
 
 
          $deleteMarker->delete();
