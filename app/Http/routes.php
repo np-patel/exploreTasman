@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return redirect('auth/login');
 });
 
 // Route::get('home', function () {
@@ -76,4 +76,18 @@ Route::get('events', 'EventsController@index');
 Route::get('contact', 'ContactController@index');
 
 
+//database migration
+Route::get('clearcache', function(){
+	Artisan::call('config:clear');
+});
+
+Route::get('resetcache', function(){
+	Artisan::call('config:cache');
+});
+
+Route::get('migrate', function(){
+
+	Artisan::call('migrate');
+
+});
 
